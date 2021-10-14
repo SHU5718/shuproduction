@@ -12,9 +12,9 @@
             <div class="col-4 mt-4"></div>
 
             <!-- <div class="row"> -->
-            <textarea class="col-4 mt-4" id="top_word" readonly></textarea>
+            <textarea class="col-4 mt-4" id="top_word" readonly>{{$up_five}}</textarea>
             <input type="text" name="nakasiti" max-length="14" placeholder="七文字の句を入力" class="col-4 mt-4">
-            <textarea class="col-4 mt-4" id="bot_word" readonly></textarea>
+            <textarea class="col-4 mt-4" id="bot_word" readonly>{{$down_five}}</textarea>
             <a class="btn btn-info text-light col-4 offset-4 mt-4 mb-5" href="result">作成！</a>
         </div>
 </div>

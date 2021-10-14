@@ -44,8 +44,8 @@ class PostController extends Controller
         }
 
         $rand_word = array("オムライス","ハンバーグ","エビフライ","パルプンテ");
-        $word_cnt = count($rand_word);
-        return view('index', ['up_five' => $sent_five[mt_rand(0,$five_cnt)],
+        $word_cnt = count($rand_word) -1;
+        return view('top', ['up_five' => $sent_five[mt_rand(0,$five_cnt -1)],
                     'down_five' => $rand_word[mt_rand(0,$word_cnt)]]);
     }
 }
