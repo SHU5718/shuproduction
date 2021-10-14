@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Senryuu;
+use App\Models\senryuu;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class SenryuuFactory extends Factory
@@ -12,7 +12,7 @@ class SenryuuFactory extends Factory
      *
      * @var string
      */
-    protected $model = Senryuu::class;
+    protected $model = senryuu::class;
 
     /**
      * Define the model's default state.

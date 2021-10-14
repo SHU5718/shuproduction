@@ -26,11 +26,10 @@
             <div class="row justify-content-center">
                 <div class="col-md-10">
                     <table class="table table-striped table-dark mt-5">
-                        @foreach($posts as $post)
                         <tr>
-                          <td>{{$post}}</td>
+                          <td>{{$up_five}}</td>
+                          <td>{{$down_five}}</td>
                         </tr>
-                        @endforeach
                     </table>
                 </div>
             </div>

@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Senryuu;
 use App\Models\User;
+use App\Models\senryuu;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class SenryuuPolicy
@@ -25,10 +25,10 @@ class SenryuuPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Senryuu  $senryuu
+     * @param  \App\Models\senryuu  $senryuu
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Senryuu $senryuu)
+    public function view(User $user, senryuu $senryuu)
     {
         //
     }
@@ -48,10 +48,10 @@ class SenryuuPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Senryuu  $senryuu
+     * @param  \App\Models\senryuu  $senryuu
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Senryuu $senryuu)
+    public function update(User $user, senryuu $senryuu)
     {
         //
     }
@@ -60,10 +60,10 @@ class SenryuuPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Senryuu  $senryuu
+     * @param  \App\Models\senryuu  $senryuu
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Senryuu $senryuu)
+    public function delete(User $user, senryuu $senryuu)
     {
         //
     }
@@ -72,10 +72,10 @@ class SenryuuPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Senryuu  $senryuu
+     * @param  \App\Models\senryuu  $senryuu
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Senryuu $senryuu)
+    public function restore(User $user, senryuu $senryuu)
     {
         //
     }
@@ -84,10 +84,10 @@ class SenryuuPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Senryuu  $senryuu
+     * @param  \App\Models\senryuu  $senryuu
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Senryuu $senryuu)
+    public function forceDelete(User $user, senryuu $senryuu)
     {
         //
     }
