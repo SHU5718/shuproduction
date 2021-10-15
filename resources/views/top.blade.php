@@ -5,31 +5,30 @@
     <div class="row mt-4">
         <div class="box1 col-lg-8">
             <div class="row">
-            <img src="images/senryu.png" class="homeIMG w-50 mb-4">
-            <input type="text" name="situation" size="" maxlength="255" placeholder="シチュエーションを入力" class="col-8 offset-2 mt-4">
-            <!-- <input type="button" value="生成！" class="col-4 offset-4"> -->
-            <a class="btn btn-info text-light col-4 offset-4 mt-4" href="api">ランダム生成！</a>
-            <div class="col-4 mt-4"></div>
+                <img src="images/senryu.png" class="homeIMG w-50 mb-4">
+                <input type="text" name="situation" size="" maxlength="255" placeholder="シチュエーションを入力" class="col-8 offset-2 mt-4">
+                <!-- <input type="button" value="生成！" class="col-4 offset-4"> -->
+                <a class="btn btn-info text-light col-4 offset-4 mt-4" href="api">ランダム生成！</a>
+                <div class="col-4 mt-4"></div>
 
-            <!-- <div class="row"> -->
-            <textarea class="col-3 mt-4 offset-1" id="top_word" readonly>{{$up_five}}</textarea>
-            <input type="text" name="nakasiti" max-length="14" placeholder="七文字の句を入力" class="col-4 mt-4">
-            <textarea class="col-3 mt-4" id="bot_word" readonly>{{$down_five}}</textarea>
-            <a class="btn btn-info text-light col-4 offset-4 mt-4 mb-5" href="result">作成！</a>
+                
+                <textarea class="col-3 mt-4 offset-1" id="top_word" readonly>{{$up_five}}</textarea>
+                <input type="text" name="nakasiti" max-length="14" placeholder="七文字の句を入力" class="col-4 mt-4">
+                <textarea class="col-3 mt-4" id="bot_word" readonly>{{$down_five}}</textarea>
+                <a class="btn btn-info text-light col-4 offset-4 mt-4 mb-5" href="result">作成！</a>
+            </div>
         </div>
-</div>
-<!-- </div> -->
-        <div class="box2 col-lg-3 ms-4">
-            <div class="add mt-4 mb-3">広告</div>
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-            <a href="new" class="see_more">もっと見る</p>
-        </div>
-    </div>
+
+            <div class="box2 col-lg-3 ms-4">
+                <div class="add mt-4 mb-3">広告</div>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <a href="new" class="see_more">もっと見る</a>
+            </div>
 </div>
 @endsection

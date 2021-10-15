@@ -25,8 +25,8 @@ Route::get('/result', function(){
 Route::get('/login', function(){
     return view('login');
 });
-Route::get('/new', function(){
-    return view('new');
+Route::get('/newuser', function(){
+    return view('newuser');
 });
 Route::get('/mypage', function(){
     return view('user');

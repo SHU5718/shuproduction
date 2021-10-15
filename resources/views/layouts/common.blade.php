@@ -76,6 +76,12 @@
     height: 50px;
     background-color: skyblue;
   }
+
+  /*新規登録ページ*/
+  .new_title {
+    margin-left: 160px;
+    margin-bottom: -1px
+  }
 </style>
 
 <body>
