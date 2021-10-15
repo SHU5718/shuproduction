@@ -24,14 +24,14 @@
     background-color: white;
   }
   .add {
-    width: 240px;
-    height: 240px;
+    width: 270px;
+    height: 270px;
     background-color: red;
-    margin-left: 3px;
+    margin-left: 18px;
   }
   .box2 ul li {
-    margin-left: -29px;
-    width: 240px;
+    margin-left: -14px;
+    width: 270px;
     height: 30px;
     background-color: yellow;
     list-style: none;
@@ -40,7 +40,7 @@
   }
   .box2 a {
     text-decoration: none;
-    margin-left: 180px;
+    margin-left: 227px;
   }
   /*top*/
   textarea {
@@ -54,6 +54,7 @@
   .resultIMG {
     width: 450px;
     height: 450px;
+    margin-left: 60px;
   }
   .twitterimg {
     width: 40px;

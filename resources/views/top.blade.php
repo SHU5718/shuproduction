@@ -8,7 +8,7 @@
             <img src="images/senryu.png" class="homeIMG w-50 mb-4">
             <input type="text" name="situation" size="" maxlength="255" placeholder="シチュエーションを入力" class="col-8 offset-2 mt-4">
             <!-- <input type="button" value="生成！" class="col-4 offset-4"> -->
-            <button type="button" class="btn btn-info text-light col-4 offset-4 mt-4">ランダム生成！</button>
+            <a class="btn btn-info text-light col-4 offset-4 mt-4" href="api">ランダム生成！</a>
             <div class="col-4 mt-4"></div>
 
             <!-- <div class="row"> -->
@@ -20,7 +20,7 @@
 </div>
 <!-- </div> -->
         <div class="box2 col-lg-3 ms-4">
-            <div class="add mt-3 mb-3">広告</div>
+            <div class="add mt-4 mb-3">広告</div>
             <ul>
                 <li></li>
                 <li></li>
