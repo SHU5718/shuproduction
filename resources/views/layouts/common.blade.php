@@ -6,7 +6,7 @@
     background-color: #f1ecd0;
   }
   .wrapper {
-    /* margin-left: 200px; */
+    margin-left: 80px;
     /* width: 1080px; */
   }
   .navbar-brand {
@@ -48,7 +48,7 @@
     height: 30px;
   }
   .homeIMG {
-    margin-left:180px;
+    margin-left:220px;
   }
   /*resultページ*/
   .resultIMG {

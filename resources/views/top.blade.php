@@ -6,7 +6,7 @@
         <div class="box1 col-lg-8">
             <div class="row">
             <img src="images/senryu.png" class="homeIMG w-50 mb-4">
-            <input type="text" name="situation" size="" maxlength="255" placeholder="シチュエーションを入力" class="col-8 offset-2 mt-5">
+            <input type="text" name="situation" size="" maxlength="255" placeholder="シチュエーションを入力" class="col-8 offset-2 mt-4">
             <!-- <input type="button" value="生成！" class="col-4 offset-4"> -->
             <button type="button" class="btn btn-info text-light col-4 offset-4 mt-4">ランダム生成！</button>
             <div class="col-4 mt-4"></div>
