@@ -11,7 +11,7 @@
         </div>
 
 
-        <div class="box2 col-lg-3">
+        <div class="box2 col-lg-3 ms-4">
             <div class="add mt-3 mb-3">広告</div>
                 <ul>
                     <li></li>

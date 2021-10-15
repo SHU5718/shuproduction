@@ -6,8 +6,8 @@
     background-color: #f1ecd0;
   }
   .wrapper {
-    margin-left: 200px;
-    width: 1080px;
+    /* margin-left: 200px; */
+    /* width: 1080px; */
   }
   .navbar-brand {
     width: 180px;
@@ -20,7 +20,7 @@
     background-color: white;
   }
   .box2 {
-    margin-left: 20px;
+    /* margin-left: 20px; */
     background-color: white;
   }
   .add {
