@@ -28,6 +28,10 @@
     height: 270px;
     background-color: red;
     margin-left: 18px;
+    margin-top: 10px;
+  }
+  .box2 ul {
+    margin-top:10px;
   }
   .box2 ul li {
     margin-left: -14px;
