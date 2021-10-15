@@ -64,6 +64,18 @@
     width: 40px;
     height: 40px;
   }
+
+  /*ログイン画面*/
+  .box3 {
+    margin-left: 288px;
+    margin-top: 20px; 
+  }
+  .login_title{
+    margin-left: -12px;
+    width: 660px;
+    height: 50px;
+    background-color: skyblue;
+  }
 </style>
 
 <body>
@@ -83,10 +95,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">新着順</a>
+        </li>
       </ul>
-      <form class="d-flex">
-        <button class="btn btn-primary mt-2 me-5" type="submit">ログイン</button>
-</form>
+        <button class="navlogBtn btn btn-primary mt-1 me-5" type="submit" onclick="location.href='login'">ログイン</button>
     </div>
   </div>
 </nav>
