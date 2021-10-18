@@ -15,6 +15,9 @@ use App\Http\Controllers\PostController;
 */
 Route::get('/api', 'App\Http\Controllers\PostController@index');
 
+Route::get('/createaccountcheck', 'App\Http\Controllers\CreateAccountController@create_account');
+Route::get('/logincheck', 'App\Http\Controllers\LoginController@user_login');
+
 Route::get('/top', function () {
     return view('top');
 });
@@ -29,8 +32,8 @@ Route::get('/result', function(){
 Route::get('/login', function(){
     return view('login');
 });
-Route::get('/new', function(){
-    return view('new');
+Route::get('/newuser', function(){
+    return view('newuser');
 });
 Route::get('/mypage', function(){
     return view('user');

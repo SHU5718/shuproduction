@@ -20,7 +20,7 @@
                     <li></li>
                     <li></li>
                 </ul>
-                <a href="new">もっと見る</p>
+                <a href="new">もっと見る</a>
         </div>
     </div>
 </div>
