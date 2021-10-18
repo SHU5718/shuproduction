@@ -11,7 +11,7 @@
             <input type="text" name="Password" max-length="32" placeholder="password" class="col-6 offset-3 mb-4">
             <!-- <a class="btn btn-info text-light col-6 offset-3 mb-5">ログイン</a> -->
             <form>
-                <input type="button" class="btn btn-info text-light col-6 offset-3 mb-3" value="ログイン" onclick="location.href='user'">
+                <input type="button" class="btn btn-info text-light col-6 offset-3 mb-3" value="ログイン">
             </form>
             <p class="fs-5 text-center col-12">未登録の方はこちら</p>
             <a class="btn btn-primary text-light col-2 offset-5 mb-5" href="newuser">新規登録</a>

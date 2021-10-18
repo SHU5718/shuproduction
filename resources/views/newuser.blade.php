@@ -48,7 +48,7 @@
                     </ul>
                     <!-- <a  href="login" class="next_btn btn btn-info text-light col-3 mb-4 mt-2">登録</a> -->
                     <form>
-                        <input type="button" class="next_btn btn btn-info text-light col-3 mb-4 mt-2" value="登録" onclick="location.href='login'">
+                        <input type="button" class="next_btn btn btn-info text-light col-3 mb-4 mt-2" value="登録">
                     </form>
                 </div>
             </div>
