@@ -46,3 +46,7 @@ Route::get('/product', function(){
 Route::get('/product.look', function(){
     return view('product.look');
 });
+
+Route::get('/copyuser', function(){
+    return view('copyuser');
+});

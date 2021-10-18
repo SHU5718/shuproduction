@@ -6,7 +6,8 @@
         <div class="box1 col-lg-8">
             <div class="col-8 offset-2 mt-4 mb-3"><img src="images/sample01.png" class="resultIMG"></div>
             <a class="btn btn-info text-light co-2 offset-4 mb-4 mt-2" href="top">もう一度！</a>
-            <a class="btn btn-info text-light co-4 offset-1 mb-4 mt-2" href="top">すぐ投稿！</a>
+            <!-- <a class="btn btn-info text-light co-4 offset-1 mb-4 mt-2" href="top">すぐ投稿！</a> -->
+            <input type="button" class="btn btn-info text-light co-4 offset-1 mb-4 mt-2" onclick="location.href='top'" value="すぐ投稿！">
             <a class="col-2"><img src="images/twitter.png" class="twitterimg mb-4 ms-3 mt-2"></a>
         </div>
 
