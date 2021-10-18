@@ -11,12 +11,15 @@
                 <a class="btn btn-info text-light col-4 offset-4 mt-4" href="api">ランダム生成！</a>
                 <div class="col-4 mt-4"></div>
 
-
-                <textarea class="col-3 mt-4 offset-1" id="top_word" readonly>@isset($up_five){{$up_five}}@endisset</textarea>
-                <input type="text" name="nakasiti" max-length="14" placeholder="七文字の句を入力" class="col-4 mt-4">
-                <textarea class="col-3 mt-4" id="bot_word" readonly>@isset($down_five){{$down_five}}@endisset</textarea>
-                <!-- <a class="btn btn-info text-light col-4 offset-4 mt-4 mb-5" href="result">作成！</a> -->
-                <input type="button" class="btn btn-info text-light col-4 offset-4 mt-4 mb-5" value="作成！">
+                <form action="" method="">
+                    <div class="row">
+                    <textarea class="col-3 mt-4 offset-1" id="top_word" readonly>@isset($up_five){{$up_five}}@endisset</textarea>
+                    <input type="text" name="nakasiti" max-length="14" placeholder="七文字の句を入力" class="nakasiti_word col-4 mt-4">
+                    <textarea class="col-3 mt-4" id="bot_word" readonly>@isset($down_five){{$down_five}}@endisset</textarea>
+                    <!-- <a class="btn btn-info text-light col-4 offset-4 mt-4 mb-5" href="result">作成！</a> -->
+                    <button type="submit" class="btn btn-info text-light col-4 offset-4 mt-4 mb-5">作成！</button>
+                </form>
+            </div>
             </div>
         </div>
 
