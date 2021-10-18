@@ -15,9 +15,9 @@ class CreateSenryuusTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('user_name', 16)->unique();
+            $table->string('user_name', 16);
             $table->string('user_email', 255)->unique();
-            $table->char('usr_password', 32);
+            $table->char('user_password', 255);
             $table->string('user_img', 64)->nullable()->comment('ユーザーアイコン');
         });
 

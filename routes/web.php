@@ -13,7 +13,14 @@ use App\Http\Controllers\PostController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/top', 'App\Http\Controllers\PostController@index');
+Route::get('/api', 'App\Http\Controllers\PostController@index');
+
+Route::get('/createaccountcheck', 'App\Http\Controllers\CreateAccountController@create_account');
+Route::get('/logincheck', 'App\Http\Controllers\LoginController@user_login');
+
+Route::get('/top', function () {
+    return view('top');
+});
 
 Route::get('/', function () {
     return view('welcome');

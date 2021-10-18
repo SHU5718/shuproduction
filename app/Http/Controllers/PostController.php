@@ -11,7 +11,7 @@ class PostController extends Controller
         $method = "GET";
         $keyword = "夏"; //ここにシチュエーションを渡すと文字列を生成
         $sentence = ""; //生成した文を繋げて格納
-        $sent_five = "";
+        $sent_five = ""; //上の句
         $str_len = "";
 
         //接続
@@ -44,8 +44,8 @@ class PostController extends Controller
         }
 
         $rand_word = array("オムライス","ハンバーグ","エビフライ","パルプンテ");
-        $word_cnt = count($rand_word) -1;
+        $word_cnt = count($rand_word);
         return view('top', ['up_five' => $sent_five[mt_rand(0,$five_cnt -1)],
-                    'down_five' => $rand_word[mt_rand(0,$word_cnt)]]);
+                    'down_five' => $rand_word[mt_rand(0,$word_cnt-1)]]);
     }
 }
