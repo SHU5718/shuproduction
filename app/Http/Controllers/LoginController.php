@@ -11,8 +11,8 @@ class LoginController extends Controller
 
         session_start();
         //$mail = $_POST['mail'];
-        $mail = "bbc";
-        $pass = "ccc";
+        $mail = "bb";
+        $pass = "cc";
         $dsn = "mysql:host=127.0.0.1; dbname=senryuu; charset=utf8";
         $username = "root";
         $password = "";
