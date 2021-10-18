@@ -1,5 +1,17 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+   function previewImage(obj) {
+        var fileReader = new FileReader();
+        fileReader.onload = function () {
+          document.getElementById("preview").src = fileReader.result;
+        };
+        fileReader.readAsDataURL(obj.files[0]);
+      }
+</script>
 <style>
   /* 共通項目 */
   body {
@@ -76,12 +88,43 @@
     height: 50px;
     background-color: skyblue;
   }
-
+  
   /*新規登録ページ*/
   .new_title {
     margin-left: 160px;
     margin-bottom: -1px
   }
+  .next_btn {
+    margin-left: 240px;
+  }
+  #preview {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: over;
+  margin-left: 170px;
+  background-color: #eee;
+}
+.upload {
+  display: inline-block;
+  cursor: pointer; /* カーソルを指に */
+  margin: 1em 0; /* まわりの余白 */
+  padding: .7em 1em; /* 文字まわりの余白 */
+  line-height: 1.4; /* 行間 */
+  background: #3e8bff; /* 背景色 */
+  color: #FFF; /* 文字色 */
+  font-size: 0.95em; /* フォントサイズ */
+  border-radius: 2.5em; /* 角の丸み */
+  transition: 0.2s; /* ホバーをなめらかに */
+  text-align: center;
+  margin-left: 240px;
+}
+.upload input {
+  display: none;
+}
+.Tab {
+  pointer-events: none;
+}
 </style>
 
 <body>
