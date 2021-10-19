@@ -16,7 +16,10 @@ use App\Http\Controllers\PostController;
 Route::get('/api', 'App\Http\Controllers\PostController@index');
 
 Route::get('/createaccountcheck', 'App\Http\Controllers\CreateAccountController@create_account');
+
 Route::get('/logincheck', 'App\Http\Controllers\LoginController@user_login');
+
+Route::get('/createimagecheck', 'App\Http\Controllers\ImageCreateController@create_image');
 
 Route::get('/top', function () {
     return view('top');

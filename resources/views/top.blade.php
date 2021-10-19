@@ -13,26 +13,27 @@
 
                 <form action="" method="">
                     <div class="row">
-                        <textarea class="col-3 mt-4 offset-1" id="top_word" readonly>@isset($up_five){{$up_five}}@endisset</textarea>
-                        <input type="text" id="mid_word" name="nakasiti" max-length="14" placeholder="七文字の句を入力" class="nakasiti_word col-4 mt-4">
-                        <textarea class="col-3 mt-4" id="bot_word" readonly>@isset($down_five){{$down_five}}@endisset</textarea>
-                        <!-- <a class="btn btn-info text-light col-4 offset-4 mt-4 mb-5" href="result">作成！</a> -->
-                        <button type="submit" class="btn btn-info text-light col-4 offset-4 mt-4 mb-5">作成！</button>
+                    <textarea class="col-3 mt-4 offset-1" id="top_word" readonly>@isset($up_five){{$up_five}}@endisset</textarea>
+                    <input type="text" name="nakasiti" max-length="14" placeholder="七文字の句を入力" class="nakasiti_word col-4 mt-4">
+                    <textarea class="col-3 mt-4" id="bot_word" readonly>@isset($down_five){{$down_five}}@endisset</textarea>
+                    <!-- <a class="btn btn-info text-light col-4 offset-4 mt-4 mb-5" href="result">作成！</a> -->
+                    <button type="submit" class="btn btn-info text-light col-4 offset-4 mt-4 mb-5">作成！</button>
                     </div>
                 </form>
             </div>
         </div>
 
-            <div class="box2 col-lg-3 ms-4">
-                <div class="add mt-4 mb-3">広告</div>
-                    <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                    <a href="new" class="see_more">もっと見る</a>
-            </div>
+        <div class="box2 col-lg-3 ms-4">
+            <div class="add mt-4 mb-3">広告</div>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <a href="new" class="see_more">もっと見る</a>
+        </div>
+    </div>
 </div>
 @endsection
