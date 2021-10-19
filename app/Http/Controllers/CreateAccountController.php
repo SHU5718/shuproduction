@@ -9,12 +9,9 @@ class CreateAccountController extends Controller
   function create_account()
   {
     //フォームからの値をそれぞれ変数に代入
-    //$name = $_POST['name'];
-    //$mail = $_POST['mail'];
-    //$pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
-    $name = "aaa";
-    $mail = "bbb";
-    $pass = password_hash("ccc", PASSWORD_DEFAULT);
+    $name = $_POST['name'];
+    $mail = $_POST['mail'];
+    $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
     $dsn = "mysql:host=127.0.0.1; dbname=senryuu; charset=utf8";
     $username = "root";
     $password = "";
