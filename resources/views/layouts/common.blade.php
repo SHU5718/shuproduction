@@ -1,3 +1,4 @@
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -12,6 +13,40 @@
         fileReader.readAsDataURL(obj.files[0]);
       }
 </script>
+<script>(function () {
+  document.addEventListener('DOMContentLoaded', function() { // HTML解析が終わったら
+    const btn = document.getElementById('dropdown__btn'); // ボタンをidで取得
+    if(btn) { // ボタンが存在しないときにエラーになるのを回避
+      btn.addEventListener('click', function(){ //ボタンがクリックされたら
+        this.classList.toggle('is-open'); // is-openを付加する
+      });
+    }
+  });
+}());
+</script>
+<!-- <script>
+  if  {
+    const data = ;
+    const dataIsExist = function(data) {
+    if(data === "" || data === null || data === undefined){
+        return false;
+    }else{
+        return true;
+    }
+  };
+  }
+  
+  function login(dataIsExist) {
+    if(dataIsExist === false){
+        document.getElementById('logBTN').style.visibility = "visible";
+        document.getElementById('Dropdown').style.visibility = "hidden";
+    }else{
+        document.getElementById('logBTN').style.visibility = "hidden";
+        document.getElementById('Dropdown').style.visibility = "visible";
+    }
+
+  };
+</script> -->
 <style>
   /* 共通項目 */
   body {
@@ -21,8 +56,75 @@
     margin-left: 80px;
     /* width: 1080px; */
   }
+  .navlogBtn {
+    position: relative;
+    /* visibility: visible; */
+  }
+  /* .navItem {
+    margin-right: 160px;
+  } */
   .navbar-brand {
     width: 180px;
+  }
+  .dropdown {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border-color: #fff;
+    margin-right: 66px;
+    /* visibility: hidden; */
+  }
+  .dropdown__btn {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+    border-color: #f8f9fa;
+  background: none; /*デフォルトスタイル リセット */
+}
+.dropdown__body {
+  width: 90px;
+  background: #fff;
+  box-shadow: 0 2px 6px 2px rgba(60,64,67,0.149), 0 1px 2px 0 rgba(60,64,67,0.302);
+  border-radius: 4px;
+  overflow: hidden;
+  position: absolute; /* メニュー部分は絶対配置させます */
+  top: 32px;
+  left: -24px;
+  display: none;
+  
+}
+.dropdown__btn.is-open + .dropdown__body {
+  display: block;
+  z-index: 4;
+}
+.dropdown__list { /* デフォルトスタイル リセット */
+  margin: 0;
+  padding: 0;
+}
+.dropdown__item {
+  display: block;
+}
+.dropdown__item-link {
+  display: block;
+  padding: 1em 1.2em;
+  font-size: 14px;
+  text-decoration: none;
+  color: #444;
+}
+.dropdown__item-link:hover {
+  background: #fbfbfb;
+}
+  .dropdown img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 0;
+    margin-left: -8px;
+    margin-top: -3px;
+    object-fit: cover;
+    
   }
   .logoIMG {
     width: 160;
@@ -126,7 +228,11 @@
   pointer-events: none;
 }
 </style>
-
+@auth
+    <div>ログイン状態。</div>
+@else
+    <div>未ログイン状態。</div>
+@endauth
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -135,9 +241,9 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end">
-      <ul class="navbar-nav me-3">
+      <ul class="navItem navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" href="top">ホーム</a>
+          <a class="nav-link active me" href="top">ホーム</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">ランキング</a>
@@ -146,7 +252,34 @@
           <a class="nav-link" href="#">新着順</a>
         </li>
       </ul>
-        <button class="navlogBtn btn btn-primary mt-1 me-5" type="submit" onclick="location.href='login'">ログイン</button>
+      
+        @auth
+          <div class="dropdown" id="Dropdown" >
+            <button class="dropdown__btn" id="dropdown__btn">
+              <img src="images/man.png" alt="ユーザーアイコン"><circle cx="256" cy="256" r="64"/><circle cx="256" cy="448" r="64"/><circle cx="256" cy="64" r="64"/></svg>
+            </button>
+              <div class="dropdown__body">
+                  <ul class="dropdown__list">
+                    <li class="dropdown__item"><a href="user" class="dropdown__item-link">マイページ</a></li>
+                    <li class="dropdown__item"><a href="" class="dropdown__item-link">ログアウト</a></li>
+                  </ul>
+              </div>
+        </div>
+        @else
+        <button class="navlogBtn btn btn-primary mt- me-5" type="submit" onclick="location.href='login'" id="logBTN">ログイン</button>
+        @endauth
+        <!-- <div class="dropdown" id="Dropdown" onchange="login(Data);">
+  <button class="dropdown__btn" id="dropdown__btn">
+    <img src="images/man.png" alt="ユーザーアイコン"><circle cx="256" cy="256" r="64"/><circle cx="256" cy="448" r="64"/><circle cx="256" cy="64" r="64"/></svg>
+  </button>
+  <div class="dropdown__body">
+    <ul class="dropdown__list">
+      <li class="dropdown__item"><a href="user" class="dropdown__item-link">マイページ</a></li>
+      <li class="dropdown__item"><a href="" class="dropdown__item-link">ログアウト</a></li>
+    </ul>
+  </div>
+</div> -->
+        <!-- <img src="" alt="ユーザーアイコン" class="usericon"> -->
     </div>
   </div>
 </nav>

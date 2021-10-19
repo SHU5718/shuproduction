@@ -38,12 +38,10 @@
                                     class="col-10 offset-2"
                                 />
                                 <br>
-                                <form>
                                     <label class="upload col-3 ">
                                         画像を選択
                                         <input type="file" accept="image/*" onchange="previewImage(this);" />
                                     </label>
-                                </form>
                         <ul class="Tab nav nav-tabs justify-content-center mb-2">
                             <li class="Tab nav-item"><a href="#contents1" class="nav-link" data-toggle="tab">STEP01</a></li>
                             <li class="Tab nav-item"><a href="#contents2" class="nav-link active" data-toggle="tab">STEP02</a></li>
