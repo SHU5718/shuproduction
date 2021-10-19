@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use public\uploaded_images;
 
 class ImageCreateController extends Controller
 {
@@ -10,15 +11,15 @@ class ImageCreateController extends Controller
         $im = imagecreatefrompng('images/base.png');
 
         // Color
-        $text_color = imagecolorallocate($im, 38, 38, 38);
+        $black = imagecolorallocate($im, 38, 38, 38);
 
         // ID
         $fbid = uniqid(mt_rand(), 1);
 
         // Text
-        $line1 = $_GET["top_word"];
-        $line2 = $_GET["nakasiti"];
-        $line3 = $_GET["bot_word"];
+        $line1 = $_POST["top_word"];
+        $line2 = $_POST["nakasiti"];
+        $line3 = $_POST["bot_word"];
         $fake_text = 'あ';
 
         // Font
@@ -34,7 +35,7 @@ class ImageCreateController extends Controller
         // -- 文字
         foreach (preg_split("//u", $line1) as $char1) {
             $char = str_replace("ー", "丨", $char1);
-            imagettftext($im, $font_Size, 0, $x, $y, $black, $font, $char);
+            imagettftext($im, $font_size, 0, $x, $y, $black, $font, $char);
             $y += 35;
         }
 
@@ -47,7 +48,7 @@ class ImageCreateController extends Controller
         // -- 文字
         foreach (preg_split("//u", $line2) as $char1) {
             $char = str_replace("ー", "丨", $char1);
-            imagettftext($im, $font_Size, 0, $x, $y, $black, $font, $char);
+            imagettftext($im, $font_size, 0, $x, $y, $black, $font, $char);
             $y += 35;
         }
 
@@ -60,12 +61,12 @@ class ImageCreateController extends Controller
         // -- 文字
         foreach (preg_split("//u", $line3) as $char1) {
             $char = str_replace("ー", "丨", $char1);
-            imagettftext($im, $font_Size, 0, $x, $y, $black, $font, $char);
+            imagettftext($im, $font_size, 0, $x, $y, $black, $font, $char);
             $y += 35;
         }
 
         // アップロードディレクトリー
-        $upload_dir = '../../../public/uploaded_images/';
+        $upload_dir = 'images/uploaded_images/';
         // ファイル名
         $name = $upload_dir.$fbid.".png";
 
