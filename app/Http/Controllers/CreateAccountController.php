@@ -32,9 +32,12 @@ class CreateAccountController extends Controller
     $stmt->execute();
     $member = $stmt->fetch();
     $m_mail = "";
+
+    //$member['user_email']に値があるときのみ代入
     if (isset($member['user_email'])) {
       $m_mail = $member['user_email'];
     }
+    //メールアドレスが登録されている場合
     if ($m_mail === $mail) {
         $msg = '同じメールアドレスが存在します。';
         return view('logincheck',['msg' => $msg]);
