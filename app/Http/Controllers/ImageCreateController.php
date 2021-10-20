@@ -8,6 +8,8 @@ use public\uploaded_images;
 class ImageCreateController extends Controller
 {
     function create_image() {
+
+        session_start();
         $im = imagecreatefrompng('images/base.png');
 
         // Color
@@ -21,6 +23,12 @@ class ImageCreateController extends Controller
         $line2 = $_POST["nakasiti"];
         $line3 = $_POST["bot_word"];
         $fake_text = 'あ';
+
+        if($line1 == "" || $line2 == "" || $line3 == ""){
+          $msg = '全て入力してください。';
+          $name = json_encode($_SESSION['name']);
+          return view('/top',['name' => $name],['msg' => $msg]);
+        }
 
         // Font
         $font = 'KleeOne-SemiBold.otf';
@@ -68,14 +76,16 @@ class ImageCreateController extends Controller
         // アップロードディレクトリー
         $upload_dir = 'images/uploaded_images/';
         // ファイル名
-        $name = $upload_dir.$fbid.".png";
+        $img_name = $upload_dir.$fbid.".png";
 
         // Output to browser
         header('Content-Type: image/png');
 
-        imagepng($im, $name);
+        imagepng($im, $img_name);
         imagedestroy($im);
 
-        return view('result');
+
+        $name = json_encode($_SESSION['name']);
+        return view('/result',['name' => $name],['img_name' => $img_name]);
     }
 }

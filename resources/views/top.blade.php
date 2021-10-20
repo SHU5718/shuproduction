@@ -18,6 +18,7 @@
                     <textarea class="col-3 mt-4" name ="bot_word" id="bot_word" readonly>@isset($down_five){{$down_five}}@endisset</textarea>
                     <!-- <a class="btn btn-info text-light col-4 offset-4 mt-4 mb-5" href="result">作成！</a> -->
                     {{ csrf_field() }}
+                    <div class="col-6 offset-3 text-danger mb-4">@isset($msg){{$msg}}@endisset</div>
                     <button type="submit" class="btn btn-info text-light col-4 offset-4 mt-4 mb-5">作成！</button>
                     </div>
                 </form>

@@ -148,7 +148,7 @@
   .add {
     width: 270px;
     height: 270px;
-    background-color: red;
+    background-color: #f5f5f5;
     margin-left: 18px;
     margin-top: 10px;
   }
@@ -159,7 +159,7 @@
     margin-left: -14px;
     width: 270px;
     height: 30px;
-    background-color: yellow;
+    background-color: #f5f5f5;
     list-style: none;
     margin-bottom: 8px;
     margin-top: 10px;
