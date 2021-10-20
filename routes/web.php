@@ -25,6 +25,8 @@ Route::post('/logincheck', 'App\Http\Controllers\UserController@user_login');
 Route::get('/result', 'App\Http\Controllers\ImageCreateController@create_image');
 Route::post('/result', 'App\Http\Controllers\ImageCreateController@create_image');
 
+Route::get('/login', 'App\Http\Controllers\UserController@user_logout');
+
 Route::get('/top', function () {
     if (isset($_SESSION['id'])) {
       Route::auth();

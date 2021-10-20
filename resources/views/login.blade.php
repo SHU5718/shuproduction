@@ -13,6 +13,7 @@
                 <input type="text" name="pass" max-length="32" placeholder="password" class="col-6 offset-3 mb-4">
                 <!-- <a class="btn btn-info text-light col-6 offset-3 mb-5">ログイン</a> -->
                 {{ csrf_field() }}
+                <div class="col-6 offset-3 text-danger mb-4">@isset($msg){{$msg}}@endisset</div>
                     <button type="submit" class="btn btn-info text-light col-6 offset-3 mb-3">ログイン</button>
             </form>
             <p class="fs-5 text-center col-12">未登録の方はこちら</p>
