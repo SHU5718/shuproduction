@@ -22,16 +22,8 @@ Route::post('/create', 'App\Http\Controllers\UserController@create_account');
 Route::get('/logincheck', 'App\Http\Controllers\UserController@user_login');
 Route::post('/logincheck', 'App\Http\Controllers\UserController@user_login');
 
-<<<<<<< HEAD
-Route::post('/like', 'LikeController@like');
-
-Route::get('/top', function () {
-    return view('top');
-});
-=======
 Route::get('/result', 'App\Http\Controllers\ImageCreateController@create_image');
 Route::post('/result', 'App\Http\Controllers\ImageCreateController@create_image');
->>>>>>> fd88aa3731501d237478053ed917752a64cb59cb
 
 Route::get('/login', 'App\Http\Controllers\UserController@user_logout');
 
