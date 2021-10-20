@@ -1,12 +1,12 @@
 @extends('layouts.common')
 
 @section('content')
-<form action="/logincheck" method="post">
+<form action="/top" method="post">
 <div class="container">
     <div class="row mt-5">
         <div class="box3 col-6 bg-light">
             <p class="login_title text-center fs-2 mb-5 text-light">ログイン</p>
-            <form action="/login" method="post">
+            <form action="/top" method="post">
                 <p class="new_title">メールアドレス</p>
                 <input type="email" name="mail" max-length="255" placeholder="example@senryu.com" class="col-6 offset-3 mb-4">
                 <p class="new_title">パスワード</p>

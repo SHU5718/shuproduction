@@ -19,27 +19,21 @@ Route::get('/create', 'App\Http\Controllers\UserController@create_account');
 Route::post('/create', 'App\Http\Controllers\UserController@create_account');
 
 
-Route::get('/logincheck', 'App\Http\Controllers\UserController@user_login');
-Route::post('/logincheck', 'App\Http\Controllers\UserController@user_login');
+Route::get('/top', 'App\Http\Controllers\UserController@user_login');
+Route::post('/top', 'App\Http\Controllers\UserController@user_login');
+
+Route::get('/logout', 'App\Http\Controllers\UserController@user_logout');
 
 Route::get('/result', 'App\Http\Controllers\ImageCreateController@create_image');
 Route::post('/result', 'App\Http\Controllers\ImageCreateController@create_image');
 
 Route::get('/login', 'App\Http\Controllers\UserController@user_logout');
 
-Route::get('/top', function () {
-    if (isset($_SESSION['id'])) {
-      Route::auth();
-      Route::get('/home', 'HomeController@index');
-    }
-    return view('top');
-});
-Route::get('/login', function(){
-    return view('login');
-});
-Route::get('/newuser', function(){
-    return view('newuser');
-});
+Route::get('/top', 'App\Http\Controllers\SenryuuController@default_session');
+Route::get('/login', 'App\Http\Controllers\SenryuuController@login_session');
+Route::get('/newuser', 'App\Http\Controllers\SenryuuController@newuser_session');
+Route::get('/result', 'App\Http\Controllers\SenryuuController@result_session');
+
 Route::get('/mypage', function(){
     return view('user');
 });

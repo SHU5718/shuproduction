@@ -8,7 +8,7 @@
                 <img src="images/senryu.png" class="homeIMG w-50 mb-4">
 
                 <!-- <input type="button" value="生成！" class="col-4 offset-4"> -->
-                <a class="btn btn-info text-light col-4 offset-4 mt-4" href="api">ランダム生成！</a>
+                <a class="btn btn-info text-light col-4 offset-4 mt-4" href="/api">ランダム生成！</a>
                 <div class="col-4 mt-4"></div>
 
                 <form action="/result" method="post">

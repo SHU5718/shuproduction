@@ -25,28 +25,36 @@
 }());
 </script>
 <!-- <script>
-  if  {
-    const data = ;
-    const dataIsExist = function(data) {
-    if(data === "" || data === null || data === undefined){
-        return false;
-    }else{
-        return true;
+    function kieru() {
+      const test = document.getElementById('test');
+      test.style.visibility = "hidden";
     }
-  };
-  }
+</script>
+<script>
+		window.addEventListener('load', function(){
 
-  function login(dataIsExist) {
-    if(dataIsExist === false){
+			// イベントリスナー登録
+			document.getElementById("content1").addEventListener('click', sayHello);
+		});
+
+		function sayHello() {
+			alert("Hello");
+		}
+	</script> -->
+  <script>
+    var data = JSON.parse('<?php echo $name; ?>');
+    window.addEventListener('load', function(){
+      if (data == "guest"){
         document.getElementById('logBTN').style.visibility = "visible";
-        document.getElementById('Dropdown').style.visibility = "hidden";
-    }else{
-        document.getElementById('logBTN').style.visibility = "hidden";
-        document.getElementById('Dropdown').style.visibility = "visible";
-    }
+        // document.getElementById('Dropdown').style.visibility = "hidden";
+      }
+        else{
+          // document.getElementById('logBTN').style.visibility = "hidden";
+          document.getElementById('Dropdown').style.visibility = "visible";
+        }
 
-  };
-</script> -->
+    });
+  </script>
 <style>
   /* 共通項目 */
   body {
@@ -58,8 +66,8 @@
   }
   .navlogBtn {
     position: relative;
-    /* visibility: visible; */
-  }
+    visibility: hidden;
+    }
   /* .navItem {
     margin-right: 160px;
   } */
@@ -67,20 +75,20 @@
     width: 180px;
   }
   .dropdown {
-    position: relative;
+    position: absolute;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     border-color: #fff;
     margin-right: 66px;
-    /* visibility: hidden; */
+    visibility: hidden;
   }
   .dropdown__btn {
   display: block;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-    border-color: #f8f9fa;
+  border-color: #f8f9fa;
   background: none; /*デフォルトスタイル リセット */
 }
 .dropdown__body {
@@ -227,12 +235,26 @@
 .Tab {
   pointer-events: none;
 }
+/*マイページ*/
+.mainarea {
+  background-color: white;
+  margin-left: -40px;
+}
+.headarea {
+  background-color: #eee;
+  height: 400px;
+}
+.headarea img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 </style>
-<div>@isset($_SESSION['name']){{$_SESSION['name']}}@endisset</div>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="top"><img src="images/senryu.png" class="logoIMG"></a>
+    <a class="navbar-brand" href="/top"><img src="images/senryu.png" class="logoIMG"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -249,21 +271,19 @@
         </li>
       </ul>
 
-        @auth
-          <div class="dropdown" id="Dropdown" >
+          <div class="dropdown" id="Dropdown">
             <button class="dropdown__btn" id="dropdown__btn">
               <img src="images/man.png" alt="ユーザーアイコン"><circle cx="256" cy="256" r="64"/><circle cx="256" cy="448" r="64"/><circle cx="256" cy="64" r="64"/></svg>
             </button>
               <div class="dropdown__body">
                   <ul class="dropdown__list">
+                    <li class="dropdown__item"><a href="" class="dropdown__item-link">@isset($_SESSION['name']){{$_SESSION['name']}}@endisset</a></li>
                     <li class="dropdown__item"><a href="user" class="dropdown__item-link">マイページ</a></li>
-                    <li class="dropdown__item"><a href="" class="dropdown__item-link">ログアウト</a></li>
+                    <li class="dropdown__item"><a href="logout" class="dropdown__item-link">ログアウト</a></li>
                   </ul>
               </div>
         </div>
-        @else
         <button class="navlogBtn btn btn-primary mt- me-5" type="submit" onclick="location.href='login'" id="logBTN">ログイン</button>
-        @endauth
         <!-- <div class="dropdown" id="Dropdown" onchange="login(Data);">
   <button class="dropdown__btn" id="dropdown__btn">
     <img src="images/man.png" alt="ユーザーアイコン"><circle cx="256" cy="256" r="64"/><circle cx="256" cy="448" r="64"/><circle cx="256" cy="64" r="64"/></svg>
