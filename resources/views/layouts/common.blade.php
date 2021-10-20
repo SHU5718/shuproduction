@@ -258,6 +258,12 @@
 .goodAll {
   margin-left: 604px
 }
+.contentArea {
+  background-color: red;
+  width: 100%;
+  height: 600px;
+  margin-left: -40px;
+}
 </style>
 <div>@isset($_SESSION['name']){{$_SESSION['name']}}@endisset</div>
 <body>

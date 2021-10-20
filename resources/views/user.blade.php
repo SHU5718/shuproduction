@@ -17,8 +17,12 @@
                         </div>
                 </div>
             </div>
-
-
         </div>
     </div>
+    <div class="row">
+        <div class="contentArea">
+            
+        </div>
+    </div>
+</div>
 @endsection
