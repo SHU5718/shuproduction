@@ -37,7 +37,7 @@ class CreateAccountController extends Controller
     }
     if ($m_mail === $mail) {
         $msg = '同じメールアドレスが存在します。';
-        return view('logincheck',['msg' => $msg]);
+        return view('create',['msg' => $msg]);
     } else {
         //登録されていなければinsert
         $sql = "INSERT INTO users(user_name, user_email, user_password) VALUES (:name, :mail, :pass)";
@@ -47,7 +47,7 @@ class CreateAccountController extends Controller
         $stmt->bindValue(':pass', $pass);
         $stmt->execute();
         $msg = '会員登録が完了しました';
-        return view('logincheck',['msg' => $msg]);
+        return view('create',['msg' => $msg]);
     }
 
   }
