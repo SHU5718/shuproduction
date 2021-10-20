@@ -42,14 +42,12 @@
 		}
 	</script> -->
   <script>
-    var data = <?php json_encode($_SESSION['name']); ?>;
+    var data = ;
     window.addEventListener('load', function(){
       if (data === undefined){
         document.getElementById('logBTN').style.visibility = "visible";
-        // document.getElementById('Dropdown').style.visibility = "hidden";
       }
         else{
-          // document.getElementById('logBTN').style.visibility = "hidden";
           document.getElementById('Dropdown').style.visibility = "visible";
         }
       
@@ -237,18 +235,28 @@
 }
 /*マイページ*/
 .mainarea {
-  background-color: white;
   margin-left: -40px;
 }
 .headarea {
   background-color: #eee;
-  height: 400px;
+  height: 360px;
 }
-.headarea img {
+.Myicon {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
+}
+.Fude {
+  width: 60px;
+  height: 40px;
+  margin-left: -466px
+}
+.good {
+  margin-left: -250px
+}
+.goodAll {
+  margin-left: 604px
 }
 </style>
 <div>@isset($_SESSION['name']){{$_SESSION['name']}}@endisset</div>
