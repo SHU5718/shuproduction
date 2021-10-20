@@ -35,7 +35,7 @@
     }
   };
   }
-  
+
   function login(dataIsExist) {
     if(dataIsExist === false){
         document.getElementById('logBTN').style.visibility = "visible";
@@ -93,7 +93,7 @@
   top: 32px;
   left: -24px;
   display: none;
-  
+
 }
 .dropdown__btn.is-open + .dropdown__body {
   display: block;
@@ -124,7 +124,7 @@
     margin-left: -8px;
     margin-top: -3px;
     object-fit: cover;
-    
+
   }
   .logoIMG {
     width: 160;
@@ -182,7 +182,7 @@
   /*ログイン画面*/
   .box3 {
     margin-left: 288px;
-    margin-top: 20px; 
+    margin-top: 20px;
   }
   .login_title{
     margin-left: -12px;
@@ -190,7 +190,7 @@
     height: 50px;
     background-color: skyblue;
   }
-  
+
   /*新規登録ページ*/
   .new_title {
     margin-left: 160px;
@@ -228,11 +228,7 @@
   pointer-events: none;
 }
 </style>
-@auth
-    <div>ログイン状態。</div>
-@else
-    <div>未ログイン状態。</div>
-@endauth
+<div>@isset($_SESSION['name']){{$_SESSION['name']}}@endisset</div>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -252,7 +248,7 @@
           <a class="nav-link" href="#">新着順</a>
         </li>
       </ul>
-      
+
         @auth
           <div class="dropdown" id="Dropdown" >
             <button class="dropdown__btn" id="dropdown__btn">

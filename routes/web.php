@@ -13,26 +13,34 @@ use App\Http\Controllers\PostController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/api', 'App\Http\Controllers\PostController@index');
+Route::get('/api', 'App\Http\Controllers\SenryuuController@make_updown');
 
-Route::get('/createaccountcheck', 'App\Http\Controllers\CreateAccountController@create_account');
+Route::get('/create', 'App\Http\Controllers\UserController@create_account');
+Route::post('/create', 'App\Http\Controllers\UserController@create_account');
 
-Route::get('/logincheck', 'App\Http\Controllers\LoginController@user_login');
 
-Route::get('/createimagecheck', 'App\Http\Controllers\ImageCreateController@create_image');
+Route::get('/logincheck', 'App\Http\Controllers\UserController@user_login');
+Route::post('/logincheck', 'App\Http\Controllers\UserController@user_login');
 
+<<<<<<< HEAD
 Route::post('/like', 'LikeController@like');
 
 Route::get('/top', function () {
     return view('top');
 });
+=======
+Route::get('/result', 'App\Http\Controllers\ImageCreateController@create_image');
+Route::post('/result', 'App\Http\Controllers\ImageCreateController@create_image');
+>>>>>>> fd88aa3731501d237478053ed917752a64cb59cb
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/login', 'App\Http\Controllers\UserController@user_logout');
 
-Route::get('/result', function(){
-    return view('result');
+Route::get('/top', function () {
+    if (isset($_SESSION['id'])) {
+      Route::auth();
+      Route::get('/home', 'HomeController@index');
+    }
+    return view('top');
 });
 Route::get('/login', function(){
     return view('login');

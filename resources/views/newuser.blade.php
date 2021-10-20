@@ -1,7 +1,7 @@
 @extends('layouts.common')
 
 @section('content')
-<form action="{{ url('/views/logincheck')}}" method="post" name="new_user">
+<form action="/create" method="post">
   {{ csrf_field() }}
     <div class="tab-content">
         <div id="contents1" class="tab-pane active">
@@ -17,6 +17,7 @@
                         <input type="text" name="pass" max-length="32" placeholder="password" class="col-6 offset-3 mb-4" required="required">
                         <p class="new_title">パスワード(確認用)</p>
                         <input type="text" name="Pass" max-length="32" placeholder="password(確認用)" class="col-6 offset-3 mb-4" required="required">
+                        <div class="col-6 offset-3 text-danger mb-4">@isset($msg){{$msg}}@endisset</div>
                         <ul class="Tab nav nav-tabs justify-content-center mb-2">
                             <li class="Tab nav-item"><a href="#contents1" class="nav-link active" data-toggle="tab">STEP01</a></li>
                             <li class="Tab nav-item"><a href="#contents2" class="nav-link" data-toggle="tab">STEP02</a></li>
