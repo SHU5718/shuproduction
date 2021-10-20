@@ -1,7 +1,7 @@
 @extends('layouts.common')
 
 @section('content')
-<form action="{{ url('/views/logincheck')}}" method="post" name="new_user">
+<form action="/create" method="post">
   {{ csrf_field() }}
     <div class="tab-content">
         <div id="contents1" class="tab-pane active">
