@@ -19,8 +19,8 @@ Route::get('/create', 'App\Http\Controllers\UserController@create_account');
 Route::post('/create', 'App\Http\Controllers\UserController@create_account');
 
 
-Route::get('/top', 'App\Http\Controllers\UserController@user_login');
-Route::post('/top', 'App\Http\Controllers\UserController@user_login');
+Route::get('/logincheck', 'App\Http\Controllers\UserController@user_login');
+Route::post('/logincheck', 'App\Http\Controllers\UserController@user_login');
 
 Route::get('/logout', 'App\Http\Controllers\UserController@user_logout');
 
@@ -29,10 +29,12 @@ Route::post('/result', 'App\Http\Controllers\ImageCreateController@create_image'
 
 Route::get('/login', 'App\Http\Controllers\UserController@user_logout');
 
-Route::get('/top', 'App\Http\Controllers\SenryuuController@default_session');
-Route::get('/login', 'App\Http\Controllers\SenryuuController@login_session');
-Route::get('/newuser', 'App\Http\Controllers\SenryuuController@newuser_session');
-Route::get('/result', 'App\Http\Controllers\SenryuuController@result_session');
+//ページ作る度に追加してください。
+Route::get('/top', 'App\Http\Controllers\SenryuuController@first_session');
+Route::get('/login', 'App\Http\Controllers\SenryuuController@default_session');
+Route::get('/newuser', 'App\Http\Controllers\SenryuuController@default_session');
+Route::get('/result', 'App\Http\Controllers\SenryuuController@default_session');
+Route::get('/create', 'App\Http\Controllers\SenryuuController@default_session');
 
 Route::get('/mypage', function(){
     return view('user');

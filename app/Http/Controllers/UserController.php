@@ -11,6 +11,7 @@ class UserController extends Controller
   //新規登録
   function create_account()
   {
+    session_start();
     //フォームからの値をそれぞれ変数に代入
     $id = random_int(1000000000000000,9999999999999999);
     $name = $_POST['name'];
@@ -43,10 +44,12 @@ class UserController extends Controller
     //メールアドレスが登録されている場合
     if ($m_mail === $mail) {
       $msg = '同じメールアドレスが存在します。';
-      return view('newuser',['msg' => $msg]);
+      $name = json_encode($_SESSION['name']);
+      return view('/newuser',['name' => $name],['msg' => $msg]);
     } elseif($_POST['pass'] != $Pass){
       $msg = 'パスワードが一致しません。';
-      return view('newuser',['msg' => $msg]);
+      $name = json_encode($_SESSION['name']);
+      return view('/newuser',['name' => $name],['msg' => $msg]);
     } else{
       //登録されていなければinsert
       $sql = "INSERT INTO users(id, user_name, user_email, user_password) VALUES (:id, :name, :mail, :pass)";
@@ -57,7 +60,8 @@ class UserController extends Controller
       $stmt->bindValue(':pass', $pass);
       $stmt->execute();
       $msg = '会員登録が完了しました';
-      return view('create',['msg' => $msg]);
+      $name = json_encode($_SESSION['name']);
+      return view('/create',['name' => $name],['msg' => $msg]);
     }
 
   }
@@ -86,7 +90,11 @@ class UserController extends Controller
       $m_pass = $member['user_password'];
     }
     //指定したハッシュがパスワードにマッチしているかチェック
-    if (password_verify($pass, $m_pass)) {
+    if($mail =="" || $pass == ""){
+      $msg = 'メールアドレスとパスワードを入力してください。';
+      $name = json_encode($_SESSION['name']);
+      return view('/login',['name' => $name],['msg' => $msg]);
+    }elseif(password_verify($pass, $m_pass)) {
       //DBのユーザー情報をセッションに保存
       $_SESSION['id'] = $member['id'];
       $_SESSION['name'] = $member['user_name'];
@@ -94,8 +102,9 @@ class UserController extends Controller
       $name = json_encode($_SESSION['name']);
       return view('/top',['name' => $name]);
     } else {
+      $name = json_encode($_SESSION['name']);
       $msg = 'メールアドレスもしくはパスワードが間違っています。';
-      return view('login',['msg' => $msg]);
+      return view('/login',['name' => $name],['msg' => $msg]);
     }
   }
 
