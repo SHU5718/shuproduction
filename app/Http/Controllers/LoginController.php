@@ -7,7 +7,7 @@ use PDO;
 
 class LoginController extends Controller
 {
-      function user_login(){
+    function user_login(){
 
         session_start();
         //$mail = $_POST['mail'];
@@ -29,7 +29,7 @@ class LoginController extends Controller
         $member = $stmt->fetch();
         $m_pass = "";
         if (isset($member['user_password'])) {
-          $m_pass = $member['user_password'];
+            $m_pass = $member['user_password'];
         }
         //指定したハッシュがパスワードにマッチしているかチェック
         if (password_verify($pass, $m_pass)) {
@@ -42,5 +42,5 @@ class LoginController extends Controller
             $msg = 'メールアドレスもしくはパスワードが間違っています。';
             return view('logincheck',['msg' => $msg]);
         }
-      }
-  }
+    }
+}

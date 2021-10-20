@@ -21,6 +21,8 @@ Route::get('/logincheck', 'App\Http\Controllers\LoginController@user_login');
 
 Route::get('/createimagecheck', 'App\Http\Controllers\ImageCreateController@create_image');
 
+Route::post('/like', 'LikeController@like');
+
 Route::get('/top', function () {
     return view('top');
 });
