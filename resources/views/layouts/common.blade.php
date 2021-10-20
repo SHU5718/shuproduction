@@ -42,15 +42,16 @@
 		}
 	</script> -->
   <script>
-    var data = ;
     window.addEventListener('load', function(){
-      if (data === undefined){
+      if (data == "guest"){
         document.getElementById('logBTN').style.visibility = "visible";
+        // document.getElementById('Dropdown').style.visibility = "hidden";
       }
         else{
+          // document.getElementById('logBTN').style.visibility = "hidden";
           document.getElementById('Dropdown').style.visibility = "visible";
         }
-      
+
     });
   </script>
 <style>
@@ -258,14 +259,19 @@
 .goodAll {
   margin-left: 604px
 }
-.contentArea {
-  background-color: red;
+.haikuArea {
+  background-color: white;
   width: 100%;
   height: 600px;
   margin-left: -40px;
+  display: flex;
+  justify-content: space-between;
+}
+.haikuArea img {
+  width: 300px;
+  height: 300px;
 }
 </style>
-<div>@isset($_SESSION['name']){{$_SESSION['name']}}@endisset</div>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -292,12 +298,13 @@
             </button>
               <div class="dropdown__body">
                   <ul class="dropdown__list">
+                    <li class="dropdown__item"><a href="" class="dropdown__item-link">@isset($_SESSION['name']){{$_SESSION['name']}}@endisset</a></li>
                     <li class="dropdown__item"><a href="user" class="dropdown__item-link">マイページ</a></li>
-                    <li class="dropdown__item"><a href="" class="dropdown__item-link">ログアウト</a></li>
+                    <li class="dropdown__item"><a href="logout" class="dropdown__item-link">ログアウト</a></li>
                   </ul>
               </div>
         </div>
-        <button class="navlogBtn btn btn-primary mt- me-5" type="submit" onclick="location.href='login'" id="logBTN">ログイン</button>
+        <button class="navlogBtn btn btn-primary me-5 ms-1" type="submit" onclick="location.href='login'" id="logBTN">ログイン</button>
         <!-- <div class="dropdown" id="Dropdown" onchange="login(Data);">
   <button class="dropdown__btn" id="dropdown__btn">
     <img src="images/man.png" alt="ユーザーアイコン"><circle cx="256" cy="256" r="64"/><circle cx="256" cy="448" r="64"/><circle cx="256" cy="64" r="64"/></svg>

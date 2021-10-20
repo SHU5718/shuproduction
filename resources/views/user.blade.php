@@ -20,8 +20,17 @@
         </div>
     </div>
     <div class="row">
-        <div class="contentArea">
-            
+        <div class="haikuArea">
+            <img src="images/sample01.png">
+            <img src="images/sample01.png">
+            <img src="images/sample01.png">
+            <img src="images/sample01.png">
+            <img src="images/sample01.png">
+            <img src="images/sample01.png">
+            <img src="images/sample01.png">
+            <img src="images/sample01.png">
+            <img src="images/sample01.png">
+            <img src="images/sample01.png">
         </div>
     </div>
 </div>

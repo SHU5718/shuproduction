@@ -91,7 +91,8 @@ class UserController extends Controller
       $_SESSION['id'] = $member['id'];
       $_SESSION['name'] = $member['user_name'];
       $msg = 'ログインしました。';
-      return view('/top',['msg' => $msg]);
+      $name = json_encode($_SESSION['name']);
+      return view('/top',['name' => $name]);
     } else {
       $msg = 'メールアドレスもしくはパスワードが間違っています。';
       return view('login',['msg' => $msg]);
@@ -99,9 +100,14 @@ class UserController extends Controller
   }
 
   function user_logout(){
+    session_start();
     if (isset($_COOKIE["PHPSESSID"])) {
       setcookie("PHPSESSID", '', time() - 1800, '/');
     }
     session_destroy();
+    session_start();
+    $_SESSION['name'] = "guest";
+    $name = json_encode($_SESSION['name']);
+    return view('/top',['name' => $name]);
   }
 }

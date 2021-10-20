@@ -30,14 +30,18 @@ class CreateSenryuusTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
         });
 
-        Schema::create('comments', function (Blueprint $table) {
-            $table->id();
-            $table->boolean('comment_flag')->default(0);
+        Schema::create('likes', function (Blueprint $table) {
             $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('user_id');
+            $table->string('count');
 
             $table->foreign('product_id')->references('id')->on('products');
+        });
+
+        Schema::create('user_like_post', function (Blueprint $table) {
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('product_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('product_id')->references('id')->on("products");
         });
     }
 

@@ -42,10 +42,65 @@ class SenryuuController extends Controller
               $five_cnt++;
             }
         }
-
         $rand_word = array("オムライス","ハンバーグ","エビフライ","パルプンテ");
         $word_cnt = count($rand_word);
-        return view('top', ['up_five' => $sent_five[mt_rand(0,$five_cnt -1)],
-                    'down_five' => $rand_word[mt_rand(0,$word_cnt-1)]]);
+
+        session_start();
+        if(isset($_SESSION['name'])){
+          $name = json_encode($_SESSION['name']);
+          return view('top', ['up_five' => $sent_five[mt_rand(0,$five_cnt -1)],
+                      'down_five' => $rand_word[mt_rand(0,$word_cnt-1)],'name' => $name]);
+        }else{
+          $_SESSION['name'] = "guest";
+          $name = json_encode($_SESSION['name']);
+          return view('top', ['up_five' => $sent_five[mt_rand(0,$five_cnt -1)],
+                      'down_five' => $rand_word[mt_rand(0,$word_cnt-1)],'name' => $name]);
+        }
+
+
+    }
+    public function default_session(){
+      session_start();
+      if(isset($_SESSION['name'])){
+        $name = json_encode($_SESSION['name']);
+        return view('/top',['name' => $name]);
+      }else{
+        $_SESSION['name'] = "guest";
+        $name = json_encode($_SESSION['name']);
+        return view('/top',['name' => $name]);
+      }
+    }
+    public function login_session(){
+      session_start();
+      if(isset($_SESSION['name'])){
+        $name = json_encode($_SESSION['name']);
+        return view('/login',['name' => $name]);
+      }else{
+        $_SESSION['name'] = "guest";
+        $name = json_encode($_SESSION['name']);
+        return view('/login',['name' => $name]);
+      }
+    }
+    public function newuser_session(){
+      session_start();
+      if(isset($_SESSION['name'])){
+        $name = json_encode($_SESSION['name']);
+        return view('/newuser',['name' => $name]);
+      }else{
+        $_SESSION['name'] = "guest";
+        $name = json_encode($_SESSION['name']);
+        return view('/newuser',['name' => $name]);
+      }
+    }
+    public function result_session(){
+      session_start();
+      if(isset($_SESSION['name'])){
+        $name = json_encode($_SESSION['name']);
+        return view('/result',['name' => $name]);
+      }else{
+        $_SESSION['name'] = "guest";
+        $name = json_encode($_SESSION['name']);
+        return view('/result',['name' => $name]);
+      }
     }
 }
