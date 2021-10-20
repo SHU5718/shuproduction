@@ -75,5 +75,7 @@ class ImageCreateController extends Controller
 
         imagepng($im, $name);
         imagedestroy($im);
+
+        return view('result');
     }
 }

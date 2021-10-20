@@ -15,8 +15,8 @@ use App\Http\Controllers\PostController;
 */
 Route::get('/api', 'App\Http\Controllers\SenryuuController@make_updown');
 
-Route::get('/createaccountcheck', 'App\Http\Controllers\UserController@create_account');
-Route::post('/createaccountcheck', 'App\Http\Controllers\UserController@create_account');
+Route::get('/create', 'App\Http\Controllers\UserController@create_account');
+Route::post('/create', 'App\Http\Controllers\UserController@create_account');
 
 
 Route::get('/logincheck', 'App\Http\Controllers\UserController@user_login');
@@ -26,6 +26,10 @@ Route::get('/result', 'App\Http\Controllers\ImageCreateController@create_image')
 Route::post('/result', 'App\Http\Controllers\ImageCreateController@create_image');
 
 Route::get('/top', function () {
+    if (isset($_SESSION['id'])) {
+      Route::auth();
+      Route::get('/home', 'HomeController@index');
+    }
     return view('top');
 });
 Route::get('/login', function(){
