@@ -1,9 +1,10 @@
-
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link href='https://css.gg/heart.css' rel='stylesheet'>
 <script>
    function previewImage(obj) {
         var fileReader = new FileReader();
@@ -41,7 +42,8 @@
 			alert("Hello");
 		}
 	</script> -->
-  <script>
+  <!-- <script>
+
     window.addEventListener('load', function(){
       if (data == "guest"){
         document.getElementById('logBTN').style.visibility = "visible";
@@ -53,6 +55,29 @@
         }
 
     });
+  </script> -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() { // HTML解析が終わったら
+      var product = '俳句';
+      const like = document.getElementById('likeBtn');
+      const goodNum = document.getElementById('likeCount');
+      like.addEventListener('click', function(){
+        axios.post('/application/senryuu/public/like',{
+          id: 'product'
+          }).then(function(responce){
+              var a = goodNum.text();
+              if (response.data.code == 200) {
+              // if 200 then like | count +1
+              $('#like span span').text(++a);
+                } else if (response.data.code == 202) {
+              // if 202 then unlike | count -1
+              $('#like span span').text(--a);
+              }
+              }).catch(function (error) {
+                console.log(error);
+            });
+        });
+      });
   </script>
 <style>
   /* 共通項目 */
@@ -147,7 +172,7 @@
   .add {
     width: 270px;
     height: 270px;
-    background-color: red;
+    background-color: skyblue;
     margin-left: 18px;
     margin-top: 10px;
   }
@@ -158,7 +183,7 @@
     margin-left: -14px;
     width: 270px;
     height: 30px;
-    background-color: yellow;
+    background-color: violet;
     list-style: none;
     margin-bottom: 8px;
     margin-top: 10px;
@@ -259,17 +284,21 @@
 .goodAll {
   margin-left: 604px
 }
+.goodArea {
+  font-size:12px;
+}
 .haikuArea {
   background-color: white;
   width: 100%;
-  height: 600px;
+  height: 1160px;
   margin-left: -40px;
-  display: flex;
-  justify-content: space-between;
 }
 .haikuArea img {
   width: 300px;
   height: 300px;
+}
+.imgList {
+  margin-left: 40px;
 }
 </style>
 <body>
