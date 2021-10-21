@@ -31,7 +31,7 @@ class ImageCreateController extends Controller
         }
 
         // Font
-        $font = 'KleeOne-SemiBold.otf';
+        $font = '/public/KleeOne-SemiBold.otf';
         $font_size = '30';
 
         // Line 1
