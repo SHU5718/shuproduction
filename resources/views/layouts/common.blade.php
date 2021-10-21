@@ -1,9 +1,10 @@
-
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link href='https://css.gg/heart.css' rel='stylesheet'>
 <script>
    function previewImage(obj) {
         var fileReader = new FileReader();
@@ -41,20 +42,41 @@
 			alert("Hello");
 		}
 	</script> -->
-  <script>
-    var data = JSON.parse('<?php echo $name; ?>');
+<!-- <script>
+
     window.addEventListener('load', function(){
-      if (data == "guest"){
+        if (data == "guest"){
         document.getElementById('logBTN').style.visibility = "visible";
         // document.getElementById('Dropdown').style.visibility = "hidden";
-      }
-        else{
+    }else{
           // document.getElementById('logBTN').style.visibility = "hidden";
-          document.getElementById('Dropdown').style.visibility = "visible";
+            document.getElementById('Dropdown').style.visibility = "visible";
         }
 
     });
-  </script>
+</script> -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var product = '俳句';
+        const like = document.getElementById('likeBtn');
+        const goodNum = document.getElementById('likecount');
+        like.addEventListener('click', function() {
+            axios.post('/like', {
+                id: 'product',
+            }).then(function (response) {
+                var a = goodNum.text();
+                if (response.data.code == 200) {
+                    $('#like span span').text(++a);
+                } else if (response.data.code == 202) {
+                    $('#like span span').text(--a);
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        });
+    });
+</script>
+
 <style>
   /* 共通項目 */
   body {
@@ -148,7 +170,7 @@
   .add {
     width: 270px;
     height: 270px;
-    background-color: #f5f5f5;
+    background-color: skyblue;
     margin-left: 18px;
     margin-top: 10px;
   }
@@ -159,7 +181,7 @@
     margin-left: -14px;
     width: 270px;
     height: 30px;
-    background-color: #f5f5f5;
+    background-color: violet;
     list-style: none;
     margin-bottom: 8px;
     margin-top: 10px;
@@ -237,18 +259,44 @@
 }
 /*マイページ*/
 .mainarea {
-  background-color: white;
   margin-left: -40px;
 }
 .headarea {
   background-color: #eee;
-  height: 400px;
+  height: 360px;
 }
-.headarea img {
+.Myicon {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
+}
+.Fude {
+  width: 60px;
+  height: 40px;
+  margin-left: -466px
+}
+.good {
+  margin-left: -250px
+}
+.goodAll {
+  margin-left: 604px
+}
+.goodArea {
+  font-size:12px;
+}
+.haikuArea {
+  background-color: white;
+  width: 100%;
+  height: 1160px;
+  margin-left: -40px;
+}
+.haikuArea img {
+  width: 300px;
+  height: 300px;
+}
+.imgList {
+  margin-left: 40px;
 }
 </style>
 <body>
@@ -283,7 +331,7 @@
                   </ul>
               </div>
         </div>
-        <button class="navlogBtn btn btn-primary mt- me-5" type="submit" onclick="location.href='login'" id="logBTN">ログイン</button>
+        <button class="navlogBtn btn btn-primary me-5 ms-1" type="submit" onclick="location.href='login'" id="logBTN">ログイン</button>
         <!-- <div class="dropdown" id="Dropdown" onchange="login(Data);">
   <button class="dropdown__btn" id="dropdown__btn">
     <img src="images/man.png" alt="ユーザーアイコン"><circle cx="256" cy="256" r="64"/><circle cx="256" cy="448" r="64"/><circle cx="256" cy="64" r="64"/></svg>

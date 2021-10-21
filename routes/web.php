@@ -31,6 +31,9 @@ Route::post('/upload', 'App\Http\Controllers\ImageCreateController@image_upload'
 
 Route::get('/login', 'App\Http\Controllers\UserController@user_logout');
 
+Route::get('/like', 'App\Http\Controllers\LikeController@like');
+Route::post('/like', 'App\Http\Controllers\LikeController@like');
+
 //ページ作る度に追加してください。
 Route::get('/top', 'App\Http\Controllers\SenryuuController@first_session');
 Route::get('/login', 'App\Http\Controllers\SenryuuController@default_session');
@@ -42,7 +45,7 @@ Route::get('/mypage', function(){
     return view('user');
 });
 Route::get('/user', function(){
-    return view('user.look');
+    return view('user_look');
 });
 Route::get('/new', function(){
     return view('new');
