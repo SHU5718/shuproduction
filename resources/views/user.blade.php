@@ -6,10 +6,11 @@
         <div class="mainarea">
             <div class="row">
                 <div class="headarea">
-                    <img src="images/man.png" class="Myicon col-6 offset-5 mt-5">
+                    <img src="images/man.png" id="myIcon" class="Myicon col-6 offset-5 mt-3">
                         <div class="row mt-2">
                             <p class="username fs-4 col-6 offset-5">無限戦隊俳諧ジャー</p>
-                            <img src="images/fude.png" class="Fude col-2">
+                            <img src="images/fude.png" id="fudeIcon" class="Fude col-2">
+                            <p id="changeName" class="changeName col-4 offset-5">aaa</p>
                         </div>
                         <div class="goodArea row">
                             <p class="goodAll col-3">評価数</p>

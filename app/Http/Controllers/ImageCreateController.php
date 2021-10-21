@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use public\uploaded_images;
+use uploaded_images;
 use PDO;
 
 class ImageCreateController extends Controller
@@ -32,7 +32,7 @@ class ImageCreateController extends Controller
         }
 
         // Font
-        $font = '/public/KleeOne-SemiBold.otf';
+        $font = 'C:\xampp\htdocs\application\public\KleeOne-SemiBold.otf';
         $font_size = '30';
 
         // Line 1
