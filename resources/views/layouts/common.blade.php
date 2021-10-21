@@ -42,43 +42,41 @@
 			alert("Hello");
 		}
 	</script> -->
-  <!-- <script>
+<!-- <script>
 
     window.addEventListener('load', function(){
-      if (data == "guest"){
+        if (data == "guest"){
         document.getElementById('logBTN').style.visibility = "visible";
         // document.getElementById('Dropdown').style.visibility = "hidden";
-      }
-        else{
+    }else{
           // document.getElementById('logBTN').style.visibility = "hidden";
-          document.getElementById('Dropdown').style.visibility = "visible";
+            document.getElementById('Dropdown').style.visibility = "visible";
         }
 
     });
-  </script> -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() { // HTML解析が終わったら
-      var product = '俳句';
-      const like = document.getElementById('likeBtn');
-      const goodNum = document.getElementById('likeCount');
-      like.addEventListener('click', function(){
-        axios.post('/application/senryuu/public/like',{
-          id: 'product'
-          }).then(function(responce){
-              var a = goodNum.text();
-              if (response.data.code == 200) {
-              // if 200 then like | count +1
-              $('#like span span').text(++a);
+</script> -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var product = '俳句';
+        const like = document.getElementById('likeBtn');
+        const goodNum = document.getElementById('likecount');
+        like.addEventListener('click', function() {
+            axios.post('/like', {
+                id: 'product',
+            }).then(function (response) {
+                var a = goodNum.text();
+                if (response.data.code == 200) {
+                    $('#like span span').text(++a);
                 } else if (response.data.code == 202) {
-              // if 202 then unlike | count -1
-              $('#like span span').text(--a);
-              }
-              }).catch(function (error) {
+                    $('#like span span').text(--a);
+                }
+            }).catch(function (error) {
                 console.log(error);
             });
         });
-      });
-  </script>
+    });
+</script>
+
 <style>
   /* 共通項目 */
   body {
