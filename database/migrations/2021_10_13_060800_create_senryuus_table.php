@@ -54,6 +54,7 @@ class CreateSenryuusTable extends Migration
     {
         Schema::dropIfExists('users');
         Schema::dropIfExists('products');
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('likes');
+        Schema::dropIfExists('user_like_post');
     }
 }
