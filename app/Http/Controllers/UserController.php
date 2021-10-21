@@ -99,6 +99,10 @@ class UserController extends Controller
       $_SESSION['id'] = $member['id'];
       $_SESSION['name'] = $member['user_name'];
       $msg = 'ログインしました。';
+      if(isset($_SESSION['image'])){
+        $name = json_encode($_SESSION['name']);
+        return view('/result',['name' => $name],['img_name' => $_SESSION['image']]);
+      }
       $name = json_encode($_SESSION['name']);
       return view('/top',['name' => $name]);
     } else {
