@@ -8,7 +8,7 @@
                 <div class="headarea">
                     <img src="images/man.png" class="Myicon col-6 offset-5 mt-5">
                         <div class="row mt-2">
-                            <p class="username fs-4 col-6 offset-5">無限戦隊俳諧ジャー</p>
+                            <p class="username fs-4 col-6 offset-5">{{$_SESSION['name']}}</p>
                             <img src="images/fude.png" class="Fude col-2">
                         </div>
                         <div class="goodArea row">

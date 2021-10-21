@@ -42,8 +42,8 @@
 			alert("Hello");
 		}
 	</script> -->
-<!-- <script>
-
+<script>
+    var data = JSON.parse('<?php echo $name; ?>');
     window.addEventListener('load', function(){
         if (data == "guest"){
         document.getElementById('logBTN').style.visibility = "visible";
@@ -54,7 +54,7 @@
         }
 
     });
-</script> -->
+</script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var product = '俳句';
@@ -173,6 +173,10 @@
     background-color: skyblue;
     margin-left: 18px;
     margin-top: 10px;
+  }
+  .add img{
+    width: 270px;
+    height: 270px;
   }
   .box2 ul {
     margin-top:10px;

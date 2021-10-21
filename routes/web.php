@@ -28,6 +28,9 @@ Route::get('/result', 'App\Http\Controllers\ImageCreateController@create_image')
 Route::post('/result', 'App\Http\Controllers\ImageCreateController@create_image');
 Route::get('/upload', 'App\Http\Controllers\ImageCreateController@image_upload');
 Route::post('/upload', 'App\Http\Controllers\ImageCreateController@image_upload');
+Route::get('/delete', 'App\Http\Controllers\ImageCreateController@image_delete');
+Route::post('/delete', 'App\Http\Controllers\ImageCreateController@image_delete');
+
 
 Route::get('/login', 'App\Http\Controllers\UserController@user_logout');
 
@@ -39,13 +42,12 @@ Route::get('/top', 'App\Http\Controllers\SenryuuController@first_session');
 Route::get('/login', 'App\Http\Controllers\SenryuuController@default_session');
 Route::get('/newuser', 'App\Http\Controllers\SenryuuController@default_session');
 Route::get('/result', 'App\Http\Controllers\SenryuuController@default_session');
-Route::get('/create', 'App\Http\Controllers\SenryuuController@default_session');
+Route::get('/message', 'App\Http\Controllers\SenryuuController@default_session');
+Route::get('/user', 'App\Http\Controllers\SenryuuController@default_session');
+
 
 Route::get('/mypage', function(){
     return view('user');
-});
-Route::get('/user', function(){
-    return view('user_look');
 });
 Route::get('/new', function(){
     return view('new');

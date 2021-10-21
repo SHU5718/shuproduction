@@ -24,6 +24,7 @@ class CreateSenryuusTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('product_img', 64);
+            $table->string('product_haikai', 64);
             $table->datetime('product_time')->comment('投稿日時');
             $table->unsignedBigInteger('user_id');
 
