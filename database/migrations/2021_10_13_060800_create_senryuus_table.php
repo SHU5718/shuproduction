@@ -41,8 +41,7 @@ class CreateSenryuusTable extends Migration
         Schema::create('user_like_post', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('product_id')->references('id')->on("products");
+            $table->datetime('created_at');
         });
     }
 
