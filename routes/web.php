@@ -26,6 +26,8 @@ Route::get('/logout', 'App\Http\Controllers\UserController@user_logout');
 
 Route::get('/result', 'App\Http\Controllers\ImageCreateController@create_image');
 Route::post('/result', 'App\Http\Controllers\ImageCreateController@create_image');
+Route::get('/upload', 'App\Http\Controllers\ImageCreateController@image_upload');
+Route::post('/upload', 'App\Http\Controllers\ImageCreateController@image_upload');
 
 Route::get('/login', 'App\Http\Controllers\UserController@user_logout');
 

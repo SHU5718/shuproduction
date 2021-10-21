@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use public\uploaded_images;
+use PDO;
 
 class ImageCreateController extends Controller
 {
@@ -84,8 +85,46 @@ class ImageCreateController extends Controller
         imagepng($im, $img_name);
         imagedestroy($im);
 
-
+        $_SESSION['image'] = $img_name;
         $name = json_encode($_SESSION['name']);
         return view('/result',['name' => $name],['img_name' => $img_name]);
+    }
+
+    //画像投稿機能
+    function image_upload(){
+      session_start();
+      $name = $_SESSION['name'];
+
+      //guestの場合ログインページへ
+      if($name == "guest"){
+        return view('/login',['name' => $name]);
+      }
+
+      $id = random_int(1000000000000000,9999999999999999);
+      $time = date('Y-m-d H:i:s');
+      $user_id = $_SESSION['id'];
+      $image = $_SESSION['image'];
+
+
+      $dsn = "mysql:host=127.0.0.1; dbname=senryuu; charset=utf8";
+      $username = "root";
+      $password = "";
+
+      try {
+        $dbh = new PDO($dsn, $username, $password);
+      } catch (PDOException $e) {
+        $msg = $e->getMessage();
+      }
+
+      $sql = "INSERT INTO products(id, product_time, product_img, user_id) VALUES (:id, :p_time, :image, :user_id)";
+      $stmt = $dbh->prepare($sql);
+      $stmt->bindValue(':id', $id);
+      $stmt->bindValue(':p_time', $time);
+      $stmt->bindValue(':image', $image);
+      $stmt->bindValue(':user_id', $user_id);
+      $stmt->execute();
+
+      $name = json_encode($_SESSION['name']);
+      return view('/top',['name' => $name]);
     }
 }
