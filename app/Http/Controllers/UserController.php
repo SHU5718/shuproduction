@@ -60,8 +60,17 @@ class UserController extends Controller
       $stmt->bindValue(':pass', $pass);
       $stmt->execute();
       $msg = '会員登録が完了しました';
+      //自動ログイン処理
+      $sql = "SELECT * FROM users WHERE user_email = :mail";
+      $stmt = $dbh->prepare($sql);
+      $stmt->bindValue(':mail', $mail);
+      $stmt->execute();
+      $member = $stmt->fetch();
+      $_SESSION['id'] = $member['id'];
+      $_SESSION['name'] = $member['user_name'];
+
       $name = json_encode($_SESSION['name']);
-      return view('/create',['name' => $name],['msg' => $msg]);
+      return view('/message',['name' => $name],['msg' => $msg]);
     }
 
   }
@@ -98,7 +107,10 @@ class UserController extends Controller
       //DBのユーザー情報をセッションに保存
       $_SESSION['id'] = $member['id'];
       $_SESSION['name'] = $member['user_name'];
-      $msg = 'ログインしました。';
+      if(isset($_SESSION['image'])){
+        $name = json_encode($_SESSION['name']);
+        return view('/result',['name' => $name],['img_url' => $_SESSION['image']]);
+      }
       $name = json_encode($_SESSION['name']);
       return view('/top',['name' => $name]);
     } else {
@@ -117,6 +129,7 @@ class UserController extends Controller
     session_start();
     $_SESSION['name'] = "guest";
     $name = json_encode($_SESSION['name']);
-    return view('/top',['name' => $name]);
+    $msg = 'ログアウトしました。';
+    return view('/message',['name' => $name],['msg' => $msg]);
   }
 }

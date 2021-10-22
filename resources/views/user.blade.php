@@ -8,10 +8,16 @@
                 <div class="headarea">
                     <img src="images/man.png" id="myIcon" class="Myicon col-6 offset-5 mt-3">
                         <div class="row mt-2">
-                            <p class="username fs-4 col-6 offset-5">無限戦隊俳諧ジャー</p>
-                            <img src="images/fude.png" id="fudeIcon" class="Fude col-2">
-                            <p id="changeName" class="changeName col-4 offset-5">aaa</p>
+                            <p class="username fs-4 col-6">{{$_SESSION['name']}}</p>
+                            <img src="images/fude.png" class="Fude col-2" id="fudeIcon">
                         </div>
+                        <form>
+                            <div class="changeArea row">
+                                <input type="text" class="changeName col-4" id="changeName" placeholder="ハイカイグリーン">
+                                <button type="submit" class="changeBtn">変更</button>
+                            </div>
+                        <form>
+                        
                         <div class="goodArea row">
                             <p class="goodAll col-3">評価数</p>
                             <p class="good col-3">2</p>

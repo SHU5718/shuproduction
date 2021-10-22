@@ -4,6 +4,9 @@
 <div class="container">
     <div class="row">
         <div class="newhaikuArea">
+            <div class="row">
+        <h1 class="newTitle">新着順</h1>
+    </div>
             <div class="newList row gap-5 mt-5">
                 <div class="haikuCard col-3">
                     <img src="images/sample01.png" class="col-8">

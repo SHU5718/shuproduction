@@ -28,10 +28,10 @@
 </script>
 
   <!-- ログイン判定 -->
-  <!-- <script>
-  
+  <script>
+    var data = JSON.parse('<?php echo $name; ?>');
     window.addEventListener('load', function(){
-      if (data == "guest"){
+        if (data == "guest"){
         document.getElementById('logBTN').style.visibility = "visible";
         document.getElementById('fudeIcon').style.visibility = "hidden";
       }
@@ -47,18 +47,7 @@
           })
         }
     });
-  </script> -->
-<!-- プロフィール編集 -->
-  <!-- <script>
-    const icon = document.getElementById('myIcon');
-          icon.addEventListener('click', function(){
-            var fileReader = new FileReader();
-            fileReader.onload = function () {
-              document.getElementById("myIcon").src = fileReader.result;
-            };
-            fileReader.readAsDataURL(obj.files[0]);
-          })
-  </script> -->
+  </script>
   <!-- 評価機能 -->
   <!-- <script>
     document.addEventListener('load', function() { // HTML解析が終わったら
@@ -218,6 +207,10 @@
     margin-left: 18px;
     margin-top: 10px;
   }
+  .add img{
+    width: 270px;
+    height: 270px;
+  }
   .box2 ul {
     margin-top:10px;
   }
@@ -318,7 +311,8 @@
 .Fude {
   width: 60px;
   height: 40px;
-  margin-left: -466px
+  margin-left: -510px;
+  cursor: pointer;
 }
 .good {
   margin-left: -250px
@@ -342,11 +336,29 @@
 .imgList {
   margin-left: 40px;
 }
-.changeName {
-
+.changeArea {
+  display: none;
 }
-
+.changeName {
+  width: 240px;
+  height: 30px;
+  background-color: skyblue;
+  margin-left: 520px;
+}
+.changeBtn {
+  width: 56px;
+  height: 30px;
+  font-size:  14px;
+}
+.username {
+  margin-left: 580px;
+}
 /* 新着順画面 */
+.newTitle {
+  text-align: center;
+  background-color: #e0f3ce;
+  color: #333;
+}
 .newpage {
   height: 2000px;
 }
@@ -361,11 +373,12 @@
   height: 300px;
 }
 .newList {
-  margin-left: 130px;
+  margin-left: 150px;
 }
 .haikuCard a {
   text-decoration: none;
   margin-left: 110px;
+  color: #333;
 }
 .heart {
   width: 40px;
@@ -436,3 +449,12 @@
 &copy;2021 SENRYU Allright Reserved
 </footer>
 </body>
+<!-- プロフィール編集 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const nameBtn = document.getElementById('fudeIcon');
+        nameBtn.addEventListener('click', function(){
+            document.getElementById('changeArea').style.display = "inline";
+        });
+    });
+  </script>
