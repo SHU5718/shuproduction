@@ -311,7 +311,7 @@
 .Fude {
   width: 60px;
   height: 40px;
-  margin-left: -510px;
+  margin-left:px;
   cursor: pointer;
 }
 .good {
@@ -351,7 +351,8 @@
   font-size:  14px;
 }
 .username {
-  margin-left: 580px;
+  text-align: center;
+  /* margin-left: 520px; */
 }
 /* 新着順画面 */
 .newTitle {
