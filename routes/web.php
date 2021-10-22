@@ -30,6 +30,7 @@ Route::get('/upload', 'App\Http\Controllers\ImageCreateController@image_upload')
 Route::post('/upload', 'App\Http\Controllers\ImageCreateController@image_upload');
 Route::get('/delete', 'App\Http\Controllers\ImageCreateController@image_delete');
 Route::post('/delete', 'App\Http\Controllers\ImageCreateController@image_delete');
+Route::get('/new', 'App\Http\Controllers\ImageCreateController@image_new');
 
 
 Route::get('/login', 'App\Http\Controllers\UserController@user_logout');

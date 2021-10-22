@@ -9,7 +9,7 @@ use PDO;
 class UserController extends Controller
 {
   //新規登録
-  function create_account()
+  public function create_account()
   {
     session_start();
     //フォームからの値をそれぞれ変数に代入
@@ -75,7 +75,7 @@ class UserController extends Controller
 
   }
   //ログイン
-  function user_login(){
+  public function user_login(){
 
     session_start();
     $mail = $_POST['mail'];
@@ -120,7 +120,7 @@ class UserController extends Controller
     }
   }
 
-  function user_logout(){
+  public function user_logout(){
     session_start();
     if (isset($_COOKIE["PHPSESSID"])) {
       setcookie("PHPSESSID", '', time() - 1800, '/');

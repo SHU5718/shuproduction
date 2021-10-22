@@ -158,7 +158,9 @@ class ImageCreateController extends Controller
       $name = json_encode($_SESSION['name']);
       return view('/message',['name' => $name],['msg' => $msg]);
     }
-    function image_new(){
+
+    //新着順表示
+    public function image_new(){
       session_start();
 
 
@@ -172,6 +174,8 @@ class ImageCreateController extends Controller
         $msg = $e->getMessage();
       }
 
-      
+      $sql = "SELECT * FROM products ORDER BY product_time DESC LIMIT 12;"
+
+
     }
 }
