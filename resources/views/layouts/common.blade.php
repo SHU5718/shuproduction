@@ -5,6 +5,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <link href='https://css.gg/heart.css' rel='stylesheet'>
+<!-- アイコン設定 -->
 <script>
    function previewImage(obj) {
         var fileReader = new FileReader();
@@ -25,58 +26,90 @@
   });
 }());
 </script>
-<!-- <script>
-    function kieru() {
-      const test = document.getElementById('test');
-      test.style.visibility = "hidden";
-    }
-</script>
-<script>
-		window.addEventListener('load', function(){
 
-			// イベントリスナー登録
-			document.getElementById("content1").addEventListener('click', sayHello);
-		});
-
-		function sayHello() {
-			alert("Hello");
-		}
-	</script> -->
-<script>
+  <!-- ログイン判定 -->
+  <script>
     var data = JSON.parse('<?php echo $name; ?>');
     window.addEventListener('load', function(){
         if (data == "guest"){
         document.getElementById('logBTN').style.visibility = "visible";
-        // document.getElementById('Dropdown').style.visibility = "hidden";
-    }else{
-          // document.getElementById('logBTN').style.visibility = "hidden";
-            document.getElementById('Dropdown').style.visibility = "visible";
+        document.getElementById('fudeIcon').style.visibility = "hidden";
+      }
+        else{
+          document.getElementById('Dropdown').style.visibility = "visible";
+          const icon = document.getElementById('myIcon');
+          icon.addEventListener('click', function(){
+            var fileReader = new FileReader();
+            fileReader.onload = function () {
+              document.getElementById("myIcon").src = fileReader.result;
+            };
+            fileReader.readAsDataURL(obj.files[0]);
+          })
         }
-
     });
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var product = '俳句';
-        const like = document.getElementById('likeBtn');
-        const goodNum = document.getElementById('likecount');
-        like.addEventListener('click', function() {
-            axios.post('/like', {
-                id: 'product',
-            }).then(function (response) {
-                var a = goodNum.text();
+  </script>
+  <!-- 評価機能 -->
+  <!-- <script>
+    document.addEventListener('load', function() { // HTML解析が終わったら
+      var product = '俳句';
+      const like = document.getElementById('before');
+      const heart = document.getElementById('heart');
+      like.addEventListener('click', function(){
+          console.log('いいねしたよ');
+          axios.post('/like',{
+            id: 'product'
+          }).then(function(responce){
                 if (response.data.code == 200) {
-                    $('#like span span').text(++a);
-                } else if (response.data.code == 202) {
-                    $('#like span span').text(--a);
+                  // if 200 then like | count +1
+                  heart.style.visibility = "visible";
+                  like.style.visibility = "hidden";
+                  } else if (response.data.code == 202) {
+                  // if 202 then unlike | count -1
+                  heart.style.visibility = "hidden";
+                  like.style.visibility = "visible";
                 }
-            }).catch(function (error) {
+              }).catch(function (error) {
+                console.log(error);
+               });
+        });
+      });
+    </script> -->
+    
+      <!-- ピンクのハートになった時に押したときの処理 -->
+      <!-- <script>
+      document.addEventListener('load', function() { // HTML解析が終わったら
+      var product = '俳句';
+      const like = document.getElementById('before');
+      const heart = document.getElementById('heart');
+      heart.addEventListener('click', function(){
+        axios.post('/like',{
+          id: 'product'
+          }).then(function(responce){
+              if (response.data.code == 200) {
+              // if 200 then like | count +1
+              heart.style.visibility = "visible";
+              like.style.visibility = "hidden";
+                } else if (response.data.code == 202) {
+              // if 202 then unlike | count -1
+               heart.style.visibility = "hidden";
+              like.style.visibility = "visible";
+              }
+              }).catch(function (error) {
                 console.log(error);
             });
         });
+      });
+  </script> -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+    const like = document.getElementById('before');
+      const heart = document.getElementById('heart');
+    function Good(){
+      heart.style.visibility = "visible";
+      like.style.visibility = "hidden";
+    };
     });
-</script>
-
+  </script>
 <style>
   /* 共通項目 */
   body {
@@ -278,7 +311,8 @@
 .Fude {
   width: 60px;
   height: 40px;
-  margin-left: -466px
+  margin-left: -510px;
+  cursor: pointer;
 }
 .good {
   margin-left: -250px
@@ -287,7 +321,7 @@
   margin-left: 604px
 }
 .goodArea {
-  font-size:12px;
+  font-size:24px;
 }
 .haikuArea {
   background-color: white;
@@ -301,6 +335,63 @@
 }
 .imgList {
   margin-left: 40px;
+}
+.changeArea {
+  display: none;
+}
+.changeName {
+  width: 240px;
+  height: 30px;
+  background-color: skyblue;
+  margin-left: 520px;
+}
+.changeBtn {
+  width: 56px;
+  height: 30px;
+  font-size:  14px;
+}
+.username {
+  margin-left: 580px;
+}
+/* 新着順画面 */
+.newTitle {
+  text-align: center;
+  background-color: #e0f3ce;
+  color: #333;
+}
+.newpage {
+  height: 2000px;
+}
+.newhaikuArea {
+  background-color: white;
+  width: 100%;
+  height: 1800px;
+  margin-left: -40px;
+}
+.newhaikuArea img {
+  width: 300px;
+  height: 300px;
+}
+.newList {
+  margin-left: 150px;
+}
+.haikuCard a {
+  text-decoration: none;
+  margin-left: 110px;
+  color: #333;
+}
+.heart {
+  width: 40px;
+  height: 40px;
+  margin-left: 240px;
+  margin-top: -80px;
+  visibility: hidden;
+}
+.before {
+  width: 40px;
+  height: 40px;
+  margin-left: 240px;
+  margin-top: -80px;
 }
 </style>
 <body>
@@ -358,3 +449,19 @@
 &copy;2021 SENRYU Allright Reserved
 </footer>
 </body>
+<!-- プロフィール編集 -->
+  <script>
+      const nameBtn = document.getElementById('fudeIcon');
+      const area = document.getElementById('changeArea');
+        nameBtn.addEventListener('click', function(){
+          if(area.style.display === "none"){
+            area.style.display = "inline";
+          }else{
+            area.style.display = "none";
+          }
+        });
+        const changeBtn = document.getElementById('changeBtn');
+        changeBtn.addEventListener('click', function(){
+          area.style.display = "none";
+        });
+  </script>

@@ -49,6 +49,9 @@ Route::get('/user', 'App\Http\Controllers\SenryuuController@default_session');
 Route::get('/mypage', function(){
     return view('user');
 });
+Route::get('/look', function(){
+    return view('user_look');
+});
 Route::get('/new', function(){
     return view('new');
 });

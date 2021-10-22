@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use public\uploaded_images;
+use uploaded_images;
 use PDO;
 
 class ImageCreateController extends Controller
 {
-  function create_image() {
+    function create_image() {
 
     session_start();
     $im = imagecreatefrompng('images/base.png');
@@ -38,7 +38,7 @@ class ImageCreateController extends Controller
     }
 
     // Font
-    $font = 'KleeOne-SemiBold.otf';
+    $font = 'C:\xampp\htdocs\application\public\KleeOne-SemiBold.otf';
     $font_size = '30';
 
     // Line 1
@@ -157,5 +157,21 @@ class ImageCreateController extends Controller
       $msg = '削除が完了しました。';
       $name = json_encode($_SESSION['name']);
       return view('/message',['name' => $name],['msg' => $msg]);
+    }
+    function image_new(){
+      session_start();
+
+
+
+      $dsn = "mysql:host=127.0.0.1; dbname=senryuu; charset=utf8";
+      $username = "root";
+      $password = "";
+      try {
+        $dbh = new PDO($dsn, $username, $password);
+      } catch (PDOException $e) {
+        $msg = $e->getMessage();
+      }
+
+      
     }
 }
