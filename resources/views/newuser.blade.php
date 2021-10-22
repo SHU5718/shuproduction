@@ -6,7 +6,7 @@
     <div class="tab-content">
         <div id="contents1" class="tab-pane active">
             <div class="container">
-                <div class="row mt-5">
+                <div class="newuserArea row mt-1">
                     <div class="box3 col-6 bg-light">
                         <p class="login_title text-center fs-2 mb-5 text-light">新規登録</p>
                         <p class="new_title">ユーザーネーム</p>
@@ -14,10 +14,12 @@
                         <p class="new_title">メールアドレス</p>
                         <input type="email" name="mail" max-length="255" placeholder="example@senryu.com" class="col-6 offset-3 mb-4" required="required">
                         <p class="new_title">パスワード</p>
-                        <input type="text" name="pass" max-length="32" placeholder="password" class="col-6 offset-3 mb-4" required="required">
+                        <input type="password" name="pass" max-length="32" placeholder="password" class="col-6 offset-3 mb-4" required="required" id="password">
                         <p class="new_title">パスワード(確認用)</p>
-                        <input type="text" name="Pass" max-length="32" placeholder="password(確認用)" class="col-6 offset-3 mb-4" required="required">
-                        <div class="col-6 offset-3 text-danger mb-4">@isset($msg){{$msg}}@endisset</div>
+                        <input type="password" name="Pass" max-length="32" placeholder="password(確認用)" class="col-6 offset-3 mb-2" required="required" id="passwordC">
+                        <div class="col-4"></div>
+                        <input type="checkbox" id="password-check" class="offset-3 mb-2">パスワードを表示する
+                        <div class="emsg col-6 offset-3 text-danger mb-4">@isset($msg){{$msg}}@endisset</div>
                         <ul class="Tab nav nav-tabs justify-content-center mb-2">
                             <li class="Tab nav-item"><a href="#contents1" class="nav-link active" data-toggle="tab">STEP01</a></li>
                             <li class="Tab nav-item"><a href="#contents2" class="nav-link" data-toggle="tab">STEP02</a></li>

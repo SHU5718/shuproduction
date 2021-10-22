@@ -9,8 +9,8 @@
                 <p class="new_title">メールアドレス</p>
                 <input type="email" name="mail" max-length="255" placeholder="example@senryu.com" class="col-6 offset-3 mb-4">
                 <p class="new_title">パスワード</p>
-                <input type="text" name="pass" max-length="32" placeholder="password" class="col-6 offset-3 mb-4">
-                <!-- <a class="btn btn-info text-light col-6 offset-3 mb-5">ログイン</a> -->
+                <input type="password" name="pass" max-length="32" placeholder="password" class="col-6 offset-3 mb-2" id="password">
+                <input type="checkbox" id="password-check" class="offset-3 mb-2">パスワードを表示する
                 {{ csrf_field() }}
                 <div class="col-6 offset-3 text-danger mb-4">@isset($msg){{$msg}}@endisset</div>
                     <button type="submit" class="btn btn-info text-light col-6 offset-3 mb-3">ログイン</button>
