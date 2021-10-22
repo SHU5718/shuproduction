@@ -158,4 +158,20 @@ class ImageCreateController extends Controller
       $name = json_encode($_SESSION['name']);
       return view('/message',['name' => $name],['msg' => $msg]);
     }
+    function image_new(){
+      session_start();
+
+
+
+      $dsn = "mysql:host=127.0.0.1; dbname=senryuu; charset=utf8";
+      $username = "root";
+      $password = "";
+      try {
+        $dbh = new PDO($dsn, $username, $password);
+      } catch (PDOException $e) {
+        $msg = $e->getMessage();
+      }
+
+      
+    }
 }

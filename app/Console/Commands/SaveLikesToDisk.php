@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Console\Command;
 
 class SaveLikesToDisk extends Command
@@ -11,7 +13,7 @@ class SaveLikesToDisk extends Command
      *
      * @var string
      */
-    protected $signature = 'command:save';
+    protected $signature = 'likestodisk:save';
 
     /**
      * The console command description.
@@ -33,12 +35,12 @@ class SaveLikesToDisk extends Command
     /**
      * Execute the console command.
      *
-     * @return int
+     * @return mixed
      */
     public function handle()
     {
         // count how many post been liked in Redis
-        $like_posts = Redis::scard('post_set');
+        $liked_posts = Redis::scard('post_set');
         // loop X time for X posts been liked
         for ($i = 0; $i < $liked_posts; $i++) {
             // pop post from set
