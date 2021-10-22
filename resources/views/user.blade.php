@@ -7,8 +7,8 @@
             <div class="row">
                 <div class="headarea">
                     <img src="images/man.png" id="myIcon" class="Myicon col-6 offset-5 mt-3">
-                        <div class="row mt-2">
-                            <p class="username fs-4 col-6">{{$_SESSION['name']}}</p>
+                        <div class="row mt-2 align-content-center justify-content-center">
+                            <p class="username fs-4 col-3">{{$_SESSION['name']}}</p>
                             <img src="images/fude.png" class="Fude col-2" id="fudeIcon">
                         </div>
                         <form>
