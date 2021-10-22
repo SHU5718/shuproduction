@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         $schedule->command('likestodisk:save')
             ->timezone('Asia/Tokyo')
-            ->daily();
+            ->everyminute();
     }
 
     /**
