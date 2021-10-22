@@ -74,7 +74,7 @@
         });
       });
     </script> -->
-    
+
       <!-- ピンクのハートになった時に押したときの処理 -->
       <!-- <script>
       document.addEventListener('load', function() { // HTML解析が終わったら
@@ -218,7 +218,7 @@
     margin-left: -14px;
     width: 270px;
     height: 30px;
-    background-color: violet;
+    background-color: #ffffff;
     list-style: none;
     margin-bottom: 8px;
     margin-top: 10px;
@@ -411,7 +411,7 @@
           <a class="nav-link" href="#">ランキング</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">新着順</a>
+          <a class="nav-link" href="/new">新着順</a>
         </li>
       </ul>
 

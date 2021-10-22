@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use GuzzleHttp\Client;
+use PDO;
 
 class SenryuuController extends Controller
 {
@@ -46,32 +47,76 @@ class SenryuuController extends Controller
     $word_cnt = count($rand_word);
 
     session_start();
+    $dsn = "mysql:host=127.0.0.1; dbname=senryuu; charset=utf8";
+    $username = "root";
+    $password = "";
+    try {
+      $dbh = new PDO($dsn, $username, $password);
+    } catch (PDOException $e) {
+      $msg = $e->getMessage();
+    }
+
+    $sql = "SELECT * FROM products ORDER BY product_time DESC LIMIT 12";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+    $products = $stmt->fetchAll();
+    $haikai = array();
+    $i = 0;
+
+    foreach ($products as $product) {
+      $haikai[$i] = $product['product_haikai'];
+      $i++;
+
+    }
     if(isset($_SESSION['name'])){
       $name = json_encode($_SESSION['name']);
       return view('top', ['up_five' => $sent_five[mt_rand(0,$five_cnt -1)],
-      'down_five' => $rand_word[mt_rand(0,$word_cnt-1)],'name' => $name]);
+      'down_five' => $rand_word[mt_rand(0,$word_cnt-1)],'name' => $name],['haikai' => $haikai]);
     }else{
       $_SESSION['name'] = "guest";
       $name = json_encode($_SESSION['name']);
       return view('top', ['up_five' => $sent_five[mt_rand(0,$five_cnt -1)],
-      'down_five' => $rand_word[mt_rand(0,$word_cnt-1)],'name' => $name]);
+      'down_five' => $rand_word[mt_rand(0,$word_cnt-1)],'name' => $name],['haikai' => $haikai]);
     }
 
 
   }
   public function first_session(){
     session_start();
+
+    $dsn = "mysql:host=127.0.0.1; dbname=senryuu; charset=utf8";
+    $username = "root";
+    $password = "";
+    try {
+      $dbh = new PDO($dsn, $username, $password);
+    } catch (PDOException $e) {
+      $msg = $e->getMessage();
+    }
+
+    $sql = "SELECT * FROM products ORDER BY product_time DESC LIMIT 12";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+    $products = $stmt->fetchAll();
+    $haikai = array();
+    $i = 0;
+
+    foreach ($products as $product) {
+      $haikai[$i] = $product['product_haikai'];
+      $i++;
+    }
+
     if(isset($_SESSION['name'])){
       $name = json_encode($_SESSION['name']);
-      return view('/top',['name' => $name]);
+      return view('/top',['name' => $name],['haikai' => $haikai]);
     }else{
       $_SESSION['name'] = "guest";
       $name = json_encode($_SESSION['name']);
-      return view('/top',['name' => $name]);
+      return view('/top',['name' => $name],['haikai' => $haikai]);
     }
   }
   public function default_session(){
     session_start();
+
     $url = $_SERVER['REQUEST_URI'];
     if(isset($_SESSION['name'])){
       $name = json_encode($_SESSION['name']);

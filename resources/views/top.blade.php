@@ -28,11 +28,11 @@
         <div class="box2 col-lg-3 ms-4">
             <div class="add mt-4 mb-3"><img src="images/adsence.gif"></div>
             <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
+                <li>@isset($haikai){{$haikai[0]}}@endisset</li>
+                <li>@isset($haikai){{$haikai[1]}}@endisset</li>
+                <li>@isset($haikai){{$haikai[2]}}@endisset</li>
+                <li>@isset($haikai){{$haikai[3]}}@endisset</li>
+                <li>@isset($haikai){{$haikai[4]}}@endisset</li>
             </ul>
             <a href="new" class="see_more">もっと見る</a>
         </div>

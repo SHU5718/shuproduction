@@ -91,9 +91,30 @@ class ImageCreateController extends Controller
     imagepng($im, $img_name);
     imagedestroy($im);
 
+    $dsn = "mysql:host=127.0.0.1; dbname=senryuu; charset=utf8";
+    $username = "root";
+    $password = "";
+    try {
+      $dbh = new PDO($dsn, $username, $password);
+    } catch (PDOException $e) {
+      $msg = $e->getMessage();
+    }
+
+    $sql = "SELECT * FROM products ORDER BY product_time DESC LIMIT 12";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+    $products = $stmt->fetchAll();
+    $haikai = array();
+    $i = 0;
+
+    foreach ($products as $product) {
+      $haikai[$i] = $product['product_haikai'];
+      $i++;
+    }
+
     $_SESSION['image'] = $img_url;
     $name = json_encode($_SESSION['name']);
-    return view('/result',['name' => $name],['img_url' => $img_url]);
+    return view('/result',['name' => $name],['img_url' => $_SESSION['image']],['haikai' => $haikai]);
   }
 
   //画像投稿機能
@@ -134,7 +155,7 @@ class ImageCreateController extends Controller
       //トップ画面に遷移
       $msg = '投稿が完了しました。';
       $name = json_encode($_SESSION['name']);
-      return view('/message',['name' => $name],['msg' => $msg]);
+      return view('/message_top',['name' => $name],['msg' => $msg]);
     }
   }
     function image_delete(){
@@ -156,14 +177,12 @@ class ImageCreateController extends Controller
 
       $msg = '削除が完了しました。';
       $name = json_encode($_SESSION['name']);
-      return view('/message',['name' => $name],['msg' => $msg]);
+      return view('/message_top',['name' => $name],['msg' => $msg]);
     }
 
     //新着順表示
     public function image_new(){
       session_start();
-
-
 
       $dsn = "mysql:host=127.0.0.1; dbname=senryuu; charset=utf8";
       $username = "root";
@@ -174,8 +193,23 @@ class ImageCreateController extends Controller
         $msg = $e->getMessage();
       }
 
-      $sql = "SELECT * FROM products ORDER BY product_time DESC LIMIT 12;"
+      $sql = "SELECT * FROM products ORDER BY product_time DESC LIMIT 12";
+      $stmt = $dbh->prepare($sql);
+      $stmt->execute();
+      $products = $stmt->fetchAll();
+      $img = array();
+      $time = array();
+      $haikai = array();
+      $i = 0;
 
+      foreach ($products as $product) {
+        $haikai[$i] = $product['product_haikai'];
+        $img[$i] = $product['product_img'];
+        $time[$i] = $product['product_time'];
+        $i++;
+      }
 
+      $name = json_encode($_SESSION['name']);
+      return view('/new',['name' => $name],['haikai' => $haikai],['time' => $time],['img' => $img]);
     }
 }

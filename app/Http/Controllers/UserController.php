@@ -68,9 +68,12 @@ class UserController extends Controller
       $member = $stmt->fetch();
       $_SESSION['id'] = $member['id'];
       $_SESSION['name'] = $member['user_name'];
-
+      if(isset($_SESSION['image'])){
+        $name = json_encode($_SESSION['name']);
+        return view('/message_result',['name' => $name],['msg' => $msg],['img_url' => $_SESSION['image']]);
+      }
       $name = json_encode($_SESSION['name']);
-      return view('/message',['name' => $name],['msg' => $msg]);
+      return view('/message_top',['name' => $name],['msg' => $msg]);
     }
 
   }
@@ -130,6 +133,6 @@ class UserController extends Controller
     $_SESSION['name'] = "guest";
     $name = json_encode($_SESSION['name']);
     $msg = 'ログアウトしました。';
-    return view('/message',['name' => $name],['msg' => $msg]);
+    return view('/message_top',['name' => $name],['msg' => $msg]);
   }
 }
