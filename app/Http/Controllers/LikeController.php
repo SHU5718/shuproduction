@@ -63,4 +63,17 @@ class LikeController extends Controller
             ];
         }
     }
+
+    public function show($id)
+    {
+        $like_counts = 0;
+        $count_in_redis = Redis::get('likes_count'.$id);
+        if (!is_null($count_in_redis)) {
+            $like_counts += $count_in_redis;
+        }
+        $count_in_mysql = Like::where('product_id', $id)->first();
+        if (!empty($count_in_mysql)) {
+            $like_counts += $count_in_mysql->count;
+        }
+    }
 }
