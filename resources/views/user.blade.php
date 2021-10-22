@@ -12,9 +12,9 @@
                             <img src="images/fude.png" class="Fude col-2" id="fudeIcon">
                         </div>
                         <form>
-                            <div class="changeArea row">
+                            <div class="changeArea row" id="changeArea">
                                 <input type="text" class="changeName col-4" id="changeName" placeholder="ハイカイグリーン">
-                                <button type="submit" class="changeBtn">変更</button>
+                                <button type="submit" class="changeBtn" id="changeBtn">変更</button>
                             </div>
                         <form>
                         

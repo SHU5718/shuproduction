@@ -451,10 +451,17 @@
 </body>
 <!-- プロフィール編集 -->
   <script>
-    document.addEventListener('DOMContentLoaded', function(){
       const nameBtn = document.getElementById('fudeIcon');
+      const area = document.getElementById('changeArea');
         nameBtn.addEventListener('click', function(){
-            document.getElementById('changeArea').style.display = "inline";
+          if(area.style.display === "none"){
+            area.style.display = "inline";
+          }else{
+            area.style.display = "none";
+          }
         });
-    });
+        const changeBtn = document.getElementById('changeBtn');
+        changeBtn.addEventListener('click', function(){
+          area.style.display = "none";
+        });
   </script>
