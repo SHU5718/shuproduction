@@ -42,7 +42,7 @@ class SenryuuController extends Controller
         $five_cnt++;
       }
     }
-    $rand_word = array("オムライス","ハンバーグ","エビフライ","パルプンテ");
+    $rand_word = array("オムライス","ハンバーグ","エビフライ","パルプンテ","駆け巡る","花が散る","芽が芽吹く","返り咲く","腹減った","めぐりゆく","課金する","貢かな","","","","","","","","","","","","","","","","","","","","","","");
     $word_cnt = count($rand_word);
 
     session_start();

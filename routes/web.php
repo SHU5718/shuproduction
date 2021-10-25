@@ -46,16 +46,7 @@ Route::get('/message', 'App\Http\Controllers\SenryuuController@default_session')
 Route::get('/user', 'App\Http\Controllers\SenryuuController@default_session');
 Route::get('/lank', 'App\Http\Controllers\SenryuuController@default_session');
 Route::get('/new', 'App\Http\Controllers\SenryuuController@default_session');
-
-Route::get('/new', function(){
-    return view('new');
-});
-Route::get('/product', function(){
-    return view('product');
-});
-Route::get('/product.look', function(){
-    return view('product.look');
-});
+Route::get('/product', 'App\Http\Controllers\SenryuuController@default_session');
 
 Route::get('/copyuser', function(){
     return view('copyuser');

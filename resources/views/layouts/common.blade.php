@@ -1,4 +1,5 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -33,10 +34,17 @@
     window.addEventListener('load', function(){
         if (data == "guest"){
         document.getElementById('logBTN').style.visibility = "visible";
+
+        //マイページ
         document.getElementById('fudeIcon').style.visibility = "hidden";
+
+        //作品ページ
+        document.getElementById('twitter').style.visibility = "hidden"
+        document.getElementById('delete').style.visibility = "hidden"
       }
         else{
           document.getElementById('Dropdown').style.visibility = "visible";
+          //マイページ
           const icon = document.getElementById('myIcon');
           icon.addEventListener('click', function(){
             var fileReader = new FileReader();
@@ -109,6 +117,28 @@
       like.style.visibility = "hidden";
     };
     });
+  </script>
+
+  <!-- モーダル -->
+  <script>
+    window.onload = function() {
+  var popup = document.getElementById('js-popup');
+  if(!popup) return;
+  popup.classList.add('is-show');
+
+  var blackBg = document.getElementById('js-black-bg');
+  var closeBtn = document.getElementById('js-close-btn');
+
+  closePopUp(blackBg);
+  closePopUp(closeBtn);
+
+  function closePopUp(elem) {
+    if(!elem) return;
+    elem.addEventListener('click', function() {
+      popup.classList.remove('is-show');
+    })
+  }
+}
   </script>
 <style>
   /* 共通項目 */
@@ -228,12 +258,74 @@
     margin-left: 227px;
   }
   /*top*/
+  .popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: .6s;
+}
+.popup.is-show {
+  opacity: 1;
+  visibility: visible;
+}
+.popup-inner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 80%;
+  max-width: 400px;
+  padding: 50px;
+  background-color: #fff;
+  z-index: 2;
+}
+.popup-inner img {
+  width: 100%;
+}
+.popup-text {
+  font-size: 18px;
+}
+.popup-text span {
+  color: green;
+}
+.close-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+.close-btn i {
+  font-size: 20px;
+  color: #333;
+}
+.black-background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.8);
+  z-index: 1;
+  cursor: pointer;
+}
   textarea {
     resize: none;
     height: 30px;
   }
   .homeIMG {
     margin-left:220px;
+  }
+  .topmsg {
+    margin-left: 360px;
   }
   /*resultページ*/
   .resultIMG {
@@ -397,7 +489,9 @@
 .date {
   margin-bottom: -0.5px;
 }
-
+.hide {
+  display: none;
+}
 /* ランキング順画面 */
 .lankTitle {
   text-align: center;
@@ -480,6 +574,36 @@
 .guide {
   text-align: center;
   margin-top: 60px;
+}
+
+/* 作品画面 */
+.productImg {
+  width: 450px;
+  height: 450px;
+}
+.twitterImg {
+  width: 50px;
+  height: 50px;
+}
+.delete {
+  display: inline-block;
+  cursor: pointer; /* カーソルを指に */
+  margin: 10px; /* まわりの余白 */
+  width: 80px;
+  padding: 10px 20px; /* 文字まわりの余白 */
+  line-height: 1.4; /* 行間 */
+  background: red; /* 背景色 */
+  color: #FFF; /* 文字色 */
+  font-size: 14px; /* フォントサイズ */
+  border: none;
+  border-radius: 4px; /* 角の丸み */
+  transition: 0.2s; /* ホバーをなめらかに */
+  text-align: center;
+  margin-left: 150px;
+}
+.productBody {
+  background-color: white;
+  margin-left: 186px;
 }
 </style>
 <body>
