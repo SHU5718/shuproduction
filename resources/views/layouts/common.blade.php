@@ -29,7 +29,7 @@
 
   <!-- ログイン判定 -->
   <!-- <script>
-   
+
     window.addEventListener('load', function(){
         if (data == "guest"){
         document.getElementById('logBTN').style.visibility = "visible";
@@ -74,7 +74,7 @@
         });
       });
     </script> -->
-    
+
       <!-- ピンクのハートになった時に押したときの処理 -->
       <!-- <script>
       document.addEventListener('load', function() { // HTML解析が終わったら
@@ -100,16 +100,41 @@
         });
       });
   </script> -->
-  <script>
+<!--<script>
     document.addEventListener('DOMContentLoaded', function(){
     const like = document.getElementById('before');
-      const heart = document.getElementById('heart');
+    const heart = document.getElementById('heart');
     function Good(){
-      heart.style.visibility = "visible";
-      like.style.visibility = "hidden";
+        heart.style.visibility = "visible";
+        like.style.visibility = "hidden";
     };
     });
-  </script>
+</script>-->
+<script>
+    document.addEventListener('load', function() {
+        var product_id = $product_id;
+        const like = document.getElementById('before');
+        const heart = document.getElementById('heart');
+        heart.addEventListener('click', function() {
+            axios.post('/like', {
+                id: 'product_id'
+            }).then(function(response){
+                var a = likeCount.text();
+                if (response.data.code == 200) {
+                    $('#like span span').text(++a);
+                    like.style.visibility = "hidden";
+                    heart.style.visibility = "visible";
+                } else if (response.data.code == 202) {
+                    $('#lilke span span').text(--a);
+                    like.style.visibility = "visible";
+                    heart.style.visibility = "hidden";
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        });
+    });
+</script>
 <style>
   /* 共通項目 */
   body {
@@ -503,7 +528,7 @@
          pwd.setAttribute('type', 'password');
      }
  }, false);
- 
+
  window.addEventListener('load',function(){
  const pwdc = document.getElementById('passwordC');
  const pwdcheck = document.getElementById('password-check');
