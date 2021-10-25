@@ -44,19 +44,11 @@ Route::get('/newuser', 'App\Http\Controllers\SenryuuController@default_session')
 Route::get('/result', 'App\Http\Controllers\SenryuuController@default_session');
 Route::get('/message', 'App\Http\Controllers\SenryuuController@default_session');
 Route::get('/user', 'App\Http\Controllers\SenryuuController@default_session');
+Route::get('/lank', 'App\Http\Controllers\SenryuuController@default_session');
+Route::get('/new', 'App\Http\Controllers\SenryuuController@default_session');
 
-
-Route::get('/mypage', function(){
-    return view('user');
-});
-Route::get('/look', function(){
-    return view('user_look');
-});
 Route::get('/new', function(){
     return view('new');
-});
-Route::get('/lank', function(){
-    return view('lank');
 });
 Route::get('/product', function(){
     return view('product');
