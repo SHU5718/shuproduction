@@ -30,7 +30,7 @@
 
   <!-- ログイン判定 -->
   <script>
-   var data = JSON.parse('<?php echo $name; ?>');
+    var data = JSON.parse('<?php echo $name; ?>');
     window.addEventListener('load', function(){
         if (data == "guest"){
         document.getElementById('logBTN').style.visibility = "visible";
@@ -82,7 +82,7 @@
         });
       });
     </script> -->
-    
+
       <!-- ピンクのハートになった時に押したときの処理 -->
       <!-- <script>
       document.addEventListener('load', function() { // HTML解析が終わったら
@@ -108,13 +108,13 @@
         });
       });
   </script> -->
-  <script>
+<!--<script>
     document.addEventListener('DOMContentLoaded', function(){
     const like = document.getElementById('before');
-      const heart = document.getElementById('heart');
+    const heart = document.getElementById('heart');
     function Good(){
-      heart.style.visibility = "visible";
-      like.style.visibility = "hidden";
+        heart.style.visibility = "visible";
+        like.style.visibility = "hidden";
     };
     });
   </script>
@@ -248,7 +248,7 @@
     margin-left: -14px;
     width: 270px;
     height: 30px;
-    background-color: violet;
+    background-color: #ffffff;
     list-style: none;
     margin-bottom: 8px;
     margin-top: 10px;
@@ -571,7 +571,7 @@
 .msgText {
   text-align: center;
 }
-.guide {
+.msgBox  {
   text-align: center;
   margin-top: 60px;
 }
@@ -622,7 +622,7 @@
           <a class="nav-link" href="#">ランキング</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">新着順</a>
+          <a class="nav-link" href="/new">新着順</a>
         </li>
       </ul>
 
@@ -688,7 +688,7 @@
          pwd.setAttribute('type', 'password');
      }
  }, false);
- 
+
  window.addEventListener('load',function(){
  const pwdc = document.getElementById('passwordC');
  const pwdcheck = document.getElementById('password-check');

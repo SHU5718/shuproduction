@@ -12,7 +12,7 @@ class LikeController extends Controller
     {
 
         // ユーザーインフォメーション
-        $user_id = request()->user()->id;
+        $user_id = $_SESSION['id'];
 
         // postインフォメーション
         $product_id = request('id');
@@ -74,6 +74,24 @@ class LikeController extends Controller
         $count_in_mysql = Like::where('product_id', $id)->first();
         if (!empty($count_in_mysql)) {
             $like_counts += $count_in_mysql->count;
+        }
+    }
+
+    public function total()
+    {
+        $user_id = $_SESSION['id'];
+
+        $post_id = DB::table('products')->select('id')->where('user_id', $user_id);
+
+        $total_like_counts = 0;
+
+        $count_in_redis = Redis::get('likes_count'.$post_id);
+        if (!is_null($count_in_redis)) {
+            $total_like_counts += $count_in_redis;
+        }
+        $count_in_mysql = Like::where('product_id', $post_id)->first();
+        if (!empty($count_in_mysql)) {
+            $total_like_counts += $count_in_mysql->count;
         }
     }
 }
