@@ -37,6 +37,12 @@ Route::get('/login', 'App\Http\Controllers\UserController@user_logout');
 
 Route::get('/like', 'App\Http\Controllers\LikeController@like');
 Route::post('/like', 'App\Http\Controllers\LikeController@like');
+Route::get('/show', 'App\Http\Controllers\LikeController@show');
+Route::post('/show', 'App\Http\Controllers\LikeController@show');
+Route::get('/total', 'App\Http\Controllers\LikeController@total');
+Route::post('/total', 'App\Http\Controllers\LikeController@total');
+
+
 
 //ページ作る度に追加してください。
 Route::get('/top', 'App\Http\Controllers\SenryuuController@first_session');
@@ -47,23 +53,4 @@ Route::get('/message_top', 'App\Http\Controllers\SenryuuController@default_sessi
 Route::get('/message_result', 'App\Http\Controllers\SenryuuController@default_session');
 Route::get('/user', 'App\Http\Controllers\SenryuuController@default_session');
 Route::get('/lank', 'App\Http\Controllers\SenryuuController@default_session');
-
-Route::get('/mypage', function(){
-    return view('user');
-});
-Route::get('/look', function(){
-    return view('user_look');
-});
-Route::get('/lank', function(){
-    return view('lank');
-});
-Route::get('/product', function(){
-    return view('product');
-});
-Route::get('/product.look', function(){
-    return view('product.look');
-});
-
-Route::get('/copyuser', function(){
-    return view('copyuser');
-});
+Route::get('/test', 'App\Http\Controllers\SenryuuController@default_session');
