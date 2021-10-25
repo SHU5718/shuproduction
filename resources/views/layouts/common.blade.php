@@ -110,31 +110,7 @@
     };
     });
 </script>-->
-<script>
-    document.addEventListener('load', function() {
-        var product_id = $product_id;
-        const like = document.getElementById('before');
-        const heart = document.getElementById('heart');
-        heart.addEventListener('click', function() {
-            axios.post('/like', {
-                id: 'product_id'
-            }).then(function(response){
-                var a = likeCount.text();
-                if (response.data.code == 200) {
-                    $('#like span span').text(++a);
-                    like.style.visibility = "hidden";
-                    heart.style.visibility = "visible";
-                } else if (response.data.code == 202) {
-                    $('#lilke span span').text(--a);
-                    like.style.visibility = "visible";
-                    heart.style.visibility = "hidden";
-                }
-            }).catch(function (error) {
-                console.log(error);
-            });
-        });
-    });
-</script>
+
 <style>
   /* 共通項目 */
   body {
