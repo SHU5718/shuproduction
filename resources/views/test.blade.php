@@ -10,6 +10,7 @@
 </div>
 
 <div>
+    <p>{{$_SESSION['id']}}</p>
 </div>
 
 <div class="card">
@@ -19,7 +20,7 @@
             <div class="row">
 
                 <div class="col-md-6">
-                    <input type="file" name="image" class="form-control">
+                    <input type="file" name="avatar" class="form-control">
                 </div>
 
                 <div class="col-md-6">

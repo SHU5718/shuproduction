@@ -28,13 +28,8 @@
 </script>
 
   <!-- ログイン判定 -->
-<<<<<<< HEAD
-  <!-- <script>
-
-=======
   <script>
     var data = JSON.parse('<?php echo $name; ?>');
->>>>>>> 3a920b93b2a91e12b53595cbb4b75742cb2ac6c5
     window.addEventListener('load', function(){
         if (data == "guest"){
         document.getElementById('logBTN').style.visibility = "visible";

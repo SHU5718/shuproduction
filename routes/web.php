@@ -42,8 +42,7 @@ Route::post('/show', 'App\Http\Controllers\LikeController@show');
 Route::get('/total', 'App\Http\Controllers\LikeController@total');
 Route::post('/total', 'App\Http\Controllers\LikeController@total');
 
-Route::get("image-upload", 'App\Http\Controllers\ImageUploadController@image-upload')->name("img.upload");
-Route::post("imgstore", 'App\Http\Controllers\ImageUploadController@imagestore')->name("img.store");
+
 
 //ページ作る度に追加してください。
 Route::get('/top', 'App\Http\Controllers\SenryuuController@first_session');
@@ -53,32 +52,6 @@ Route::get('/result', 'App\Http\Controllers\SenryuuController@default_session');
 Route::get('/message_top', 'App\Http\Controllers\SenryuuController@default_session');
 Route::get('/message_result', 'App\Http\Controllers\SenryuuController@default_session');
 Route::get('/user', 'App\Http\Controllers\SenryuuController@default_session');
-<<<<<<< HEAD
+Route::get('/lank', 'App\Http\Controllers\SenryuuController@default_session');
 Route::get('/test', 'App\Http\Controllers\SenryuuController@default_session');
 
-=======
-Route::get('/lank', 'App\Http\Controllers\SenryuuController@default_session');
-Route::get('/new', 'App\Http\Controllers\SenryuuController@default_session');
->>>>>>> 3a920b93b2a91e12b53595cbb4b75742cb2ac6c5
-
-Route::get('/mypage', function(){
-    return view('user');
-});
-Route::get('/look', function(){
-    return view('user_look');
-});
-Route::get('/lank', function(){
-    return view('lank');
-});
-Route::get('/product', function(){
-    return view('product');
-});
-Route::get('/product.look', function(){
-    return view('product.look');
-});
-Route::get('/copyuser', function(){
-    return view('copyuser');
-});
-Route::get('/test', function(){
-    return view('test');
-});

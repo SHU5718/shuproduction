@@ -43,7 +43,7 @@
                                 <br>
                                     <label class="upload col-3 ">
                                         画像を選択
-                                        <input type="file" name="image" class="form-control" onchange="previewImage(this);" />
+                                        <input type="file" name="avatar" class="form-control" onchange="previewImage(this);" />
                                     </label>
                         <ul class="Tab nav nav-tabs justify-content-center mb-2">
                             <li class="Tab nav-item"><a href="#contents1" class="nav-link" data-toggle="tab">STEP01</a></li>
@@ -54,7 +54,7 @@
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
     </div>
 </form>
 @endsection('content')
