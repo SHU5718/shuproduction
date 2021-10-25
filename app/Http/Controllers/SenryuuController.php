@@ -10,7 +10,7 @@ class SenryuuController extends Controller
   public function make_updown()
   {
     $method = "GET";
-    $keyword = "夏"; //ここにシチュエーションを渡すと文字列を生成
+    $keyword = ""; //ここにシチュエーションを渡すと文字列を生成
     $sentence = ""; //生成した文を繋げて格納
     $sent_five = ""; //上の句
     $str_len = "";

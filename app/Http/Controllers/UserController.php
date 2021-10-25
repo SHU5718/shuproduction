@@ -60,14 +60,17 @@ class UserController extends Controller
       $stmt->bindValue(':pass', $pass);
       $stmt->execute();
       $msg = '会員登録が完了しました';
+
       //自動ログイン処理
       $sql = "SELECT * FROM users WHERE user_email = :mail";
       $stmt = $dbh->prepare($sql);
       $stmt->bindValue(':mail', $mail);
       $stmt->execute();
       $member = $stmt->fetch();
+
       $_SESSION['id'] = $member['id'];
       $_SESSION['name'] = $member['user_name'];
+      
       if(isset($_SESSION['image'])){
         $name = json_encode($_SESSION['name']);
         return view('/message_result',['name' => $name],['msg' => $msg],['img_url' => $_SESSION['image']]);

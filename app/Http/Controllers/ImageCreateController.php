@@ -114,7 +114,7 @@ class ImageCreateController extends Controller
 
     $_SESSION['image'] = $img_url;
     $name = json_encode($_SESSION['name']);
-    return view('/result',['name' => $name],['img_url' => $_SESSION['image']],['haikai' => $haikai]);
+    return view('/result',['name' => $name,'img_url' => $_SESSION['image'],'haikai' => $haikai]);
   }
 
   //画像投稿機能
@@ -155,7 +155,7 @@ class ImageCreateController extends Controller
       //トップ画面に遷移
       $msg = '投稿が完了しました。';
       $name = json_encode($_SESSION['name']);
-      return view('/message_top',['name' => $name],['msg' => $msg]);
+      return view('/message_top',['name' => $name,'msg' => $msg]);
     }
   }
     function image_delete(){
@@ -177,7 +177,7 @@ class ImageCreateController extends Controller
 
       $msg = '削除が完了しました。';
       $name = json_encode($_SESSION['name']);
-      return view('/message_top',['name' => $name],['msg' => $msg]);
+      return view('/message_top',['name' => $name,'msg' => $msg]);
     }
 
     //新着順表示
@@ -197,19 +197,28 @@ class ImageCreateController extends Controller
       $stmt = $dbh->prepare($sql);
       $stmt->execute();
       $products = $stmt->fetchAll();
+      $id = array();
       $img = array();
       $time = array();
       $haikai = array();
       $i = 0;
+      $j = 0;
 
       foreach ($products as $product) {
+        $id[$i] = $product['id'];
         $haikai[$i] = $product['product_haikai'];
         $img[$i] = $product['product_img'];
         $time[$i] = $product['product_time'];
         $i++;
       }
 
-      $name = json_encode($_SESSION['name']);
-      return view('/new',['name' => $name],['haikai' => $haikai],['time' => $time],['img' => $img]);
+      if(isset($_SESSION['name'])){
+        $name = json_encode($_SESSION['name']);
+        return view('/new',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'creater' => $id]);
+      }else{
+        $_SESSION['name'] = "guest";
+        $name = json_encode($_SESSION['name']);
+        return view('/new',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'creater' => $creater_name]);
+      }
     }
 }

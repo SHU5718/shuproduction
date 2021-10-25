@@ -394,6 +394,32 @@
   margin-left: 240px;
   margin-top: -80px;
 }
+.date {
+  margin-bottom: -0.5px;
+}
+
+/* ランキング順画面 */
+.first {
+  width: 50px;
+  height: 40px;
+}
+/* メッセージ画面 */
+.msgBox {
+  height: 400px;
+  background-color: white;
+}
+.msgBox hr {
+  height: 2px;
+  color: green;
+  margin-top: -15px;
+}
+.msgText {
+  text-align: center;
+}
+.msgBox  {
+  text-align: center;
+  margin-top: 60px;
+}
 </style>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -465,4 +491,28 @@
         changeBtn.addEventListener('click', function(){
           area.style.display = "none";
         });
-  </script>
+    </script>
+     <!-- パスワード表示・非表示切り替え -->
+  <script>
+ const pwd = document.getElementById('password');
+ const pwdCheck = document.getElementById('password-check');
+ pwdCheck.addEventListener('change', function() {
+     if(pwdCheck.checked) {
+         pwd.setAttribute('type', 'text');
+     } else {
+         pwd.setAttribute('type', 'password');
+     }
+ }, false);
+
+ window.addEventListener('load',function(){
+ const pwdc = document.getElementById('passwordC');
+ const pwdcheck = document.getElementById('password-check');
+ pwdcheck.addEventListener('change', function() {
+     if(pwdcheck.checked) {
+         pwdc.setAttribute('type', 'text');
+     } else {
+         pwdc.setAttribute('type', 'password');
+     }
+ }, false);
+});
+ </script>
