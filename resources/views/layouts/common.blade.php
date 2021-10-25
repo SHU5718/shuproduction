@@ -327,6 +327,9 @@
   .topmsg {
     margin-left: 360px;
   }
+  .topNew {
+    text-align: center;
+  }
   /*resultページ*/
   .resultIMG {
     width: 450px;
@@ -470,7 +473,7 @@
 }
 .haikuCard a {
   text-decoration: none;
-  margin-left: 110px;
+  text-align: center;
   color: #333;
 }
 .heart {

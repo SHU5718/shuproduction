@@ -27,6 +27,7 @@
 
         <div class="box2 col-lg-3 ms-4">
             <div class="add mt-4 mb-3"><img src="images/adsence.gif"></div>
+            <p class="topNew bg-info text-light">新着順</p>
             <ul>
                 <li>@isset($haikai[0]){{$haikai[0]}}@endisset</li>
                 <li>@isset($haikai[1]){{$haikai[1]}}@endisset</li>
