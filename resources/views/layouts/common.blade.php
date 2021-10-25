@@ -28,8 +28,13 @@
 </script>
 
   <!-- ログイン判定 -->
+<<<<<<< HEAD
   <!-- <script>
 
+=======
+  <script>
+    var data = JSON.parse('<?php echo $name; ?>');
+>>>>>>> 3a920b93b2a91e12b53595cbb4b75742cb2ac6c5
     window.addEventListener('load', function(){
         if (data == "guest"){
         document.getElementById('logBTN').style.visibility = "visible";
@@ -47,7 +52,7 @@
           })
         }
     });
-  </script> -->
+  </script>
   <!-- 評価機能 -->
   <!-- <script>
     document.addEventListener('load', function() { // HTML解析が終わったら
@@ -243,7 +248,7 @@
     margin-left: -14px;
     width: 270px;
     height: 30px;
-    background-color: violet;
+    background-color: #ffffff;
     list-style: none;
     margin-bottom: 8px;
     margin-top: 10px;
@@ -424,9 +429,70 @@
 }
 
 /* ランキング順画面 */
+.lankTitle {
+  text-align: center;
+  background-color: #e0f3ce;
+  color: #333;
+}
+.lankhaikuArea {
+  background-color: white;
+  width: 100%;
+  height: 1800px;
+  margin-left: -40px;
+}
+.firstCard {
+  margin-left: 496px;
+}
 .first {
-  width: 50px;
-  height: 40px;
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  margin-left: 4px;
+  z-index: 2;
+}
+.lankProduct {
+  width:300px;
+  height: 300px;
+  position: absolute;
+  z-index: 1;
+}
+.lankuser {
+  position: absolute;
+  z-index:3;
+  margin-top: 300px;
+  margin-left: 110px;
+  text-decoration: none;
+}
+.secondCard {
+  margin-top: 200px;
+  margin-left: 136px;
+}
+.thirdCard {
+  margin-left: 854px;
+}
+.lankCard {
+  margin-top: 360px;
+}
+.underProduct {
+  width:300px;
+  height: 300px;
+}
+.underuser {
+  margin-top: 300px;
+  margin-left: 40px;
+  text-decoration: none;
+}
+.lankList {
+  margin-left: 150px;
+  text-align: center;
+}
+.Lank {
+  margin-bottom: -0.5px;
+  margin-left: 44px;
+}
+.lankCardB {
+  margin-top: 15px;
+  text-align: center;
 }
 /* メッセージ画面 */
 .msgBox {
@@ -441,7 +507,7 @@
 .msgText {
   text-align: center;
 }
-.guide {
+.msgBox  {
   text-align: center;
   margin-top: 60px;
 }
@@ -462,7 +528,7 @@
           <a class="nav-link" href="#">ランキング</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">新着順</a>
+          <a class="nav-link" href="/new">新着順</a>
         </li>
       </ul>
 

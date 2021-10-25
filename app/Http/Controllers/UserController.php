@@ -9,7 +9,7 @@ use PDO;
 class UserController extends Controller
 {
   //新規登録
-  function create_account()
+  public function create_account()
   {
     session_start();
     //フォームからの値をそれぞれ変数に代入
@@ -60,22 +60,28 @@ class UserController extends Controller
       $stmt->bindValue(':pass', $pass);
       $stmt->execute();
       $msg = '会員登録が完了しました';
+
       //自動ログイン処理
       $sql = "SELECT * FROM users WHERE user_email = :mail";
       $stmt = $dbh->prepare($sql);
       $stmt->bindValue(':mail', $mail);
       $stmt->execute();
       $member = $stmt->fetch();
+
       $_SESSION['id'] = $member['id'];
       $_SESSION['name'] = $member['user_name'];
-
+      
+      if(isset($_SESSION['image'])){
+        $name = json_encode($_SESSION['name']);
+        return view('/message_result',['name' => $name],['msg' => $msg],['img_url' => $_SESSION['image']]);
+      }
       $name = json_encode($_SESSION['name']);
-      return view('/message',['name' => $name],['msg' => $msg]);
+      return view('/message_top',['name' => $name],['msg' => $msg]);
     }
 
   }
   //ログイン
-  function user_login(){
+  public function user_login(){
 
     session_start();
     $mail = $_POST['mail'];
@@ -120,7 +126,7 @@ class UserController extends Controller
     }
   }
 
-  function user_logout(){
+  public function user_logout(){
     session_start();
     if (isset($_COOKIE["PHPSESSID"])) {
       setcookie("PHPSESSID", '', time() - 1800, '/');
@@ -130,6 +136,6 @@ class UserController extends Controller
     $_SESSION['name'] = "guest";
     $name = json_encode($_SESSION['name']);
     $msg = 'ログアウトしました。';
-    return view('/message',['name' => $name],['msg' => $msg]);
+    return view('/message_top',['name' => $name],['msg' => $msg]);
   }
 }
