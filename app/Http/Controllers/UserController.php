@@ -15,7 +15,7 @@ class UserController extends Controller
     //フォームからの値をそれぞれ変数に代入
     $id = random_int(1000000000000000,9999999999999999);
     $name = $_POST['name'];
-    $avatar = $_POST['avatar'];
+    //$avatar = $_POST['avatar'];
     $mail = $_POST['mail'];
     $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
     $Pass = $_POST['Pass'];
@@ -53,19 +53,17 @@ class UserController extends Controller
       return view('/newuser',['name' => $name],['msg' => $msg]);
     } else{
         // アイコン
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-        $imageName = time().'.'.$request->image->extension();
-        $request->image->move(public_path('images/uploaded_avatar'),$imageName);
+        //$request->validate(['image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',]);
+        //$imageName = time().'.'.$request->image->extension();
+        //$request->image->move(public_path('images/uploaded_avatar'),$imageName);
 
       //登録されていなければinsert
-      $sql = "INSERT INTO users(id, user_name, user_email, user_password, user_img) VALUES (:id, :name, :mail, :avatar, :pass)";
+      $sql = "INSERT INTO users(id, user_name, user_email, user_img, user_password,) VALUES (:id, :name, :mail, :avatar, :pass)";
       $stmt = $dbh->prepare($sql);
       $stmt->bindValue(':id', $id);
       $stmt->bindValue(':name', $name);
       $stmt->bindValue(':mail', $mail);
-      $stmt->bindValue(':avatar', $avatar);
+      //$stmt->bindValue(':avatar', $avatar);
       $stmt->bindValue(':pass', $pass);
       $stmt->execute();
       $msg = '会員登録が完了しました';

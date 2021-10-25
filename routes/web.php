@@ -55,4 +55,3 @@ Route::get('/message_result', 'App\Http\Controllers\SenryuuController@default_se
 Route::get('/user', 'App\Http\Controllers\SenryuuController@default_session');
 Route::get('/lank', 'App\Http\Controllers\SenryuuController@default_session');
 Route::get('/test', 'App\Http\Controllers\SenryuuController@default_session');
-

@@ -193,32 +193,67 @@ class ImageCreateController extends Controller
         $msg = $e->getMessage();
       }
 
-      $sql = "SELECT * FROM products ORDER BY product_time DESC LIMIT 12";
+      $sql = "SELECT * FROM products LEFT OUTER JOIN users ON products.user_id=users.id  ORDER BY product_time DESC LIMIT 12";
       $stmt = $dbh->prepare($sql);
       $stmt->execute();
       $products = $stmt->fetchAll();
-      $id = array();
       $img = array();
       $time = array();
       $haikai = array();
       $i = 0;
-      $j = 0;
 
       foreach ($products as $product) {
-        $id[$i] = $product['id'];
         $haikai[$i] = $product['product_haikai'];
         $img[$i] = $product['product_img'];
         $time[$i] = $product['product_time'];
+        $created[$i] = $product['user_name'];
         $i++;
       }
-
       if(isset($_SESSION['name'])){
         $name = json_encode($_SESSION['name']);
-        return view('/new',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'creater' => $id]);
+      return view('/new',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
       }else{
         $_SESSION['name'] = "guest";
         $name = json_encode($_SESSION['name']);
-        return view('/new',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'creater' => $creater_name]);
+      return view('/new',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
+      }
+    }
+    //新着順表示
+    public function image_ranking(){
+      session_start();
+
+      $dsn = "mysql:host=127.0.0.1; dbname=senryuu; charset=utf8";
+      $username = "root";
+      $password = "";
+      try {
+        $dbh = new PDO($dsn, $username, $password);
+      } catch (PDOException $e) {
+        $msg = $e->getMessage();
+      }
+
+      $sql = "SELECT * FROM products LEFT OUTER JOIN users ON products.user_id=users.id  ORDER BY product_time DESC LIMIT 12";
+      $stmt = $dbh->prepare($sql);
+      $stmt->execute();
+      $products = $stmt->fetchAll();
+      $img = array();
+      $time = array();
+      $haikai = array();
+      $i = 0;
+
+      foreach ($products as $product) {
+        $haikai[$i] = $product['product_haikai'];
+        $img[$i] = $product['product_img'];
+        $time[$i] = $product['product_time'];
+        $created[$i] = $product['user_name'];
+        $i++;
+      }
+      if(isset($_SESSION['name'])){
+        $name = json_encode($_SESSION['name']);
+      return view('/new',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
+      }else{
+        $_SESSION['name'] = "guest";
+        $name = json_encode($_SESSION['name']);
+      return view('/new',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
       }
     }
 }

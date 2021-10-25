@@ -7,6 +7,12 @@
 
 <div class="haikuCard col-3">
     <p class="date">2021-10-22</p>
+    <div class="haikuCard col-3">
+        <img src="images/uploaded_images/{{$img[0]}}" class="col-8">
+        <a href="" class="">{{$created[0]}}</a>
+        <input type="image" src="images/good.png" class="heart" id="heart">
+        <input type="image" src="images/beforeGood.png" class="before" id="before"  onclick="Good()">
+    </div>
     <!--<img src="images/uploaded_images/" class="col-8">
     <a href="" class=""></a>
     <p id="like_count"></p>
@@ -57,6 +63,7 @@
                 <div class="col-md-6">
                     <button type="submit" class="btn btn-success">Upload</button>
                 </div>
+
             </div>
         </form>
     </div>
