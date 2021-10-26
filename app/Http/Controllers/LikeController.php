@@ -12,7 +12,7 @@ class LikeController extends Controller
     {
 
         // ユーザーインフォメーション
-        $user_id = $_SESSION['id'];
+        $user_id = 3403122109098709;
 
         // postインフォメーション
         $product_id = request('id');
