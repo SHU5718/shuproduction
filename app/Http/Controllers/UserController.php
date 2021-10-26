@@ -9,13 +9,13 @@ use PDO;
 class UserController extends Controller
 {
   //新規登録
-  public function create_account(Request $request)
+  public function create_account()
   {
     session_start();
     //フォームからの値をそれぞれ変数に代入
     $id = random_int(1000000000000000,9999999999999999);
     $name = $_POST['name'];
-    //$avatar = $_POST['avatar'];
+    $avatar = "";
     $mail = $_POST['mail'];
     $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
     $Pass = $_POST['Pass'];
@@ -23,6 +23,8 @@ class UserController extends Controller
     $username = "root";
     $password = "";
     $member = array();
+
+    //データベース接続
     try {
       $dbh = new PDO($dsn, $username, $password);
     } catch (PDOException $e) {
@@ -37,12 +39,12 @@ class UserController extends Controller
     $member = $stmt->fetch();
     $m_mail = "";
 
-
     //$member['user_email']に値があるときのみ代入
     if (isset($member['user_email'])) {
       $m_mail = $member['user_email'];
     }
-    //メールアドレスが登録されている場合
+
+    //メールアドレスが登録されている場合&パスワードが一致しない場合
     if ($m_mail === $mail) {
       $msg = '同じメールアドレスが存在します。';
       $name = json_encode($_SESSION['name']);
@@ -58,12 +60,18 @@ class UserController extends Controller
         //$request->image->move(public_path('images/uploaded_avatar'),$imageName);
 
       //登録されていなければinsert
-      $sql = "INSERT INTO users(id, user_name, user_email, user_img, user_password,) VALUES (:id, :name, :mail, :avatar, :pass)";
+      if(isset($_POST['avatar'])){
+        $avatar = $_POST['avatar'];
+        $sql = "INSERT INTO users(id, user_name, user_email, user_password, user_img) VALUES (:id, :name, :mail, :pass, :avatar)";
+      }else{
+        $sql = "INSERT INTO users(id, user_name, user_email, user_password) VALUES (:id, :name, :mail, :pass)";
+      }
+
       $stmt = $dbh->prepare($sql);
       $stmt->bindValue(':id', $id);
       $stmt->bindValue(':name', $name);
       $stmt->bindValue(':mail', $mail);
-      //$stmt->bindValue(':avatar', $avatar);
+      $stmt->bindValue(':avatar', $avatar);
       $stmt->bindValue(':pass', $pass);
       $stmt->execute();
       $msg = '会員登録が完了しました';

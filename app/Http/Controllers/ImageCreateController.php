@@ -207,6 +207,7 @@ class ImageCreateController extends Controller
         $img[$i] = $product['product_img'];
         $time[$i] = $product['product_time'];
         $created[$i] = $product['user_name'];
+        $image_id[$i] = $product['id'];
         $i++;
       }
       if(isset($_SESSION['name'])){
@@ -238,6 +239,7 @@ class ImageCreateController extends Controller
       $img = array();
       $time = array();
       $haikai = array();
+      $created = array();
       $i = 0;
 
       foreach ($products as $product) {
@@ -249,11 +251,51 @@ class ImageCreateController extends Controller
       }
       if(isset($_SESSION['name'])){
         $name = json_encode($_SESSION['name']);
-      return view('/new',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
+      return view('/new',['name' => $name],['haikai' => $haikai, 'time' => $time, 'img' => $img, 'created' => $created]);
       }else{
         $_SESSION['name'] = "guest";
         $name = json_encode($_SESSION['name']);
-      return view('/new',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
+      return view('/new',['name' => $name],['haikai' => $haikai, 'time' => $time, 'img' => $img, 'created' => $created]);
+      }
+    }
+    //マイページ
+    public function my_image(){
+      session_start();
+
+      $dsn = "mysql:host=127.0.0.1; dbname=senryuu; charset=utf8";
+      $username = "root";
+      $password = "";
+      try {
+        $dbh = new PDO($dsn, $username, $password);
+      } catch (PDOException $e) {
+        $msg = $e->getMessage();
+      }
+
+      $sql = "SELECT * FROM products LEFT OUTER JOIN users ON products.user_id=users.id  WHERE users.id= :id ORDER BY product_time DESC LIMIT 12";
+      $stmt = $dbh->prepare($sql);
+      $stmt->bindValue(':id', $_SESSION['id']);
+      $stmt->execute();
+      $products = $stmt->fetchAll();
+      $img = array();
+      $time = array();
+      $haikai = array();
+      $i = 0;
+
+      foreach ($products as $product) {
+        $haikai[$i] = $product['product_haikai'];
+        $img[$i] = $product['product_img'];
+        $time[$i] = $product['product_time'];
+        $created[$i] = $product['user_name'];
+        $image_id[$i] = $product['id'];
+        $i++;
+      }
+      if(isset($_SESSION['name'])){
+        $name = json_encode($_SESSION['name']);
+      return view('/user',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
+      }else{
+        $_SESSION['name'] = "guest";
+        $name = json_encode($_SESSION['name']);
+      return view('/user',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
       }
     }
 }
