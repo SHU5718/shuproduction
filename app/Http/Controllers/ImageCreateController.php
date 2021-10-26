@@ -207,6 +207,7 @@ class ImageCreateController extends Controller
         $img[$i] = $product['product_img'];
         $time[$i] = $product['product_time'];
         $created[$i] = $product['user_name'];
+        $image_id[$i] = $product['id'];
         $i++;
       }
       if(isset($_SESSION['name'])){

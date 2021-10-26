@@ -109,6 +109,7 @@
       });
   </script> -->
 
+<<<<<<< HEAD
   <!-- モーダル -->
   <script>
     window.onload = function() {
@@ -130,6 +131,19 @@
   }
 }
   </script>
+=======
+<!--<script>
+    document.addEventListener('DOMContentLoaded', function(){
+    const like = document.getElementById('before');
+    const heart = document.getElementById('heart');
+    function Good(){
+        heart.style.visibility = "visible";
+        like.style.visibility = "hidden";
+    };
+    });
+</script>-->
+
+>>>>>>> 8b8d6921e014823211cd5139d12b795e137de259
 <style>
   /* 共通項目 */
   body {
