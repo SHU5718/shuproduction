@@ -131,12 +131,35 @@ class UserController extends Controller
       $_SESSION['name'] = $member['user_name'];
       $_SESSION['avatar'] = $member['user_img'];
 
+      $dsn = "mysql:host=127.0.0.1; dbname=senryuu; charset=utf8";
+      $username = "root";
+      $password = "";
+      try {
+        $dbh = new PDO($dsn, $username, $password);
+      } catch (PDOException $e) {
+        $msg = $e->getMessage();
+      }
+
+      $sql = "SELECT * FROM products ORDER BY product_time DESC LIMIT 12";
+      $stmt = $dbh->prepare($sql);
+      $stmt->execute();
+      $products = $stmt->fetchAll();
+      $haikai = array();
+      $time = array();
+      $i = 0;
+
+      foreach ($products as $product) {
+        $haikai[$i] = $product['product_haikai'];
+        $time[$i] = $product['product_time'];
+        $i++;
+      }
+
       if(isset($_SESSION['image'])){
         $name = json_encode($_SESSION['name']);
         return view('/result',['name' => $name],['img_url' => $_SESSION['image']]);
       }
       $name = json_encode($_SESSION['name']);
-      return view('/top',['name' => $name]);
+      return view('/top',['name' => $name],['haikai' => $haikai, 'time' => $time]);
     } else {
       $name = json_encode($_SESSION['name']);
       $msg = 'メールアドレスもしくはパスワードが間違っています。';

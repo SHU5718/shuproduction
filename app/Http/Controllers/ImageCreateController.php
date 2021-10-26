@@ -212,6 +212,10 @@ class ImageCreateController extends Controller
       }
       if(isset($_SESSION['name'])){
         $name = json_encode($_SESSION['name']);
+        if(isset($_SESSION['id'])){
+          $s_id = json_encode($_SESSION['id']);
+          return view('/new',['name' => $name, 's_id' => $s_id, 'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
+        }
       return view('/new',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
       }else{
         $_SESSION['name'] = "guest";
