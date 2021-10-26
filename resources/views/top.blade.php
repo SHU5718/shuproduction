@@ -29,19 +29,19 @@
             <div class="add mt-4 mb-3"><img src="images/adsence.gif"></div>
             <p class="topNew bg-info text-light">新着順</p>
             <ul>
-                <li class="topDate">2021-10-22</li>
-                <li class="topHaiku">ああああ　いいいいいいい　ううううう</li>
+                <li class="topDate">@isset($time[0]){{$time[0]}}@endisset</li>
+                <li class="topHaiku">@isset($haikai[0]){{$haikai[0]}}@endisset</li>
 
-                <li class="topDate">2021-10-22</li>
+                <li class="topDate">@isset($time[1]){{$time[1]}}@endisset</li>
                 <li class="topHaiku">@isset($haikai[1]){{$haikai[1]}}@endisset</li>
 
-                <li class="topDate">2021-10-22</li>
+                <li class="topDate">@isset($time[2]){{$time[2]}}@endisset</li>
                 <li class="topHaiku">@isset($haikai[2]){{$haikai[2]}}@endisset</li>
 
-                <li class="topDate">2021-10-22</li>
+                <li class="topDate">@isset($time[3]){{$time[3]}}@endisset</li>
                 <li class="topHaiku">@isset($haikai[3]){{$haikai[3]}}@endisset</li>
-                
-                <li class="topDate">2021-10-22</li>
+
+                <li class="topDate">@isset($time[4]){{$time[4]}}@endisset</li>
                 <li class="topHaiku">@isset($haikai[4]){{$haikai[4]}}@endisset</li>
             </ul>
             <a href="new" class="see_more">もっと見る</a>

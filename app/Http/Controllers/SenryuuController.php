@@ -65,18 +65,19 @@ class SenryuuController extends Controller
 
     foreach ($products as $product) {
       $haikai[$i] = $product['product_haikai'];
+      $time[$i] = $product['product_time'];
       $i++;
 
     }
     if(isset($_SESSION['name'])){
       $name = json_encode($_SESSION['name']);
       return view('top', ['up_five' => $sent_five[mt_rand(0,$five_cnt -1)],
-      'down_five' => $rand_word[mt_rand(0,$word_cnt-1)],'name' => $name],['haikai' => $haikai]);
+      'down_five' => $rand_word[mt_rand(0,$word_cnt-1)],'name' => $name],['haikai' => $haikai, 'time' => $time]);
     }else{
       $_SESSION['name'] = "guest";
       $name = json_encode($_SESSION['name']);
       return view('top', ['up_five' => $sent_five[mt_rand(0,$five_cnt -1)],
-      'down_five' => $rand_word[mt_rand(0,$word_cnt-1)],'name' => $name],['haikai' => $haikai]);
+      'down_five' => $rand_word[mt_rand(0,$word_cnt-1)],'name' => $name],['haikai' => $haikai, 'time' => $time]);
     }
 
 
@@ -98,20 +99,22 @@ class SenryuuController extends Controller
     $stmt->execute();
     $products = $stmt->fetchAll();
     $haikai = array();
+    $time = array();
     $i = 0;
 
     foreach ($products as $product) {
       $haikai[$i] = $product['product_haikai'];
+      $time[$i] = $product['product_time'];
       $i++;
     }
 
     if(isset($_SESSION['name'])){
       $name = json_encode($_SESSION['name']);
-      return view('/top',['name' => $name],['haikai' => $haikai]);
+      return view('/top',['name' => $name],['haikai' => $haikai, 'time' => $time]);
     }else{
       $_SESSION['name'] = "guest";
       $name = json_encode($_SESSION['name']);
-      return view('/top',['name' => $name],['haikai' => $haikai]);
+      return view('/top',['name' => $name],['haikai' => $haikai, 'time' => $time]);
     }
   }
   public function default_session(){

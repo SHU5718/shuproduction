@@ -109,7 +109,6 @@
       });
   </script> -->
 
-<<<<<<< HEAD
   <!-- モーダル -->
   <script>
     window.onload = function() {
@@ -131,7 +130,6 @@
   }
 }
   </script>
-=======
 <!--<script>
     document.addEventListener('DOMContentLoaded', function(){
     const like = document.getElementById('before');
@@ -143,7 +141,6 @@
     });
 </script>-->
 
->>>>>>> 8b8d6921e014823211cd5139d12b795e137de259
 <style>
   /* 共通項目 */
   body {
@@ -631,7 +628,7 @@
           <a class="nav-link active me" href="top">ホーム</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">ランキング</a>
+          <a class="nav-link" href="/lank">ランキング</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/new">新着順</a>

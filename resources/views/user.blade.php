@@ -29,15 +29,15 @@
     <div class="row">
         <div class="haikuArea">
             <div class="imgList row gap-5 mt-5">
-                <img src="images/sample01.png" class="haikuIMG col-4 offset-1">
-                <img src="images/sample01.png" class="haikuIMG col-4">
-                <img src="images/sample01.png" class="haikuIMG col-4">
-                <img src="images/sample01.png" class="haikuIMG col-4 offset-1">
-                <img src="images/sample01.png" class="haikuIMG col-4">
-                <img src="images/sample01.png" class="haikuIMG col-4">
-                <img src="images/sample01.png" class="haikuIMG col-4 offset-1">
-                <img src="images/sample01.png" class="haikuIMG col-4">
-                <img src="images/sample01.png" class="haikuIMG col-4">
+                <img src="images/uploaded_images/@isset($img[0]){{$img[0]}}@endisset" class="haikuIMG col-4 offset-1">
+                <img src="images/uploaded_images/@isset($img[1]){{$img[1]}}@endisset" class="haikuIMG col-4">
+                <img src="images/uploaded_images/@isset($img[2]){{$img[2]}}@endisset" class="haikuIMG col-4">
+                <img src="images/uploaded_images/@isset($img[3]){{$img[3]}}@endisset" class="haikuIMG col-4 offset-1">
+                <img src="images/uploaded_images/@isset($img[4]){{$img[4]}}@endisset" class="haikuIMG col-4">
+                <img src="images/uploaded_images/@isset($img[5]){{$img[5]}}@endisset" class="haikuIMG col-4">
+                <img src="images/uploaded_images/@isset($img[6]){{$img[6]}}@endisset" class="haikuIMG col-4 offset-1">
+                <img src="images/uploaded_images/@isset($img[7]){{$img[7]}}@endisset" class="haikuIMG col-4">
+                <img src="images/uploaded_images/@isset($img[8]){{$img[8]}}@endisset" class="haikuIMG col-4">
             </div>
         </div>
     </div>

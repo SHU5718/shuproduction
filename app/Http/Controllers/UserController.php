@@ -23,6 +23,8 @@ class UserController extends Controller
     $username = "root";
     $password = "";
     $member = array();
+
+    //データベース接続
     try {
       $dbh = new PDO($dsn, $username, $password);
     } catch (PDOException $e) {
@@ -37,12 +39,12 @@ class UserController extends Controller
     $member = $stmt->fetch();
     $m_mail = "";
 
-
     //$member['user_email']に値があるときのみ代入
     if (isset($member['user_email'])) {
       $m_mail = $member['user_email'];
     }
-    //メールアドレスが登録されている場合
+
+    //メールアドレスが登録されている場合&パスワードが一致しない場合
     if ($m_mail === $mail) {
       $msg = '同じメールアドレスが存在します。';
       $name = json_encode($_SESSION['name']);
