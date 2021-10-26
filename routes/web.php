@@ -42,8 +42,7 @@ Route::post('/show', 'App\Http\Controllers\LikeController@show');
 Route::get('/total', 'App\Http\Controllers\LikeController@total');
 Route::post('/total', 'App\Http\Controllers\LikeController@total');
 
-Route::get("image-upload", 'App\Http\Controllers\ImageUploadController@image-upload')->name("img.upload");
-Route::post("imgstore", 'App\Http\Controllers\ImageUploadController@imagestore')->name("img.store");
+
 
 //ページ作る度に追加してください。
 Route::get('/top', 'App\Http\Controllers\SenryuuController@first_session');
@@ -56,7 +55,4 @@ Route::get('/user', 'App\Http\Controllers\SenryuuController@default_session');
 Route::get('/test', 'App\Http\Controllers\SenryuuController@default_session');
 Route::get('/lank', 'App\Http\Controllers\SenryuuController@default_session');
 Route::get('/product', 'App\Http\Controllers\SenryuuController@default_session');
-
-Route::get('/copyuser', function(){
-    return view('copyuser');
-});
+Route::get('/copyuser', 'App\Http\Controllers\SenryuuController@default_session');

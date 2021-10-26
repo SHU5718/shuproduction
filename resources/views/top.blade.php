@@ -1,7 +1,7 @@
 @extends('layouts.common')
 
 @section('content')
-<div class="container">
+<div class="container mb-5">
     <div class="row mt-4">
         <div class="box1 col-lg-8">
             <div class="row">
@@ -29,11 +29,20 @@
             <div class="add mt-4 mb-3"><img src="images/adsence.gif"></div>
             <p class="topNew bg-info text-light">新着順</p>
             <ul>
-                <li>@isset($haikai[0]){{$haikai[0]}}@endisset</li>
-                <li>@isset($haikai[1]){{$haikai[1]}}@endisset</li>
-                <li>@isset($haikai[2]){{$haikai[2]}}@endisset</li>
-                <li>@isset($haikai[3]){{$haikai[3]}}@endisset</li>
-                <li>@isset($haikai[4]){{$haikai[4]}}@endisset</li>
+                <li class="topDate">2021-10-22</li>
+                <li class="topHaiku">ああああ　いいいいいいい　ううううう</li>
+
+                <li class="topDate">2021-10-22</li>
+                <li class="topHaiku">@isset($haikai[1]){{$haikai[1]}}@endisset</li>
+
+                <li class="topDate">2021-10-22</li>
+                <li class="topHaiku">@isset($haikai[2]){{$haikai[2]}}@endisset</li>
+
+                <li class="topDate">2021-10-22</li>
+                <li class="topHaiku">@isset($haikai[3]){{$haikai[3]}}@endisset</li>
+                
+                <li class="topDate">2021-10-22</li>
+                <li class="topHaiku">@isset($haikai[4]){{$haikai[4]}}@endisset</li>
             </ul>
             <a href="new" class="see_more">もっと見る</a>
         </div>

@@ -108,16 +108,6 @@
         });
       });
   </script> -->
-<!--<script>
-    document.addEventListener('DOMContentLoaded', function(){
-    const like = document.getElementById('before');
-    const heart = document.getElementById('heart');
-    function Good(){
-        heart.style.visibility = "visible";
-        like.style.visibility = "hidden";
-    };
-    });
-  </script>
 
   <!-- モーダル -->
   <script>
@@ -250,8 +240,13 @@
     height: 30px;
     background-color: #ffffff;
     list-style: none;
-    margin-bottom: 8px;
-    margin-top: 10px;
+  }
+  .topDate {
+    margin-bottom: -16px;
+    font-size: 12px;
+  }
+  .topHaiku {
+    margin-bottom: -6px;
   }
   .box2 a {
     text-decoration: none;
@@ -704,3 +699,16 @@
  }, false);
 });
  </script>
+<script defer>
+    const like = document.getElementById('before');
+    const heart = document.getElementById('heart');
+    function Good(){
+      if (like.style.visibility == "visible"){
+        heart.style.visibility = "visible";
+        like.style.visibility = "hidden";
+      }else{
+        heart.style.visibility = "hidden";
+        like.style.visibility = "visible";
+      }
+    };
+  </script>
