@@ -48,32 +48,7 @@
         }
     });
   </script>
-  <!-- 評価機能 -->
-  <!-- <script>
-    document.addEventListener('load', function() { // HTML解析が終わったら
-      var product = '俳句';
-      const like = document.getElementById('before');
-      const heart = document.getElementById('heart');
-      like.addEventListener('click', function(){
-          console.log('いいねしたよ');
-          axios.post('/like',{
-            id: 'product'
-          }).then(function(responce){
-                if (response.data.code == 200) {
-                  // if 200 then like | count +1
-                  heart.style.visibility = "visible";
-                  like.style.visibility = "hidden";
-                  } else if (response.data.code == 202) {
-                  // if 202 then unlike | count -1
-                  heart.style.visibility = "hidden";
-                  like.style.visibility = "visible";
-                }
-              }).catch(function (error) {
-                console.log(error);
-               });
-        });
-      });
-    </script> -->
+
 
       <!-- ピンクのハートになった時に押したときの処理 -->
       <!-- <script>
@@ -579,4 +554,26 @@
  }, false);
 });
  </script>
+
+<!-- 評価機能 -->
+<script defer>
+    var product_id = 7107424674023287;
+    const like = document.getElementById('before');
+    const heart = document.getElementById('heart');
+    function Good(){
+        axios.post('/like', {
+            id: product_id
+        }).then(function (response){
+            if (response.data.code == 200) {
+            heart.style.visibility = "visible";
+            like.style.visibility = "hidden";
+        } else if (response.data.code == 202) {
+            heart.style.visibility = "hidden";
+            like.style.visibility = "visible";
+        }
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+</script>
 

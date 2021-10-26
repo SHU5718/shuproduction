@@ -11,7 +11,7 @@
                 <div class="haikuCard col-3">
                     <img src="images/uploaded_images/{{$img[0]}}" class="col-8">
                     <a href="" class="">{{$created[0]}}</a>
-                    <input type="image" src="images/good.png" class="heart" id="heart">
+                    <input type="image" src="images/good.png" class="heart" id="heart" onclick="Good()">
                     <input type="image" src="images/beforeGood.png" class="before" id="before"  onclick="Good()">
                 </div>
                 <div class="haikuCard col-3">
