@@ -9,80 +9,80 @@
     </div>
             <div class="newList row gap-5 mt-5">
                 <div class="haikuCard col-3">
-                    <img src="images/uploaded_images/{{$img[0]}}" class="col-8">
-                    <a href="" class="">{{$created[0]}}</a>
+                    <img src="images/uploaded_images/@isset($img[0]){{$img[0]}}@endisset" class="col-8">
+                    <a href="" class="">@isset($created[0]){{$created[0]}}@endisset</a>
                     <input type="image" src="images/good.png" class="heart" id="heart">
                     <input type="image" src="images/beforeGood.png" class="before" id="before"  onclick="Good()">
                 </div>
                 <div class="haikuCard col-3">
-                    <img src="images/uploaded_images/{{$img[1]}}" class="col-8">
-                    <a href="" class="">{{$created[1]}}</a>
+                    <img src="images/uploaded_images/@isset($img[1]){{$img[1]}}@endisset" class="col-8">
+                    <a href="" class="">@isset($created[1]){{$created[1]}}@endisset</a>
                     <input type="image" src="images/good.png" class="heart" id="heart">
                     <input type="image" src="images/beforeGood.png" class="before" id="before">
                 </div>
                 <div class="haikuCard col-3">
-                    <img src="images/uploaded_images/{{$img[2]}}" class="col-8">
-                    <a href="" class="">{{$created[2]}}</a>
-                    <input type="image" src="images/good.png" class="heart" id="heart">
-                    <input type="image" src="images/beforeGood.png" class="before" id="before">
-                </div>
-            </div>
-            <div class="newList row gap-5 mt-5">
-                <div class="haikuCard col-3">
-                    <img src="images/uploaded_images/{{$img[3]}}" class="col-8">
-                    <a href="" class="">{{$created[3]}}</a>
-                    <input type="image" src="images/good.png" class="heart" id="heart">
-                    <input type="image" src="images/beforeGood.png" class="before" id="before">
-                </div>
-                <div class="haikuCard col-3">
-                    <img src="images/uploaded_images/{{$img[4]}}" class="col-8">
-                    <a href="" class="">{{$created[4]}}</a>
-                    <input type="image" src="images/good.png" class="heart" id="heart">
-                    <input type="image" src="images/beforeGood.png" class="before" id="before">
-                </div>
-                <div class="haikuCard col-3">
-                    <img src="images/uploaded_images/{{$img[5]}}" class="col-8">
-                    <a href="" class="">{{$created[5]}}</a>
+                    <img src="images/uploaded_images/@isset($img[2]){{$img[2]}}@endisset" class="col-8">
+                    <a href="" class="">@isset($created[2]){{$created[2]}}@endisset</a>
                     <input type="image" src="images/good.png" class="heart" id="heart">
                     <input type="image" src="images/beforeGood.png" class="before" id="before">
                 </div>
             </div>
             <div class="newList row gap-5 mt-5">
                 <div class="haikuCard col-3">
-                    <img src="images/uploaded_images/{{$img[6]}}" class="col-8">
-                    <a href="" class="">{{$created[6]}}</a>
+                    <img src="images/uploaded_images/@isset($img[3]){{$img[3]}}@endisset" class="col-8">
+                    <a href="" class="">@isset($created[3]){{$created[3]}}@endisset</a>
                     <input type="image" src="images/good.png" class="heart" id="heart">
                     <input type="image" src="images/beforeGood.png" class="before" id="before">
                 </div>
                 <div class="haikuCard col-3">
-                    <img src="images/uploaded_images/{{$img[7]}}" class="col-8">
-                    <a href="" class="">{{$created[7]}}</a>
+                    <img src="images/uploaded_images/@isset($img[4]){{$img[4]}}@endisset" class="col-8">
+                    <a href="" class="">@isset($created[4]){{$created[4]}}@endisset</a>
                     <input type="image" src="images/good.png" class="heart" id="heart">
                     <input type="image" src="images/beforeGood.png" class="before" id="before">
                 </div>
                 <div class="haikuCard col-3">
-                    <img src="images/uploaded_images/{{$img[8]}}" class="col-8">
-                    <a href="" class="">{{$created[8]}}</a>
+                    <img src="images/uploaded_images/@isset($img[5]){{$img[5]}}@endisset" class="col-8">
+                    <a href="" class="">@isset($created[5]){{$created[5]}}@endisset</a>
                     <input type="image" src="images/good.png" class="heart" id="heart">
                     <input type="image" src="images/beforeGood.png" class="before" id="before">
                 </div>
             </div>
             <div class="newList row gap-5 mt-5">
                 <div class="haikuCard col-3">
-                    <img src="images/uploaded_images/{{$img[9]}}" class="col-8">
-                    <a href="" class="">{{$created[9]}}</a>
+                    <img src="images/uploaded_images/@isset($img[6]){{$img[6]}}@endisset" class="col-8">
+                    <a href="" class="">@isset($created[6]){{$created[6]}}@endisset</a>
                     <input type="image" src="images/good.png" class="heart" id="heart">
                     <input type="image" src="images/beforeGood.png" class="before" id="before">
                 </div>
                 <div class="haikuCard col-3">
-                    <img src="images/uploaded_images/{{$img[10]}}" class="col-8">
-                    <a href="" class="">{{$created[10]}}</a>
+                    <img src="images/uploaded_images/@isset($img[7]){{$img[7]}}@endisset" class="col-8">
+                    <a href="" class="">@isset($created[7]){{$created[7]}}@endisset</a>
                     <input type="image" src="images/good.png" class="heart" id="heart">
                     <input type="image" src="images/beforeGood.png" class="before" id="before">
                 </div>
                 <div class="haikuCard col-3">
-                    <img src="images/uploaded_images/{{$img[11]}}" class="col-8">
-                    <a href="" class="">{{$created[11]}}</a>
+                    <img src="images/uploaded_images/@isset($img[8]){{$img[8]}}@endisset" class="col-8">
+                    <a href="" class="">@isset($created[8]){{$created[8]}}@endisset</a>
+                    <input type="image" src="images/good.png" class="heart" id="heart">
+                    <input type="image" src="images/beforeGood.png" class="before" id="before">
+                </div>
+            </div>
+            <div class="newList row gap-5 mt-5">
+                <div class="haikuCard col-3">
+                    <img src="images/uploaded_images/@isset($img[9]){{$img[9]}}@endisset" class="col-8">
+                    <a href="" class="">@isset($created[9]){{$created[9]}}@endisset</a>
+                    <input type="image" src="images/good.png" class="heart" id="heart">
+                    <input type="image" src="images/beforeGood.png" class="before" id="before">
+                </div>
+                <div class="haikuCard col-3">
+                    <img src="images/uploaded_images/@isset($img[10]){{$img[10]}}@endisset" class="col-8">
+                    <a href="" class="">@isset($created[10]){{$created[10]}}@endisset</a>
+                    <input type="image" src="images/good.png" class="heart" id="heart">
+                    <input type="image" src="images/beforeGood.png" class="before" id="before">
+                </div>
+                <div class="haikuCard col-3">
+                    <img src="images/uploaded_images/@isset($img[11]){{$img[11]}}@endisset" class="col-8">
+                    <a href="" class="">@isset($created[11]){{$created[11]}}@endisset</a>
                     <input type="image" src="images/good.png" class="heart" id="heart">
                     <input type="image" src="images/beforeGood.png" class="before" id="before">
                 </div>
