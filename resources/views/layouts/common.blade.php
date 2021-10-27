@@ -38,55 +38,27 @@ window.addEventListener('load', function(){
     //マイページ
     document.getElementById('fudeIcon').style.visibility = "hidden";
 
-    //作品ページ
-    document.getElementById('twitter').style.visibility = "hidden"
-    document.getElementById('delete').style.visibility = "hidden"
-  }
-  else{
-    document.getElementById('Dropdown').style.visibility = "visible";
-    //マイページ
-    const icon = document.getElementById('myIcon');
-    icon.addEventListener('click', function(){
-      var fileReader = new FileReader();
-      fileReader.onload = function () {
-        document.getElementById("myIcon").src = fileReader.result;
-      };
-      fileReader.readAsDataURL(obj.files[0]);
-    })
-  }
-});
-</script>
-
-
-<!-- ピンクのハートになった時に押したときの処理 -->
-<!-- <script>
-document.addEventListener('load', function() { // HTML解析が終わったら
-var product = '俳句';
-const like = document.getElementById('before');
-const heart = document.getElementById('heart');
-heart.addEventListener('click', function(){
-axios.post('/like',{
-id: 'product'
-}).then(function(responce){
-if (response.data.code == 200) {
-// if 200 then like | count +1
-heart.style.visibility = "visible";
-like.style.visibility = "hidden";
-} else if (response.data.code == 202) {
-// if 202 then unlike | count -1
-heart.style.visibility = "hidden";
-like.style.visibility = "visible";
-}
-}).catch(function (error) {
-console.log(error);
-});
-});
-});
-</script> -->
-
-<!-- モーダル -->
-<script>
-window.onload = function() {
+        //作品ページ
+        document.getElementById('twitter').style.visibility = "hidden"
+        document.getElementById('delete').style.visibility = "hidden"
+      }
+        else{
+          document.getElementById('Dropdown').style.visibility = "visible";
+          //マイページ
+          const icon = document.getElementById('myIcon');
+          icon.addEventListener('click', function(){
+            var fileReader = new FileReader();
+            fileReader.onload = function () {
+              document.getElementById("myIcon").src = fileReader.result;
+            };
+            fileReader.readAsDataURL(obj.files[0]);
+          })
+        }
+    });
+  </script>
+  <!-- モーダル -->
+  <script>
+  window.onload = function() {
   var popup = document.getElementById('js-popup');
   if(!popup) return;
   popup.classList.add('is-show');
@@ -104,18 +76,7 @@ window.onload = function() {
     })
   }
 }
-</script>
-<!--<script>
-document.addEventListener('DOMContentLoaded', function(){
-const like = document.getElementById('before');
-const heart = document.getElementById('heart');
-function Good(){
-heart.style.visibility = "visible";
-like.style.visibility = "hidden";
-};
-});
-</script>-->
-
+  </script>
 <style>
 /* 共通項目 */
 body {
@@ -542,6 +503,15 @@ textarea {
   margin-top: 15px;
   text-align: center;
 }
+.count {
+  margin-left: 40px;
+}
+.top3count {
+  position: absolute;
+  margin-top: 320px;
+  margin-left: 134px;
+  z-index: 199;
+}
 /* メッセージ画面 */
 .msgBox {
   height: 400px;
@@ -623,7 +593,6 @@ textarea {
           </div>
         </div>
         <button class="navlogBtn btn btn-primary me-5 ms-1" type="submit" onclick="location.href='login'" id="logBTN">ログイン</button>
-      </div>
     </div>
   </nav>
   <div class="wrapper">

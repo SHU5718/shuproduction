@@ -1,7 +1,7 @@
 @extends('layouts.common')
 
 @section('content')
-<div class="tab-content">
+<div class="tab-content mb-5">
   <div id="contents1" class="tab-pane active">
     <div class="container">
       <div class="newuserArea row mt-1">
