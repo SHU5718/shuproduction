@@ -8,13 +8,13 @@
 <link href='https://css.gg/heart.css' rel='stylesheet'>
 <!-- アイコン設定 -->
 <script>
-   function previewImage(obj) {
-        var fileReader = new FileReader();
-        fileReader.onload = function () {
-          document.getElementById("preview").src = fileReader.result;
-        };
-        fileReader.readAsDataURL(obj.files[0]);
-      }
+function previewImage(obj) {
+  var fileReader = new FileReader();
+  fileReader.onload = function () {
+    document.getElementById("preview").src = fileReader.result;
+  };
+  fileReader.readAsDataURL(obj.files[0]);
+}
 </script>
 <script>(function () {
   document.addEventListener('DOMContentLoaded', function() { // HTML解析が終わったら
@@ -28,15 +28,15 @@
 }());
 </script>
 
-  <!-- ログイン判定 -->
-  <script>
-    var data = JSON.parse('<?php echo $name; ?>');
-    window.addEventListener('load', function(){
-        if (data == "guest"){
-        document.getElementById('logBTN').style.visibility = "visible";
+<!-- ログイン判定 -->
+<script>
+var data = JSON.parse('<?php echo $name; ?>');
+window.addEventListener('load', function(){
+  if (data == "guest"){
+    document.getElementById('logBTN').style.visibility = "visible";
 
-        //マイページ
-        document.getElementById('fudeIcon').style.visibility = "hidden";
+    //マイページ
+    document.getElementById('fudeIcon').style.visibility = "hidden";
 
         //作品ページ
         document.getElementById('twitter').style.visibility = "hidden"
@@ -58,7 +58,7 @@
   </script>
   <!-- モーダル -->
   <script>
-    window.onload = function() {
+  window.onload = function() {
   var popup = document.getElementById('js-popup');
   if(!popup) return;
   popup.classList.add('is-show');
@@ -78,34 +78,34 @@
 }
   </script>
 <style>
-  /* 共通項目 */
-  body {
-    background-color: #f1ecd0;
-  }
-  .wrapper {
-    margin-left: 80px;
-    /* width: 1080px; */
-  }
-  .navlogBtn {
-    position: relative;
-    visibility: hidden;
-    }
-  /* .navItem {
-    margin-right: 160px;
-  } */
-  .navbar-brand {
-    width: 180px;
-  }
-  .dropdown {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border-color: #fff;
-    margin-right: 66px;
-    visibility: hidden;
-  }
-  .dropdown__btn {
+/* 共通項目 */
+body {
+  background-color: #f1ecd0;
+}
+.wrapper {
+  margin-left: 80px;
+  /* width: 1080px; */
+}
+.navlogBtn {
+  position: relative;
+  visibility: hidden;
+}
+/* .navItem {
+margin-right: 160px;
+} */
+.navbar-brand {
+  width: 180px;
+}
+.dropdown {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border-color: #fff;
+  margin-right: 66px;
+  visibility: hidden;
+}
+.dropdown__btn {
   display: block;
   width: 40px;
   height: 40px;
@@ -146,61 +146,61 @@
 .dropdown__item-link:hover {
   background: #fbfbfb;
 }
-  .dropdown img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 0;
-    margin-left: -8px;
-    margin-top: -3px;
-    object-fit: cover;
+.dropdown img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 0;
+  margin-left: -8px;
+  margin-top: -3px;
+  object-fit: cover;
 
-  }
-  .logoIMG {
-    width: 160;
-    height: 90px
-  }
-  .box1 {
-    background-color: white;
-  }
-  .box2 {
-    /* margin-left: 20px; */
-    background-color: white;
-  }
-  .add {
-    width: 270px;
-    height: 270px;
-    background-color: skyblue;
-    margin-left: 18px;
-    margin-top: 10px;
-  }
-  .add img{
-    width: 270px;
-    height: 270px;
-  }
-  .box2 ul {
-    margin-top:10px;
-  }
-  .box2 ul li {
-    margin-left: -14px;
-    width: 270px;
-    height: 30px;
-    background-color: #ffffff;
-    list-style: none;
-  }
-  .topDate {
-    margin-bottom: -16px;
-    font-size: 12px;
-  }
-  .topHaiku {
-    margin-bottom: -6px;
-  }
-  .box2 a {
-    text-decoration: none;
-    margin-left: 227px;
-  }
-  /*top*/
-  .popup {
+}
+.logoIMG {
+  width: 160;
+  height: 90px
+}
+.box1 {
+  background-color: white;
+}
+.box2 {
+  /* margin-left: 20px; */
+  background-color: white;
+}
+.add {
+  width: 270px;
+  height: 270px;
+  background-color: skyblue;
+  margin-left: 18px;
+  margin-top: 10px;
+}
+.add img{
+  width: 270px;
+  height: 270px;
+}
+.box2 ul {
+  margin-top:10px;
+}
+.box2 ul li {
+  margin-left: -14px;
+  width: 270px;
+  height: 30px;
+  background-color: #ffffff;
+  list-style: none;
+}
+.topDate {
+  margin-bottom: -16px;
+  font-size: 12px;
+}
+.topHaiku {
+  margin-bottom: -6px;
+}
+.box2 a {
+  text-decoration: none;
+  margin-left: 227px;
+}
+/*top*/
+.popup {
   position: fixed;
   left: 0;
   top: 0;
@@ -259,51 +259,51 @@
   z-index: 1;
   cursor: pointer;
 }
-  textarea {
-    resize: none;
-    height: 30px;
-  }
-  .homeIMG {
-    margin-left:220px;
-  }
-  .topmsg {
-    margin-left: 360px;
-  }
-  .topNew {
-    text-align: center;
-  }
-  /*resultページ*/
-  .resultIMG {
-    width: 450px;
-    height: 450px;
-    margin-left: 60px;
-  }
-  .twitterimg {
-    width: 40px;
-    height: 40px;
-  }
+textarea {
+  resize: none;
+  height: 30px;
+}
+.homeIMG {
+  margin-left:220px;
+}
+.topmsg {
+  margin-left: 360px;
+}
+.topNew {
+  text-align: center;
+}
+/*resultページ*/
+.resultIMG {
+  width: 450px;
+  height: 450px;
+  margin-left: 60px;
+}
+.twitterimg {
+  width: 40px;
+  height: 40px;
+}
 
-  /*ログイン画面*/
-  .box3 {
-    margin-left: 288px;
-    margin-top: 20px;
-  }
-  .login_title{
-    margin-left: -12px;
-    width: 660px;
-    height: 50px;
-    background-color: skyblue;
-  }
+/*ログイン画面*/
+.box3 {
+  margin-left: 288px;
+  margin-top: 20px;
+}
+.login_title{
+  margin-left: -12px;
+  width: 660px;
+  height: 50px;
+  background-color: skyblue;
+}
 
-  /*新規登録ページ*/
-  .new_title {
-    margin-left: 160px;
-    margin-bottom: -1px
-  }
-  .next_btn {
-    margin-left: 240px;
-  }
-  #preview {
+/*新規登録ページ*/
+.new_title {
+  margin-left: 160px;
+  margin-bottom: -1px
+}
+.next_btn {
+  margin-left: 240px;
+}
+#preview {
   width: 300px;
   height: 300px;
   border-radius: 50%;
@@ -469,7 +469,7 @@
   position: absolute;
   z-index:3;
   margin-top: 300px;
-  margin-left: 110px;
+  margin-left: 40px;
   text-decoration: none;
 }
 .secondCard {
@@ -488,7 +488,7 @@
 }
 .underuser {
   margin-top: 300px;
-  margin-left: 40px;
+  margin-left: 30px;
   text-decoration: none;
 }
 .lankList {
@@ -502,6 +502,15 @@
 .lankCardB {
   margin-top: 15px;
   text-align: center;
+}
+.count {
+  margin-left: 40px;
+}
+.top3count {
+  position: absolute;
+  margin-top: 320px;
+  margin-left: 134px;
+  z-index: 199;
 }
 /* メッセージ画面 */
 .msgBox {
@@ -552,99 +561,84 @@
 }
 </style>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="top"><img src="images/senryu.png" class="logoIMG"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end">
-      <ul class="navItem navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="top">ホーム</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">ランキング</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/new">新着順</a>
-        </li>
-      </ul>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="top"><img src="images/senryu.png" class="logoIMG"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end">
+        <ul class="navItem navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="top">Top</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/rank">ランキング</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/new">新着順</a>
+          </li>
+        </ul>
 
-          <div class="dropdown" id="Dropdown">
-            <button class="dropdown__btn" id="dropdown__btn">
-              <img src="images/man.png" alt="ユーザーアイコン"><circle cx="256" cy="256" r="64"/><circle cx="256" cy="448" r="64"/><circle cx="256" cy="64" r="64"/></svg>
-            </button>
-              <div class="dropdown__body">
-                  <ul class="dropdown__list">
-                    <li class="dropdown__item"><a href="" class="dropdown__item-link">@isset($_SESSION['name']){{$_SESSION['name']}}@endisset</a></li>
-                    <li class="dropdown__item"><a href="user" class="dropdown__item-link">マイページ</a></li>
-                    <li class="dropdown__item"><a href="logout" class="dropdown__item-link">ログアウト</a></li>
-                  </ul>
-              </div>
+        <div class="dropdown" id="Dropdown">
+          <button class="dropdown__btn" id="dropdown__btn">
+            <img src="images/man.png" alt="ユーザーアイコン"><circle cx="256" cy="256" r="64"/><circle cx="256" cy="448" r="64"/><circle cx="256" cy="64" r="64"/></svg>
+          </button>
+          <div class="dropdown__body">
+            <ul class="dropdown__list">
+              <li class="dropdown__item"><p class="dropdown__item-link">@isset($_SESSION['name']){{$_SESSION['name']}}@endisset</p></li>
+              <li class="dropdown__item"><a href="user" class="dropdown__item-link">マイページ</a></li>
+              <li class="dropdown__item"><a href="logout" class="dropdown__item-link">ログアウト</a></li>
+            </ul>
+          </div>
         </div>
         <button class="navlogBtn btn btn-primary me-5 ms-1" type="submit" onclick="location.href='login'" id="logBTN">ログイン</button>
     </div>
+  </nav>
+  <div class="wrapper">
+    @yield('content')
   </div>
-</nav>
-<div class="wrapper">
-@yield('content')
-</div>
-    <footer class="fixed-bottom bg-light p-2 text-black text-center">
-&copy;2021 SENRYU Allright Reserved
-</footer>
+  <footer class="fixed-bottom bg-light p-2 text-black text-center">
+    &copy;2021 SENRYU Allright Reserved
+  </footer>
 </body>
 <!-- プロフィール編集 -->
-  <script>
-      const nameBtn = document.getElementById('fudeIcon');
-      const area = document.getElementById('changeArea');
-        nameBtn.addEventListener('click', function(){
-          if(area.style.display === "none"){
-            area.style.display = "inline";
-          }else{
-            area.style.display = "none";
-          }
-        });
-        const changeBtn = document.getElementById('changeBtn');
-        changeBtn.addEventListener('click', function(){
-          area.style.display = "none";
-        });
-    </script>
-     <!-- パスワード表示・非表示切り替え -->
-  <script>
- const pwd = document.getElementById('password');
- const pwdCheck = document.getElementById('password-check');
- pwdCheck.addEventListener('change', function() {
-     if(pwdCheck.checked) {
-         pwd.setAttribute('type', 'text');
-     } else {
-         pwd.setAttribute('type', 'password');
-     }
- }, false);
-
- window.addEventListener('load',function(){
- const pwdc = document.getElementById('passwordC');
- const pwdcheck = document.getElementById('password-check');
- pwdcheck.addEventListener('change', function() {
-     if(pwdcheck.checked) {
-         pwdc.setAttribute('type', 'text');
-     } else {
-         pwdc.setAttribute('type', 'password');
-     }
- }, false);
+<script>
+const nameBtn = document.getElementById('fudeIcon');
+const area = document.getElementById('changeArea');
+nameBtn.addEventListener('click', function(){
+  if(area.style.display === "none"){
+    area.style.display = "inline";
+  }else{
+    area.style.display = "none";
+  }
 });
- </script>
+const changeBtn = document.getElementById('changeBtn');
+changeBtn.addEventListener('click', function(){
+  area.style.display = "none";
+});
+</script>
+<!-- パスワード表示・非表示切り替え -->
+<script>
+const pwd = document.getElementById('password');
+const pwdCheck = document.getElementById('password-check');
+pwdCheck.addEventListener('change', function() {
+  if(pwdCheck.checked) {
+    pwd.setAttribute('type', 'text');
+  } else {
+    pwd.setAttribute('type', 'password');
+  }
+}, false);
 
-<!-- <script defer>
-    const like = document.getElementById('before');
-    const heart = document.getElementById('heart');
-    function Good(){
-      if (like.style.visibility == "visible"){
-        heart.style.visibility = "visible";
-        like.style.visibility = "hidden";
-      }else{
-        heart.style.visibility = "hidden";
-        like.style.visibility = "visible";
-      }
-    };
-  </script> -->
+window.addEventListener('load',function(){
+  const pwdc = document.getElementById('passwordC');
+  const pwdcheck = document.getElementById('password-check');
+  pwdcheck.addEventListener('change', function() {
+    if(pwdcheck.checked) {
+      pwdc.setAttribute('type', 'text');
+    } else {
+      pwdc.setAttribute('type', 'password');
+    }
+  }, false);
+});
+</script>

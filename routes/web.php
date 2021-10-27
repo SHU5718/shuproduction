@@ -31,6 +31,8 @@ Route::post('/upload', 'App\Http\Controllers\ImageCreateController@image_upload'
 Route::get('/delete', 'App\Http\Controllers\ImageCreateController@image_delete');
 Route::post('/delete', 'App\Http\Controllers\ImageCreateController@image_delete');
 Route::get('/new', 'App\Http\Controllers\ImageCreateController@image_new');
+Route::get('/rank', 'App\Http\Controllers\ImageCreateController@image_ranking');
+Route::get('/user', 'App\Http\Controllers\ImageCreateController@my_image');
 
 
 Route::get('/login', 'App\Http\Controllers\UserController@user_logout');
@@ -52,8 +54,6 @@ Route::get('/newuser', 'App\Http\Controllers\SenryuuController@default_session')
 Route::get('/result', 'App\Http\Controllers\SenryuuController@default_session');
 Route::get('/message_top', 'App\Http\Controllers\SenryuuController@default_session');
 Route::get('/message_result', 'App\Http\Controllers\SenryuuController@default_session');
-Route::get('/user', 'App\Http\Controllers\SenryuuController@default_session');
 Route::get('/test', 'App\Http\Controllers\SenryuuController@default_session');
-Route::get('/lank', 'App\Http\Controllers\SenryuuController@default_session');
 Route::get('/product', 'App\Http\Controllers\SenryuuController@default_session');
 Route::get('/copyuser', 'App\Http\Controllers\SenryuuController@default_session');

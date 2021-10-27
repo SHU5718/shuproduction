@@ -8,7 +8,7 @@ use PDO;
 
 class ImageCreateController extends Controller
 {
-    function create_image() {
+  function create_image() {
 
     session_start();
     $im = imagecreatefrompng('images/base.png');
@@ -100,7 +100,7 @@ class ImageCreateController extends Controller
       $msg = $e->getMessage();
     }
 
-    $sql = "SELECT * FROM products ORDER BY product_time DESC LIMIT 12";
+    $sql = "SELECT * FROM products LEFT OUTER JOIN users ON products.user_id=users.id  ORDER BY product_time DESC LIMIT 12";
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
     $products = $stmt->fetchAll();
@@ -109,12 +109,13 @@ class ImageCreateController extends Controller
 
     foreach ($products as $product) {
       $haikai[$i] = $product['product_haikai'];
+      $time[$i] = $product['product_time'];
       $i++;
     }
 
     $_SESSION['image'] = $img_url;
     $name = json_encode($_SESSION['name']);
-    return view('/result',['name' => $name,'img_url' => $_SESSION['image'],'haikai' => $haikai]);
+    return view('/result',['name' => $name,'img_url' => $_SESSION['image'],'haikai' => $haikai,'time' => $time]);
   }
 
   //画像投稿機能
@@ -158,103 +159,175 @@ class ImageCreateController extends Controller
       return view('/message_top',['name' => $name,'msg' => $msg]);
     }
   }
-    function image_delete(){
-      session_start();
-      $id = 3338095532418558;
-      $dsn = "mysql:host=127.0.0.1; dbname=senryuu; charset=utf8";
-      $username = "root";
-      $password = "";
-      try {
-        $dbh = new PDO($dsn, $username, $password);
-      } catch (PDOException $e) {
-        $msg = $e->getMessage();
-      }
+  function image_delete(){
+    session_start();
+    $id = 3338095532418558;
+    $dsn = "mysql:host=127.0.0.1; dbname=senryuu; charset=utf8";
+    $username = "root";
+    $password = "";
+    try {
+      $dbh = new PDO($dsn, $username, $password);
+    } catch (PDOException $e) {
+      $msg = $e->getMessage();
+    }
 
-      $sql = "DELETE FROM products WHERE id = :id";
-      $stmt = $dbh->prepare($sql);
-      $stmt->bindValue(':id', $id);
-      $stmt->execute();
+    $sql = "DELETE FROM products WHERE id = :id";
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
 
-      $msg = '削除が完了しました。';
+    $msg = '削除が完了しました。';
+    $name = json_encode($_SESSION['name']);
+    return view('/message_top',['name' => $name,'msg' => $msg]);
+  }
+
+  //新着順表示
+  public function image_new(){
+    session_start();
+
+    $dsn = "mysql:host=127.0.0.1; dbname=senryuu; charset=utf8";
+    $username = "root";
+    $password = "";
+    try {
+      $dbh = new PDO($dsn, $username, $password);
+    } catch (PDOException $e) {
+      $msg = $e->getMessage();
+    }
+
+    $sql = "SELECT * FROM products LEFT OUTER JOIN users ON products.user_id=users.id  ORDER BY product_time DESC LIMIT 12";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+    $products = $stmt->fetchAll();
+    $i = 0;
+    $j = 0;
+
+    foreach ($products as $product) {
+      $haikai[$i] = $product['product_haikai'];
+      $img[$i] = $product['product_img'];
+      $time[$i] = $product['product_time'];
+      $created[$i] = $product['user_name'];
+      $i++;
+    }
+
+    $sql = "SELECT * FROM products ORDER BY product_time DESC LIMIT 12";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+    $products = $stmt->fetchAll();
+
+    foreach ($products as $product) {
+      $_SESSION[$j] = json_encode($product['id']);
+      $j++;
+    }
+    if(isset($_SESSION['name'])){
       $name = json_encode($_SESSION['name']);
-      return view('/message_top',['name' => $name,'msg' => $msg]);
+      if(isset($_SESSION['id'])){
+        $s_id = json_encode($_SESSION['id']);
+        return view('/new',['name' => $name, 's_id' => $s_id, 'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
+      }
+      return view('/new',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
+    }else{
+      $_SESSION['name'] = "guest";
+      $name = json_encode($_SESSION['name']);
+      return view('/new',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
+    }
+  }
+  //ランキング表示
+  public function image_ranking(){
+    session_start();
+
+    $dsn = "mysql:host=127.0.0.1; dbname=senryuu; charset=utf8";
+    $username = "root";
+    $password = "";
+    try {
+      $dbh = new PDO($dsn, $username, $password);
+    } catch (PDOException $e) {
+      $msg = $e->getMessage();
     }
 
-    //新着順表示
-    public function image_new(){
-      session_start();
+    $sql = "SELECT * FROM products LEFT OUTER JOIN likes ON products.id=likes.product_id  LEFT OUTER JOIN users ON products.user_id=users.id ORDER BY count DESC LIMIT 12";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+    $products = $stmt->fetchAll();
+    $i = 0;
+    $j = 0;
 
-      $dsn = "mysql:host=127.0.0.1; dbname=senryuu; charset=utf8";
-      $username = "root";
-      $password = "";
-      try {
-        $dbh = new PDO($dsn, $username, $password);
-      } catch (PDOException $e) {
-        $msg = $e->getMessage();
-      }
-
-      $sql = "SELECT * FROM products LEFT OUTER JOIN users ON products.user_id=users.id  ORDER BY product_time DESC LIMIT 12";
-      $stmt = $dbh->prepare($sql);
-      $stmt->execute();
-      $products = $stmt->fetchAll();
-      $img = array();
-      $time = array();
-      $haikai = array();
-      $i = 0;
-
-      foreach ($products as $product) {
-        $haikai[$i] = $product['product_haikai'];
-        $img[$i] = $product['product_img'];
-        $time[$i] = $product['product_time'];
-        $created[$i] = $product['user_name'];
-        $image_id[$i] = $product['id'];
-        $i++;
-      }
-      if(isset($_SESSION['name'])){
-        $name = json_encode($_SESSION['name']);
-      return view('/new',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
-      }else{
-        $_SESSION['name'] = "guest";
-        $name = json_encode($_SESSION['name']);
-      return view('/new',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
-      }
+    foreach ($products as $product) {
+      $haikai[$i] = $product['product_haikai'];
+      $img[$i] = $product['product_img'];
+      $time[$i] = $product['product_time'];
+      $created[$i] = $product['user_name'];
+      $count[$i] = $product['count'];
+      $i++;
     }
-    //新着順表示
-    public function image_ranking(){
-      session_start();
 
-      $dsn = "mysql:host=127.0.0.1; dbname=senryuu; charset=utf8";
-      $username = "root";
-      $password = "";
-      try {
-        $dbh = new PDO($dsn, $username, $password);
-      } catch (PDOException $e) {
-        $msg = $e->getMessage();
-      }
+    $sql = "SELECT * FROM products ORDER BY product_time DESC LIMIT 12";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+    $products = $stmt->fetchAll();
+    $i = 0;
 
-      $sql = "SELECT * FROM products LEFT OUTER JOIN users ON products.user_id=users.id  ORDER BY product_time DESC LIMIT 12";
-      $stmt = $dbh->prepare($sql);
-      $stmt->execute();
-      $products = $stmt->fetchAll();
-      $img = array();
-      $time = array();
-      $haikai = array();
-      $i = 0;
-
-      foreach ($products as $product) {
-        $haikai[$i] = $product['product_haikai'];
-        $img[$i] = $product['product_img'];
-        $time[$i] = $product['product_time'];
-        $created[$i] = $product['user_name'];
-        $i++;
-      }
-      if(isset($_SESSION['name'])){
-        $name = json_encode($_SESSION['name']);
-      return view('/new',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
-      }else{
-        $_SESSION['name'] = "guest";
-        $name = json_encode($_SESSION['name']);
-      return view('/new',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
-      }
+    foreach ($products as $product) {
+      $_SESSION[$j] = json_encode($product['id']);
+      $j++;
     }
+    if(isset($_SESSION['name'])){
+      $name = json_encode($_SESSION['name']);
+      if(isset($_SESSION['id'])){
+        $s_id = json_encode($_SESSION['id']);
+        return view('/rank',['name' => $name, 's_id' => $s_id, 'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
+      }
+      return view('/rank',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
+    }else{
+      $_SESSION['name'] = "guest";
+      $name = json_encode($_SESSION['name']);
+      return view('/rank',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
+    }
+  }
+  //マイページ
+  public function my_image(){
+    session_start();
+
+    $dsn = "mysql:host=127.0.0.1; dbname=senryuu; charset=utf8";
+    $username = "root";
+    $password = "";
+    try {
+      $dbh = new PDO($dsn, $username, $password);
+    } catch (PDOException $e) {
+      $msg = $e->getMessage();
+    }
+
+    $sql = "SELECT * FROM products LEFT OUTER JOIN likes ON products.id=likes.product_id  LEFT OUTER JOIN users ON products.user_id=users.id WHERE users.id= :id ORDER BY product_time DESC LIMIT 12";
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':id', $_SESSION['id']);
+    $stmt->execute();
+    $products = $stmt->fetchAll();
+    $i = 0;
+    $j = 0;
+    $all_count = 0;
+
+    foreach ($products as $product) {
+      $haikai[$i] = $product['product_haikai'];
+      $img[$i] = $product['product_img'];
+      $time[$i] = $product['product_time'];
+      $created[$i] = $product['user_name'];
+      $image_id[$i] = $product['id'];
+      $all_count = $all_count + $product['count'];
+      $i++;
+    }
+
+    $sql = "SELECT * FROM products ORDER BY product_time DESC LIMIT 12";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+    $products = $stmt->fetchAll();
+
+    foreach ($products as $product) {
+      $_SESSION[$j] = json_encode($product['id']);
+      $j++;
+    }
+    $name = json_encode($_SESSION['name']);
+    if(isset($_SESSION['id'])){
+      $s_id = json_encode($_SESSION['id']);
+      return view('/user',['name' => $name, 's_id' => $s_id, 'haikai' => $haikai,'time' => $time,'img' => $img, 'all_count' => $all_count]);
+    }
+  }
 }

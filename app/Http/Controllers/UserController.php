@@ -23,6 +23,8 @@ class UserController extends Controller
     $username = "root";
     $password = "";
     $member = array();
+
+    //データベース接続
     try {
       $dbh = new PDO($dsn, $username, $password);
     } catch (PDOException $e) {
@@ -37,14 +39,18 @@ class UserController extends Controller
     $member = $stmt->fetch();
     $m_mail = "";
 
-
     //$member['user_email']に値があるときのみ代入
     if (isset($member['user_email'])) {
       $m_mail = $member['user_email'];
     }
-    //メールアドレスが登録されている場合
-    if ($m_mail === $mail) {
-      $msg = '同じメールアドレスが存在します。';
+
+    //メールアドレスが登録されている場合&パスワードが一致しない場合
+    if($name =="" || $mail =="" || $pass == ""){
+      $msg = '未入力項目があります。';
+      $name = json_encode($_SESSION['name']);
+      return view('/newuser',['name' => $name],['msg' => $msg]);
+    }elseif($m_mail === $mail) {
+      $msg = '既に登録されたメールアドレスです。';
       $name = json_encode($_SESSION['name']);
       return view('/newuser',['name' => $name],['msg' => $msg]);
     } elseif($_POST['pass'] != $Pass){
@@ -129,12 +135,35 @@ class UserController extends Controller
       $_SESSION['name'] = $member['user_name'];
       $_SESSION['avatar'] = $member['user_img'];
 
+      $dsn = "mysql:host=127.0.0.1; dbname=senryuu; charset=utf8";
+      $username = "root";
+      $password = "";
+      try {
+        $dbh = new PDO($dsn, $username, $password);
+      } catch (PDOException $e) {
+        $msg = $e->getMessage();
+      }
+
+      $sql = "SELECT * FROM products ORDER BY product_time DESC LIMIT 12";
+      $stmt = $dbh->prepare($sql);
+      $stmt->execute();
+      $products = $stmt->fetchAll();
+      $haikai = array();
+      $time = array();
+      $i = 0;
+
+      foreach ($products as $product) {
+        $haikai[$i] = $product['product_haikai'];
+        $time[$i] = $product['product_time'];
+        $i++;
+      }
+
       if(isset($_SESSION['image'])){
         $name = json_encode($_SESSION['name']);
         return view('/result',['name' => $name],['img_url' => $_SESSION['image']]);
       }
       $name = json_encode($_SESSION['name']);
-      return view('/top',['name' => $name]);
+      return view('/top',['name' => $name],['haikai' => $haikai, 'time' => $time]);
     } else {
       $name = json_encode($_SESSION['name']);
       $msg = 'メールアドレスもしくはパスワードが間違っています。';
