@@ -95,4 +95,31 @@ class LikeController extends Controller
             $total_like_counts += $count_in_mysql->count;
         }
     }
+
+    public function button()
+    {
+        session_start();
+        $user_id = $_SESSION['id'];
+
+        $post_id = request('id');
+
+        // product_idとuser_idで user_like_postテーブルの中 今ログインされたユーザーの評価記録の有無
+        $mysql_like= DB::table('user_like_post')->where('product_id', $product_id)->where('user_id', $user_id)->first();
+
+        // 評価記録あり：0を返す　|　評価記録なし：1を返す
+        $redis_like = Redis::sadd($product_id, $user_id);
+
+        // If Mysqlの中記録がない Redisから1を返した Like成功
+        if (empty($mysql_like) && $redis_like) {
+            return [
+                'code' => 000,
+                'message' => have,
+            ];
+        } else {
+            return [
+                'code' => 111,
+                'message' => have-not,
+            ];
+        }
+    }
 }
