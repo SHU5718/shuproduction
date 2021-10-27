@@ -56,60 +56,6 @@
         }
     });
   </script>
-  <!-- 評価機能 -->
-  <!-- <script>
-    document.addEventListener('load', function() { // HTML解析が終わったら
-      var product = '俳句';
-      const like = document.getElementById('before');
-      const heart = document.getElementById('heart');
-      like.addEventListener('click', function(){
-          console.log('いいねしたよ');
-          axios.post('/like',{
-            id: 'product'
-          }).then(function(responce){
-                if (response.data.code == 200) {
-                  // if 200 then like | count +1
-                  heart.style.visibility = "visible";
-                  like.style.visibility = "hidden";
-                  } else if (response.data.code == 202) {
-                  // if 202 then unlike | count -1
-                  heart.style.visibility = "hidden";
-                  like.style.visibility = "visible";
-                }
-              }).catch(function (error) {
-                console.log(error);
-               });
-        });
-      });
-    </script> -->
-
-      <!-- ピンクのハートになった時に押したときの処理 -->
-      <!-- <script>
-      document.addEventListener('load', function() { // HTML解析が終わったら
-      var product = '俳句';
-      const like = document.getElementById('before');
-      const heart = document.getElementById('heart');
-      heart.addEventListener('click', function(){
-        axios.post('/like',{
-          id: 'product'
-          }).then(function(responce){
-              if (response.data.code == 200) {
-              // if 200 then like | count +1
-              heart.style.visibility = "visible";
-              like.style.visibility = "hidden";
-                } else if (response.data.code == 202) {
-              // if 202 then unlike | count -1
-               heart.style.visibility = "hidden";
-              like.style.visibility = "visible";
-              }
-              }).catch(function (error) {
-                console.log(error);
-            });
-        });
-      });
-  </script> -->
-
-<<<<<<< HEAD
   <!-- モーダル -->
   <script>
     window.onload = function() {
@@ -131,19 +77,6 @@
   }
 }
   </script>
-=======
-<!--<script>
-    document.addEventListener('DOMContentLoaded', function(){
-    const like = document.getElementById('before');
-    const heart = document.getElementById('heart');
-    function Good(){
-        heart.style.visibility = "visible";
-        like.style.visibility = "hidden";
-    };
-    });
-</script>-->
-
->>>>>>> 8b8d6921e014823211cd5139d12b795e137de259
 <style>
   /* 共通項目 */
   body {
@@ -628,7 +561,7 @@
     <div class="collapse navbar-collapse justify-content-end">
       <ul class="navItem navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active me" href="top">ホーム</a>
+          <a class="nav-link" href="top">ホーム</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">ランキング</a>
@@ -651,18 +584,6 @@
               </div>
         </div>
         <button class="navlogBtn btn btn-primary me-5 ms-1" type="submit" onclick="location.href='login'" id="logBTN">ログイン</button>
-        <!-- <div class="dropdown" id="Dropdown" onchange="login(Data);">
-  <button class="dropdown__btn" id="dropdown__btn">
-    <img src="images/man.png" alt="ユーザーアイコン"><circle cx="256" cy="256" r="64"/><circle cx="256" cy="448" r="64"/><circle cx="256" cy="64" r="64"/></svg>
-  </button>
-  <div class="dropdown__body">
-    <ul class="dropdown__list">
-      <li class="dropdown__item"><a href="user" class="dropdown__item-link">マイページ</a></li>
-      <li class="dropdown__item"><a href="" class="dropdown__item-link">ログアウト</a></li>
-    </ul>
-  </div>
-</div> -->
-        <!-- <img src="" alt="ユーザーアイコン" class="usericon"> -->
     </div>
   </div>
 </nav>
@@ -713,7 +634,8 @@
  }, false);
 });
  </script>
-<script defer>
+
+<!-- <script defer>
     const like = document.getElementById('before');
     const heart = document.getElementById('heart');
     function Good(){
@@ -725,4 +647,4 @@
         like.style.visibility = "visible";
       }
     };
-  </script>
+  </script> -->
