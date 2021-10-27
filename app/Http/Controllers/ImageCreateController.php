@@ -126,6 +126,7 @@ class ImageCreateController extends Controller
 
     //guestの場合ログインページへ
     if($name == "guest"){
+      $_SESSION['upload'] = 1;
       return view('/login',['name' => $name]);
     }else{
       $id = random_int(1000000000000000,9999999999999999); //ID

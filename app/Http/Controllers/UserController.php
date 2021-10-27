@@ -91,9 +91,40 @@ class UserController extends Controller
       $_SESSION['name'] = $member['user_name'];
       $_SESSION['avatar'] = $member['user_img'];
 
-      if(isset($_SESSION['image'])){
+      //投稿ボタンからログインした場合、投稿
+      if(isset($_SESSION['image']) && $_SESSION['upload'] == 1){
+
+        $name = $_SESSION['name'];
+        $haiku = $_SESSION['haiku'];
+        $id = random_int(1000000000000000,9999999999999999); //ID
+        $time = date('Y-m-d H:i:s'); //タイムスタンプ
+        $user_id = $_SESSION['id']; //投稿ユーザー情報
+        $image = $_SESSION['image']; //画像URL
+
+        //データベース接続
+        $dsn = "mysql:host=127.0.0.1; dbname=senryuu; charset=utf8";
+        $username = "root";
+        $password = "";
+        try {
+          $dbh = new PDO($dsn, $username, $password);
+        } catch (PDOException $e) {
+          $msg = $e->getMessage();
+        }
+
+        //データベース登録処理
+        $sql = "INSERT INTO products(id, product_haikai, product_time, product_img, user_id) VALUES (:id, :haiku, :p_time, :image, :user_id)";
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':haiku', $haiku);
+        $stmt->bindValue(':p_time', $time);
+        $stmt->bindValue(':image', $image);
+        $stmt->bindValue(':user_id', $user_id);
+        $stmt->execute();
+
+        //トップ画面に遷移
+        $msg = '作品の投稿が完了しました。';
         $name = json_encode($_SESSION['name']);
-        return view('/message_result',['name' => $name],['msg' => $msg],['img_url' => $_SESSION['image']]);
+        return view('/message_top',['name' => $name,'msg' => $msg]);
       }
       $name = json_encode($_SESSION['name']);
       return view('/message_top',['name' => $name],['msg' => $msg]);
@@ -130,6 +161,7 @@ class UserController extends Controller
       $name = json_encode($_SESSION['name']);
       return view('/login',['name' => $name],['msg' => $msg]);
     }elseif(password_verify($pass, $m_pass)) {
+
       //DBのユーザー情報をセッションに保存
       $_SESSION['id'] = $member['id'];
       $_SESSION['name'] = $member['user_name'];
@@ -157,13 +189,44 @@ class UserController extends Controller
         $time[$i] = $product['product_time'];
         $i++;
       }
+      //投稿ボタンからログインした場合、投稿
+      if(isset($_SESSION['image']) && $_SESSION['upload'] == 1){
 
-      if(isset($_SESSION['image'])){
+        $name = $_SESSION['name'];
+        $haiku = $_SESSION['haiku'];
+        $id = random_int(1000000000000000,9999999999999999); //ID
+        $time = date('Y-m-d H:i:s'); //タイムスタンプ
+        $user_id = $_SESSION['id']; //投稿ユーザー情報
+        $image = $_SESSION['image']; //画像URL
+
+        //データベース接続
+        $dsn = "mysql:host=127.0.0.1; dbname=senryuu; charset=utf8";
+        $username = "root";
+        $password = "";
+        try {
+          $dbh = new PDO($dsn, $username, $password);
+        } catch (PDOException $e) {
+          $msg = $e->getMessage();
+        }
+
+        //データベース登録処理
+        $sql = "INSERT INTO products(id, product_haikai, product_time, product_img, user_id) VALUES (:id, :haiku, :p_time, :image, :user_id)";
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':haiku', $haiku);
+        $stmt->bindValue(':p_time', $time);
+        $stmt->bindValue(':image', $image);
+        $stmt->bindValue(':user_id', $user_id);
+        $stmt->execute();
+
+        //トップ画面に遷移
+        $msg = '作品の投稿が完了しました。';
         $name = json_encode($_SESSION['name']);
-        return view('/result',['name' => $name],['img_url' => $_SESSION['image']]);
+        return view('/message_top',['name' => $name,'msg' => $msg]);
       }
       $name = json_encode($_SESSION['name']);
-      return view('/top',['name' => $name],['haikai' => $haikai, 'time' => $time]);
+      $msg = 'ログインしました。';
+      return view('/message_top',['name' => $name,'msg' =>$msg]);
     } else {
       $name = json_encode($_SESSION['name']);
       $msg = 'メールアドレスもしくはパスワードが間違っています。';

@@ -84,7 +84,7 @@ class SenryuuController extends Controller
   }
   public function first_session(){
     session_start();
-
+    $_SESSION['upload'] = 0;
     $dsn = "mysql:host=127.0.0.1; dbname=senryuu; charset=utf8";
     $username = "root";
     $password = "";
