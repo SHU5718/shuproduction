@@ -508,7 +508,7 @@ textarea {
   position: absolute;
   z-index:3;
   margin-top: 300px;
-  margin-left: 110px;
+  margin-left: 40px;
   text-decoration: none;
 }
 .secondCard {
@@ -527,7 +527,7 @@ textarea {
 }
 .underuser {
   margin-top: 300px;
-  margin-left: 40px;
+  margin-left: 30px;
   text-decoration: none;
 }
 .lankList {
@@ -600,10 +600,10 @@ textarea {
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navItem navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active me" href="top">ホーム</a>
+            <a class="nav-link" href="top">Top</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/lank">ランキング</a>
+            <a class="nav-link" href="/rank">ランキング</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/new">新着順</a>
@@ -616,7 +616,7 @@ textarea {
           </button>
           <div class="dropdown__body">
             <ul class="dropdown__list">
-              <li class="dropdown__item"><a href="" class="dropdown__item-link">@isset($_SESSION['name']){{$_SESSION['name']}}@endisset</a></li>
+              <li class="dropdown__item"><p class="dropdown__item-link">@isset($_SESSION['name']){{$_SESSION['name']}}@endisset</p></li>
               <li class="dropdown__item"><a href="user" class="dropdown__item-link">マイページ</a></li>
               <li class="dropdown__item"><a href="logout" class="dropdown__item-link">ログアウト</a></li>
             </ul>
@@ -672,26 +672,4 @@ window.addEventListener('load',function(){
     }
   }, false);
 });
-</script>
-
-<!-- 評価機能 -->
-<script defer>
-var product_id = 1167998658301916;
-const like = document.getElementById('before');
-const heart = document.getElementById('heart');
-function Good(){
-  axios.post('/like', {
-    id: product_id
-  }).then(function (response){
-    if (response.data.code == 200) {
-      heart.style.visibility = "visible";
-      like.style.visibility = "hidden";
-    } else if (response.data.code == 202) {
-      heart.style.visibility = "hidden";
-      like.style.visibility = "visible";
-    }
-  }).catch(function (error) {
-    console.log(error);
-  });
-};
 </script>

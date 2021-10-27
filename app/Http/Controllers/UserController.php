@@ -45,8 +45,12 @@ class UserController extends Controller
     }
 
     //メールアドレスが登録されている場合&パスワードが一致しない場合
-    if ($m_mail === $mail) {
-      $msg = '同じメールアドレスが存在します。';
+    if($name =="" || $mail =="" || $pass == ""){
+      $msg = '未入力項目があります。';
+      $name = json_encode($_SESSION['name']);
+      return view('/newuser',['name' => $name],['msg' => $msg]);
+    }elseif($m_mail === $mail) {
+      $msg = '既に登録されたメールアドレスです。';
       $name = json_encode($_SESSION['name']);
       return view('/newuser',['name' => $name],['msg' => $msg]);
     } elseif($_POST['pass'] != $Pass){

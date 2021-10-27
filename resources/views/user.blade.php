@@ -19,8 +19,8 @@
                         <form>
 
                         <div class="goodArea row">
-                            <p class="goodAll col-3">評価数</p>
-                            <p class="good col-3">2</p>
+                            <p class="goodAll col-3">評価数 </p>
+                            <p class="good col-3">@isset($all_count){{$all_count}}@endisset</p>
                         </div>
                 </div>
             </div>

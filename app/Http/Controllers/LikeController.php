@@ -12,7 +12,8 @@ class LikeController extends Controller
     {
 
         // ユーザーインフォメーション
-        $user_id = 2096744630815793;
+        session_start();
+        $user_id = $_SESSION['id'];
 
         // postインフォメーション
         $product_id = request('id');
@@ -36,7 +37,7 @@ class LikeController extends Controller
             Redis::hmset('post_user_like_'.$product_id.'_'.$user_id,
                 'user_id', $user_id,
                 'product_id', $product_id,
-                'ctime', now()
+                'ctime', date('Y-m-d H:i:s')
             );
 
             // Like成功
