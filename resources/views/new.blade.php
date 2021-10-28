@@ -46,7 +46,7 @@
           <p class="date">@isset($time[4]){{$time[4]}}@endisset</p>
           <img src="images/uploaded_images/@isset($img[4]){{$img[4]}}@endisset" class="col-8">
           <a href="" class="">@isset($created[4])Created by {{$created[4]}}@endisset</a>
-          <input type="image" src="images/good.png" class="heart" id="heart4" onclick="(function(){var val = '3';Good(val);})();">
+          <input type="image" src="images/good.png" class="heart" id="heart4" onclick="(function(){var val = '4';Good(val);})();">
           <input type="image" src="images/beforeGood.png" class="before" id="before4" onclick="(function(){var val = '4';Good(val);})();">
           <input type="text" class="hide">
         </div>
@@ -113,6 +113,171 @@
     </div>
   </div>
 </div>
+
+<script defer>
+window.onload = function() {
+  var check_like = JSON.parse('<?php echo $check_like[0]; ?>');
+  var check_like1 = JSON.parse('<?php echo $check_like[1]; ?>');
+  var check_like2 = JSON.parse('<?php echo $check_like[2]; ?>');
+  var check_like3 = JSON.parse('<?php echo $check_like[3]; ?>');
+  var check_like4 = JSON.parse('<?php echo $check_like[4]; ?>');
+  var check_like5 = JSON.parse('<?php echo $check_like[5]; ?>');
+  var check_like6 = JSON.parse('<?php echo $check_like[6]; ?>');
+  var check_like7 = JSON.parse('<?php echo $check_like[7]; ?>');
+  var check_like8 = JSON.parse('<?php echo $check_like[8]; ?>');
+  var check_like9 = JSON.parse('<?php echo $check_like[9]; ?>');
+  var check_like10 = JSON.parse('<?php echo $check_like[10]; ?>');
+  var check_like11 = JSON.parse('<?php echo $check_like[11]; ?>');
+  console.log(check_like);
+  console.log(check_like1);
+  console.log(check_like2);
+  console.log(check_like3);
+  console.log(check_like4);
+  console.log(check_like5);
+  console.log(check_like6);
+  console.log(check_like7);
+  console.log(check_like8);
+  console.log(check_like9);
+  console.log(check_like10);
+  console.log(check_like11);
+
+  const like = document.getElementById('before');
+  const heart = document.getElementById('heart');
+  if (check_like == 1) {
+    heart.style.visibility = "visible";
+    like.style.visibility = "hidden";
+  } else if (check_like == 0) {
+    heart.style.visibility = "hidden";
+    like.style.visibility = "visible";
+  }else {
+    ;
+  }
+
+  const like1 = document.getElementById('before1');
+  const heart1 = document.getElementById('heart1');
+  if (check_like1 == 1) {
+    heart1.style.visibility = "visible";
+    like1.style.visibility = "hidden";
+  } else if (check_like1 == 0) {
+    heart1.style.visibility = "hidden";
+    like1.style.visibility = "visible";
+  }else {
+    ;
+  }
+  const like2 = document.getElementById('before2');
+  const heart2 = document.getElementById('heart2');
+  if (check_like2 == 1) {
+    heart2.style.visibility = "visible";
+    like2.style.visibility = "hidden";
+  } else if (check_like2 == 0) {
+    heart2.style.visibility = "hidden";
+    like2.style.visibility = "visible";
+  }else {
+    ;
+  }
+  const like3 = document.getElementById('before3');
+  const heart3 = document.getElementById('heart3');
+  if (check_like3 == 1) {
+    heart3.style.visibility = "visible";
+    like3.style.visibility = "hidden";
+  } else if (check_like3 == 0) {
+    heart3.style.visibility = "hidden";
+    like3.style.visibility = "visible";
+  }else {
+    ;
+  }
+  const like4 = document.getElementById('before4');
+  const heart4 = document.getElementById('heart4');
+  if (check_like4 == 1) {
+    heart4.style.visibility = "visible";
+    like4.style.visibility = "hidden";
+  } else if (check_like4 == 0) {
+    heart4.style.visibility = "hidden";
+    like4.style.visibility = "visible";
+  }else {
+    ;
+  }
+  const like5 = document.getElementById('before5');
+  const heart5 = document.getElementById('heart5');
+  if (check_like5 == 1) {
+    heart5.style.visibility = "visible";
+    like5.style.visibility = "hidden";
+  } else if (check_like5 == 0) {
+    heart5.style.visibility = "hidden";
+    like5.style.visibility = "visible";
+  }else {
+    ;
+  }
+  const like6 = document.getElementById('before6');
+  const heart6 = document.getElementById('heart6');
+  if (check_like6 == 1) {
+    heart6.style.visibility = "visible";
+    like6.style.visibility = "hidden";
+  } else if (check_like6 == 0) {
+    heart6.style.visibility = "hidden";
+    like6.style.visibility = "visible";
+  }else {
+    ;
+  }
+  const like7 = document.getElementById('before7');
+  const heart7 = document.getElementById('heart7');
+  if (check_like7 == 1) {
+    heart7.style.visibility = "visible";
+    like7.style.visibility = "hidden";
+  } else if (check_like7 == 0) {
+    heart7.style.visibility = "hidden";
+    like7.style.visibility = "visible";
+  }else {
+    ;
+  }
+  const like8 = document.getElementById('before8');
+  const heart8 = document.getElementById('heart8');
+  if (check_like8 == 1) {
+    heart8.style.visibility = "visible";
+    like8.style.visibility = "hidden";
+  } else if (check_like8 == 0) {
+    heart8.style.visibility = "hidden";
+    like8.style.visibility = "visible";
+  }else {
+    ;
+  }
+  const like9 = document.getElementById('before9');
+  const heart9 = document.getElementById('heart9');
+  if (check_like9 == 1) {
+    heart9.style.visibility = "visible";
+    like9.style.visibility = "hidden";
+  } else if (check_like9 == 0) {
+    heart9.style.visibility = "hidden";
+    like9.style.visibility = "visible";
+  }else {
+    ;
+  }
+  const like10 = document.getElementById('before10');
+  const heart10 = document.getElementById('heart10');
+  if (check_like10 == 1) {
+    heart10.style.visibility = "visible";
+    like10.style.visibility = "hidden";
+  } else if (check_like10 == 0) {
+    heart10.style.visibility = "hidden";
+    like10.style.visibility = "visible";
+  }else {
+    ;
+  }
+  const like11 = document.getElementById('before11');
+  const heart11 = document.getElementById('heart11');
+  if (check_like11 == 1) {
+    heart11.style.visibility = "visible";
+    like11.style.visibility = "hidden";
+  } else if (check_like11 == 0) {
+    heart11.style.visibility = "hidden";
+    like11.style.visibility = "visible";
+  }else {
+    ;
+  }
+
+}
+
+</script>
 <!-- 評価機能 -->
 <script defer>
 function Good(val){
@@ -324,5 +489,218 @@ function Good(val){
     ;
   }
 };
+</script>
+
+<!-- 評価ボタン調整 -->
+<script>
+    window.onload = function(val) {
+        if(val == '0'){
+            const like = document.getElementById('before');
+            const heart = document.getElementById('heart');
+            var data = JSON.parse('<?php $_SESSION[0]?>');
+            axios.post('/button', {
+                id: data
+            }).then(function (response){
+                if (response.data.code == 000) {
+                    heart0.style.visibility = "visible";
+                    like0.style.visibility = "hidden";
+                } else if (response.data.code == 111) {
+                    heart0.style.visibility = "hidden";
+                    like0.style.visibility = "visible";
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        } else if (val == '1') {
+            const like = document.getElementById('before1');
+            const heart = document.getElementById('heart1');
+            var data = JSON.parse('<?php $_SESSION[1]?>');
+            axios.post('/button', {
+                id: data
+            }).then(function (response){
+                if (response.data.code == 000) {
+                    heart0.style.visibility = "visible";
+                    like0.style.visibility = "hidden";
+                } else if (response.data.code == 111) {
+                    heart0.style.visibility = "hidden";
+                    like0.style.visibility = "visible";
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        } else if (val == '2') {
+            const like = document.getElementById('before');
+            const heart = document.getElementById('heart2');
+            var data = JSON.parse('<?php $_SESSION[2]?>');
+            axios.post('/button', {
+                id: data
+            }).then(function (response){
+                if (response.data.code == 000) {
+                    heart0.style.visibility = "visible";
+                    like0.style.visibility = "hidden";
+                } else if (response.data.code == 111) {
+                    heart0.style.visibility = "hidden";
+                    like0.style.visibility = "visible";
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        } else if (val == '3') {
+            const like = document.getElementById('before3');
+            const heart = document.getElementById('heart3');
+            var data = JSON.parse('<?php $_SESSION[3]?>');
+            axios.post('/button', {
+                id: data
+            }).then(function (response){
+                if (response.data.code == 000) {
+                    heart0.style.visibility = "visible";
+                    like0.style.visibility = "hidden";
+                } else if (response.data.code == 111) {
+                    heart0.style.visibility = "hidden";
+                    like0.style.visibility = "visible";
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        } else if (val == '4') {
+            const like = document.getElementById('before4');
+            const heart = document.getElementById('heart4');
+            var data = JSON.parse('<?php $_SESSION[4]?>');
+            axios.post('/button', {
+                id: data
+            }).then(function (response){
+                if (response.data.code == 000) {
+                    heart0.style.visibility = "visible";
+                    like0.style.visibility = "hidden";
+                } else if (response.data.code == 111) {
+                    heart0.style.visibility = "hidden";
+                    like0.style.visibility = "visible";
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        } else if (val == '5') {
+            const like = document.getElementById('before5');
+            const heart = document.getElementById('heart5');
+            var data = JSON.parse('<?php $_SESSION[5]?>');
+            axios.post('/button', {
+                id: data
+            }).then(function (response){
+                if (response.data.code == 000) {
+                    heart0.style.visibility = "visible";
+                    like0.style.visibility = "hidden";
+                } else if (response.data.code == 111) {
+                    heart0.style.visibility = "hidden";
+                    like0.style.visibility = "visible";
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        } else if (val == '6') {
+            const like = document.getElementById('before6');
+            const heart = document.getElementById('heart6');
+            var data = JSON.parse('<?php $_SESSION[6]?>');
+            axios.post('/button', {
+                id: data
+            }).then(function (response){
+                if (response.data.code == 000) {
+                    heart0.style.visibility = "visible";
+                    like0.style.visibility = "hidden";
+                } else if (response.data.code == 111) {
+                    heart0.style.visibility = "hidden";
+                    like0.style.visibility = "visible";
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        } else if (val == '7') {
+            const like = document.getElementById('before7');
+            const heart = document.getElementById('heart7');
+            var data = JSON.parse('<?php $_SESSION[7]?>');
+            axios.post('/button', {
+                id: data
+            }).then(function (response){
+                if (response.data.code == 000) {
+                    heart0.style.visibility = "visible";
+                    like0.style.visibility = "hidden";
+                } else if (response.data.code == 111) {
+                    heart0.style.visibility = "hidden";
+                    like0.style.visibility = "visible";
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        } else if (val == '8') {
+            const like = document.getElementById('before8');
+            const heart = document.getElementById('heart8');
+            var data = JSON.parse('<?php $_SESSION[8]?>');
+            axios.post('/button', {
+                id: data
+            }).then(function (response){
+                if (response.data.code == 000) {
+                    heart0.style.visibility = "visible";
+                    like0.style.visibility = "hidden";
+                } else if (response.data.code == 111) {
+                    heart0.style.visibility = "hidden";
+                    like0.style.visibility = "visible";
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        } else if (val == '9') {
+            const like = document.getElementById('before9');
+            const heart = document.getElementById('heart9');
+            var data = JSON.parse('<?php $_SESSION[9]?>');
+            axios.post('/button', {
+                id: data
+            }).then(function (response){
+                if (response.data.code == 000) {
+                    heart0.style.visibility = "visible";
+                    like0.style.visibility = "hidden";
+                } else if (response.data.code == 111) {
+                    heart0.style.visibility = "hidden";
+                    like0.style.visibility = "visible";
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        } else if (val == '10') {
+            const like = document.getElementById('before10');
+            const heart = document.getElementById('heart10');
+            var data = JSON.parse('<?php $_SESSION[10]?>');
+            axios.post('/button', {
+                id: data
+            }).then(function (response){
+                if (response.data.code == 000) {
+                    heart0.style.visibility = "visible";
+                    like0.style.visibility = "hidden";
+                } else if (response.data.code == 111) {
+                    heart0.style.visibility = "hidden";
+                    like0.style.visibility = "visible";
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        } else if (val == '11') {
+            const like = document.getElementById('before11');
+            const heart = document.getElementById('heart11');
+            var data = JSON.parse('<?php $_SESSION[11]?>');
+            axios.post('/button', {
+                id: data
+            }).then(function (response){
+                if (response.data.code == 000) {
+                    heart0.style.visibility = "visible";
+                    like0.style.visibility = "hidden";
+                } else if (response.data.code == 111) {
+                    heart0.style.visibility = "hidden";
+                    like0.style.visibility = "visible";
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        } else {
+            ;
+        }
+    }
 </script>
 @endsection

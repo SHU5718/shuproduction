@@ -39,6 +39,8 @@ Route::get('/login', 'App\Http\Controllers\UserController@user_logout');
 
 Route::get('/like', 'App\Http\Controllers\LikeController@like');
 Route::post('/like', 'App\Http\Controllers\LikeController@like');
+Route::get('/button', 'App\Http\Controllers\LikeController@button');
+Route::post('/button', 'App\Http\Controllers\LikeController@button');
 Route::get('/show', 'App\Http\Controllers\LikeController@show');
 Route::post('/show', 'App\Http\Controllers\LikeController@show');
 Route::get('/total', 'App\Http\Controllers\LikeController@total');

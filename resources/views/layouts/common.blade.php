@@ -68,17 +68,17 @@ window.addEventListener('load', function(){
   var blackBg = document.getElementById('js-black-bg');
   var closeBtn = document.getElementById('js-close-btn');
 
-  closePopUp(blackBg);
-  closePopUp(closeBtn);
+    closePopUp(blackBg);
+    closePopUp(closeBtn);
 
-  function closePopUp(elem) {
-    if(!elem) return;
-    elem.addEventListener('click', function() {
-      popup.classList.remove('is-show');
-    })
+    function closePopUp(elem) {
+      if(!elem) return;
+      elem.addEventListener('click', function() {
+        popup.classList.remove('is-show');
+      })
+    }
   }
-}
-  </script>
+    </script>
 <style>
 /* 共通項目 */
 body {
@@ -334,7 +334,10 @@ textarea {
 .Tab {
   pointer-events: none;
 }
-
+.tab-content{
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
 /*マイページ*/
 .mainarea {
   margin-left: -40px;
@@ -450,7 +453,7 @@ textarea {
 .lankhaikuArea {
   background-color: white;
   width: 100%;
-  height: 1800px;
+  height: 1900px;
   margin-left: -40px;
 }
 .firstCard {
@@ -513,7 +516,7 @@ textarea {
 .top3count {
   position: absolute;
   margin-top: 320px;
-  margin-left: 134px;
+  margin-left: 120px;
   z-index: 199;
 }
 /* メッセージ画面 */

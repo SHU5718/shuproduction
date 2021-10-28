@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use uploaded_images;
+use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\DB;
 use PDO;
 
 class ImageCreateController extends Controller
@@ -33,8 +35,31 @@ class ImageCreateController extends Controller
     //エラー処理
     if($line1 == "" || $line2 == "" || $line3 == ""){
       $msg = '正しく入力してください。';
+      $dsn = "mysql:host=127.0.0.1; dbname=senryuu; charset=utf8";
+      $username = "root";
+      $password = "";
+      try {
+        $dbh = new PDO($dsn, $username, $password);
+      } catch (PDOException $e) {
+        $msg = $e->getMessage();
+      }
+
+      $sql = "SELECT * FROM products ORDER BY product_time DESC LIMIT 12";
+      $stmt = $dbh->prepare($sql);
+      $stmt->execute();
+      $products = $stmt->fetchAll();
+      $haikai = array();
+      $time = array();
+      $i = 0;
+
+      foreach ($products as $product) {
+        $haikai[$i] = $product['product_haikai'];
+        $time[$i] = $product['product_time'];
+        $i++;
+      }
+
       $name = json_encode($_SESSION['name']);
-      return view('/top',['name' => $name],['msg' => $msg]);
+      return view('/top',['name' => $name],['msg' => $msg,'haikai'=>$haikai,'time'=>$time]);
     }
 
     // Font
@@ -105,6 +130,7 @@ class ImageCreateController extends Controller
     $stmt->execute();
     $products = $stmt->fetchAll();
     $haikai = array();
+    $time = array();
     $i = 0;
 
     foreach ($products as $product) {
@@ -126,6 +152,7 @@ class ImageCreateController extends Controller
 
     //guestの場合ログインページへ
     if($name == "guest"){
+      $_SESSION['upload'] = 1;
       return view('/login',['name' => $name]);
     }else{
       $id = random_int(1000000000000000,9999999999999999); //ID
@@ -194,13 +221,16 @@ class ImageCreateController extends Controller
       $msg = $e->getMessage();
     }
 
+    //DBに接続し、作品情報を取得
     $sql = "SELECT * FROM products LEFT OUTER JOIN users ON products.user_id=users.id  ORDER BY product_time DESC LIMIT 12";
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
     $products = $stmt->fetchAll();
     $i = 0;
     $j = 0;
+    $check_likes = array();
 
+    //作品情報を配列に分配
     foreach ($products as $product) {
       $haikai[$i] = $product['product_haikai'];
       $img[$i] = $product['product_img'];
@@ -209,28 +239,59 @@ class ImageCreateController extends Controller
       $i++;
     }
 
+    //作品IDを配列に分配
     $sql = "SELECT * FROM products ORDER BY product_time DESC LIMIT 12";
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
     $products = $stmt->fetchAll();
 
     foreach ($products as $product) {
+
       $_SESSION[$j] = json_encode($product['id']);
+
+      //ログインしている場合、評価状態を返却
+      if(isset($_SESSION['id'])){
+
+        $likecheck_u_id = $_SESSION['id']; //ログインユーザID
+        $likecheck_p_id = $product['id']; //作品ID
+
+        $sql = "SELECT count(*) FROM user_like_post WHERE user_id=:uid AND product_id=:pid";
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindValue(':uid', $likecheck_u_id);
+        $stmt->bindValue(':pid', $likecheck_p_id);
+        $stmt->execute();
+        $likes = $stmt->fetch();
+        $db_likes = $likes['count(*)'];
+        $check_like[$j] = $db_likes;
+      }
+
       $j++;
     }
+
     if(isset($_SESSION['name'])){
       $name = json_encode($_SESSION['name']);
       if(isset($_SESSION['id'])){
         $s_id = json_encode($_SESSION['id']);
-        return view('/new',['name' => $name, 's_id' => $s_id, 'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
+        return view('/new',['name' => $name, 's_id' => $s_id, 'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created,'check_like' => $check_like]);
       }
-      return view('/new',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
+
+      for ($i=0; $i <12 ; $i++) {
+        $check_like[$i] = json_encode(0);
+      }
+
+      return view('/new',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created,'check_like' => $check_like]);
     }else{
       $_SESSION['name'] = "guest";
+      $check_like = array();
+      for ($i=0; $i <12 ; $i++) {
+        $check_like[$i] = json_encode(0);
+      }
       $name = json_encode($_SESSION['name']);
-      return view('/new',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
+      return view('/new',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created,'check_like' => $check_like]);
     }
   }
+
+
   //ランキング表示
   public function image_ranking(){
     session_start();
@@ -274,13 +335,13 @@ class ImageCreateController extends Controller
       $name = json_encode($_SESSION['name']);
       if(isset($_SESSION['id'])){
         $s_id = json_encode($_SESSION['id']);
-        return view('/rank',['name' => $name, 's_id' => $s_id, 'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
+        return view('/rank',['name' => $name, 's_id' => $s_id, 'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created,'count'=>$count]);
       }
-      return view('/rank',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
+      return view('/rank',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created,'count'=>$count]);
     }else{
       $_SESSION['name'] = "guest";
       $name = json_encode($_SESSION['name']);
-      return view('/rank',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created]);
+      return view('/rank',['name' => $name,'haikai' => $haikai,'time' => $time,'img' => $img, 'created'=>$created,'count'=>$count]);
     }
   }
   //マイページ
@@ -301,6 +362,9 @@ class ImageCreateController extends Controller
     $stmt->bindValue(':id', $_SESSION['id']);
     $stmt->execute();
     $products = $stmt->fetchAll();
+    $haikai = array();
+    $time = array();
+    $img = array();
     $i = 0;
     $j = 0;
     $all_count = 0;

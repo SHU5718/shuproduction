@@ -1,13 +1,13 @@
 @extends('layouts.common')
 
 @section('content')
-<div class="tab-content mb-5">
+<div class="tab-content">
   <div id="contents1" class="tab-pane active">
     <div class="container">
       <div class="newuserArea row mt-1">
         <div class="box3 col-6 bg-light">
+          <form action="/create" method="post">
           <p class="login_title text-center fs-2 mb-5 text-light">新規登録</p>
-          <form action="create" method="post">
             <p class="new_title">ユーザーネーム</p>
             <input type="text" name="name" max-length="16" placeholder="無限戦隊ハイカイジャー" class="col-6 offset-3 mb-4" required="required" id="legister1">
             <p class="new_title">メールアドレス</p>
