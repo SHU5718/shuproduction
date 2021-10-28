@@ -60,9 +60,11 @@ window.addEventListener('load', function(){
   <script>
   window.onload = function() {
   var popup = document.getElementById('js-popup');
+  if (!sessionStorage.getItem('disp_popup')) {
+  sessionStorage.setItem('disp_popup','on');
   if(!popup) return;
   popup.classList.add('is-show');
-
+  }
   var blackBg = document.getElementById('js-black-bg');
   var closeBtn = document.getElementById('js-close-btn');
 
@@ -302,6 +304,7 @@ textarea {
 }
 .next_btn {
   margin-left: 240px;
+  /* visibility: hidden; */
 }
 #preview {
   width: 300px;
@@ -331,6 +334,7 @@ textarea {
 .Tab {
   pointer-events: none;
 }
+
 /*マイページ*/
 .mainarea {
   margin-left: -40px;
@@ -641,4 +645,28 @@ window.addEventListener('load',function(){
     }
   }, false);
 });
+</script>
+<!-- 次への表示切替 -->
+<script>
+    const legister1 = document.getElementById('legister1');
+    const legister2 = document.getElementById('legister2');
+    const legister3 = document.getElementById('password');
+    const legister4 = document.getElementById('passwordC');
+
+    const value1 = legister1.value;
+    const value2 = legister2.value;
+    const value3 = legister3.value;
+    const value4 = legister4.value;
+
+    const next = document.getElementById('next');
+    const check = document.getElementById('nextCheck');
+    
+    check.addEventListener('change', function(){
+      if (value1 == "" || value2 == "" || value3 == "" || value4 == "" ){
+        next.style.visibility = "hidden";
+      }else {
+        next.style.visibility = "visible";
+      }
+    });
+
 </script>
