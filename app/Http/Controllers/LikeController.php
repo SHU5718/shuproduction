@@ -107,7 +107,7 @@ public function button()
 
   // 評価記録あり：0を返す　|　評価記録なし：1を返す
   $redis_like = Redis::sadd($product_id, $user_id);
-  
+
   // If Mysqlの中記録がない Redisから1を返した Like成功
   if (empty($mysql_like) && $redis_like) {
     return [
