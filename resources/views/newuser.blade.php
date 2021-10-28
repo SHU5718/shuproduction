@@ -1,13 +1,13 @@
 @extends('layouts.common')
 
 @section('content')
-<div class="tab-content mb-5">
+<div class="tab-content">
   <div id="contents1" class="tab-pane active">
     <div class="container">
       <div class="newuserArea row mt-1">
         <div class="box3 col-6 bg-light">
+          <form action="/create" method="post">
           <p class="login_title text-center fs-2 mb-5 text-light">新規登録</p>
-          <form action="create" method="post">
             <p class="new_title">ユーザーネーム</p>
             <input type="text" name="name" max-length="16" placeholder="無限戦隊ハイカイジャー" class="col-6 offset-3 mb-4" required="required">
             <p class="new_title">メールアドレス</p>
@@ -17,6 +17,7 @@
             <p class="new_title">パスワード(確認用)</p>
             <input type="password" name="Pass" max-length="32" placeholder="password(確認用)" class="col-6 offset-3 mb-2" required="required" id="passwordC">
             <div class="col-4"></div>
+
             <input type="checkbox" id="password-check" class="offset-3 mb-2">パスワードを表示する
             <div class="emsg col-6 offset-3 text-danger mb-4">@isset($msg){{$msg}}@endisset</div>
             <ul class="Tab nav nav-tabs justify-content-center mb-2">
