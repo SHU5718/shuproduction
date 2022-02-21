@@ -6,6 +6,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <link href='https://css.gg/heart.css' rel='stylesheet'>
+<meta name=”robots” content=”none,noindex,nofollow”>
 <!-- アイコン設定 -->
 <script>
 function previewImage(obj) {
@@ -68,17 +69,17 @@ window.addEventListener('load', function(){
   var blackBg = document.getElementById('js-black-bg');
   var closeBtn = document.getElementById('js-close-btn');
 
-    closePopUp(blackBg);
-    closePopUp(closeBtn);
+  closePopUp(blackBg);
+  closePopUp(closeBtn);
 
-    function closePopUp(elem) {
-      if(!elem) return;
-      elem.addEventListener('click', function() {
-        popup.classList.remove('is-show');
-      })
-    }
+  function closePopUp(elem) {
+    if(!elem) return;
+    elem.addEventListener('click', function() {
+      popup.classList.remove('is-show');
+    })
   }
-    </script>
+}
+  </script>
 <style>
 /* 共通項目 */
 body {
@@ -304,7 +305,6 @@ textarea {
 }
 .next_btn {
   margin-left: 240px;
-  /* visibility: hidden; */
 }
 #preview {
   width: 300px;
@@ -334,9 +334,8 @@ textarea {
 .Tab {
   pointer-events: none;
 }
-.tab-content{
-  margin-top: 40px;
-  margin-bottom: 100px;
+.tab-content {
+  height: 700px;
 }
 /*マイページ*/
 .mainarea {
@@ -453,7 +452,7 @@ textarea {
 .lankhaikuArea {
   background-color: white;
   width: 100%;
-  height: 1900px;
+  height: 1800px;
   margin-left: -40px;
 }
 .firstCard {
@@ -516,7 +515,7 @@ textarea {
 .top3count {
   position: absolute;
   margin-top: 320px;
-  margin-left: 120px;
+  margin-left: 134px;
   z-index: 199;
 }
 /* メッセージ画面 */
@@ -648,28 +647,4 @@ window.addEventListener('load',function(){
     }
   }, false);
 });
-</script>
-<!-- 次への表示切替 -->
-<script>
-    const legister1 = document.getElementById('legister1');
-    const legister2 = document.getElementById('legister2');
-    const legister3 = document.getElementById('password');
-    const legister4 = document.getElementById('passwordC');
-
-    const value1 = legister1.value;
-    const value2 = legister2.value;
-    const value3 = legister3.value;
-    const value4 = legister4.value;
-
-    const next = document.getElementById('next');
-    const check = document.getElementById('nextCheck');
-    
-    check.addEventListener('change', function(){
-      if (value1 == "" || value2 == "" || value3 == "" || value4 == "" ){
-        next.style.visibility = "hidden";
-      }else {
-        next.style.visibility = "visible";
-      }
-    });
-
 </script>

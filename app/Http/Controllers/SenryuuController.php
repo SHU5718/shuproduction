@@ -18,7 +18,7 @@ class SenryuuController extends Controller
     //接続
     for ($i=0; $i < 2; $i++) {
 
-      $url = "https://api.a3rt.recruit.co.jp/text_suggest/v2/predict?apikey=DZZKDP8fwYaKERZNzljBTPuKgFp5RmE7&previous_description=$keyword&style=1";
+      $url = "https://api.a3rt.recruit.co.jp/text_suggest/v2/predict?apikey=DZZIZdDUk4DJ3WEbw2F2eofZY7EujD9U&previous_description=$keyword&style=1";
       $client = new Client();
       $response = $client->request($method, $url);
       $posts[] = json_decode($response->getBody()->getContents(), true);

@@ -4,7 +4,7 @@
 <div class="tab-content">
   <div id="contents1" class="tab-pane active">
     <div class="container">
-      <div class="newuserArea row mt-1">
+      <div class="newuserArea row mt-3">
         <div class="box3 col-6 bg-light">
           <form action="/create" method="post">
           <p class="login_title text-center fs-2 mb-5 text-light">新規登録</p>
@@ -58,4 +58,49 @@
     </div>
   </div>
 </div>
+
+<!-- 次への表示切替 -->
+<!-- 大森さんに言われた通りまとめようとしたのですが、バグが起こってしまうので汚いままでごめんなさい -->
+<script defer>
+  //idの取得し変数に定義
+    const legister1 = document.getElementById('legister1');
+    const legister2 = document.getElementById('legister2');
+    const legister3 = document.getElementById('password');
+    const legister4 = document.getElementById('passwordC');
+  //取得したidのvalueを指定
+    const value1 = legister1.value;
+    const value2 = legister2.value;
+    const value3 = legister3.value;
+    const value4 = legister4.value;
+  //次へのidを取得し変数に定義
+    const next = document.getElementById('next');
+    const check = document.getElementById('nextCheck');
+    window.onload = function () {
+        if (value1 == "" || value2 == "" || value3 == "" || value4 == "" ){
+          next.style.visibility = "hidden";
+        }else{
+          ;
+        }
+    }
+    check.addEventListener('change', function(){
+    const legister1 = document.getElementById('legister1');
+    const legister2 = document.getElementById('legister2');
+    const legister3 = document.getElementById('password');
+    const legister4 = document.getElementById('passwordC');
+  //取得したidのvalueを指定
+    const value1 = legister1.value;
+    const value2 = legister2.value;
+    const value3 = legister3.value;
+    const value4 = legister4.value;
+      if (check.checked){
+        if (value1 !== "" && value2 !== "" && value3 !== "" && value4 !== "" ){
+          next.style.visibility = "visible";
+        }else {
+          next.style.visibility = "hidden";
+        }
+      }else{
+        next.style.visibility = "hidden";
+      }
+    });
+</script>
 @endsection('content')
